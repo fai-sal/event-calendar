@@ -10,6 +10,16 @@ const rootReducer = (state = initialState, action) => {
             break
 
         case 'EDIT_EVENT':
+            let editedDates = state.dates.map(date => {
+                if (date.index == action.index) {
+                    date.name = action.newPayload.name
+                }
+                return date
+            })
+            return {
+                ...state,
+                dates: editedDates
+            }
             break
 
     }
