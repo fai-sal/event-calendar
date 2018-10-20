@@ -25,7 +25,7 @@ class Home extends React.Component {
         const { events } = this.props
         return (
             // <div className='col-12 col-md-8 offset-md-2 col-lg-4 offset-lg-4 col-xl-4 offset-xl-4'>
-            <div className="col-12">
+            <React.Fragment>
                 <PageHeader />
                 <WeeklyDayHeader />
                 <Calender />
@@ -36,7 +36,8 @@ class Home extends React.Component {
                 }
                 <button onClick={this.handleDelete}>delete</button>
                 <button onClick={this.handleEdit}>Edit</button> */}
-            </div >
+            </React.Fragment>
+
         )
     }
 

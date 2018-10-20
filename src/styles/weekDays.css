@@ -1,0 +1,28 @@
+.container-fluid{
+    padding: 0px;
+    margin: 0px
+}
+    .day{
+        flex-grow:1;
+        flex-basis: 14.20%;
+        margin: 0px;
+
+    }
+    .dayTitle{
+        display: flex;
+        flex-wrap: wrap;
+        width:100%;
+    }
+    .dayTitleContainer{
+        border-top: 1px solid #d9d9d9;
+        border-bottom: 1px solid #d9d9d9;
+        padding: 0px;
+        display: flex;
+        align-items: center;
+        display: flex
+    }
+    .dayTitleContainer{
+        margin-left: 0px !important;
+        padding-left: 0px !important;
+        width: 100vw;
+    }

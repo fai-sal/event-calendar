@@ -1,27 +1,21 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import SingleDay from './SingleDay';
+import '../styles/weekDays.css'
+
 export default () => {
+
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    
     return (
-        <Container fluid >
-            <Row style={styles.dayTitleContainerStyle}>
-                {days.map((day, index) => {
-                    return <Col style={styles.dateColumn}><SingleDay dayTitle={day} key={index} />   </Col>
-                })}
+        <Container fluid className="dayTitleContainer" >
+            <Row className="dayTitleContainer">
+                <div className="dayTitle">
+                    {days.map((day, index) => {
+                        return <div className="day"> <SingleDay dayTitle={day} key={index} /></div>
+                    })}
+                </div>
             </Row>
         </Container>
     )
-}
-const styles = {
-    dayTitleContainerStyle: {
-        borderTop: '1px solid #d9d9d9',
-        borderBottom: '1px solid #d9d9d9',
-        padding: '0px',
-        display: 'flex',
-        alignItems: 'center'
-    },
-    dateColumn: {
-        margin: '0px'
-    }
 }
