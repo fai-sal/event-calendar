@@ -15,6 +15,6 @@ const styles = {
         padding: '8px',
         paddingRight: '15px',
         paddingLeft: '15px',
-        margin: '10px'
+        marginRight: '10px'
     }
 }

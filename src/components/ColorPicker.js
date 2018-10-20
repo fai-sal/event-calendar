@@ -1,17 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import ColorButton from './ColorPickerButton'
+import { Col } from 'reactstrap'
+import '../styles/colorPickerButtons.css'
 class ColorPicker extends React.Component {
     render() {
         const { colors } = this.props
         const colorIds = Object.keys(colors)
         return (
-            <div className="col-6" style={styles.buttonContainer} >
+            <Col sm={12} md={6} lg={6} xl={6} className="colorPickerButtonContainer">
                 {colorIds.map(colorId => {
                     return (<ColorButton colorCode={colors[colorId]} colorId={colorId} />)
                 })}
 
-            </div>
+            </Col>
 
         )
     }
@@ -24,9 +26,3 @@ const mapStateToProps = (store, ownProps) => {
 }
 export default connect(mapStateToProps)(ColorPicker);
 
-const styles = {
-    buttonContainer: {
-        display: 'flex',
-        justifyContent: 'flex-end',
-    }
-}

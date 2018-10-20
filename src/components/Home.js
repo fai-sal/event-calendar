@@ -4,34 +4,38 @@ import { deleteEvent } from '../actions/deleteEvent'
 import { editEvent } from '../actions/editEvent'
 import WeeklyDayHeader from '../components/WeekDayHeader'
 import PageHeader from '../components/PageHeader'
+import Calender from '../components/Calender'
 class Home extends React.Component {
     constructor(props) {
         super(props)
     }
     componentDidMount() {
-        const colorCodes = {
+        const eventsColorCodes = {
             7: '#EA7E95',
             2: '#638FC6',
             3: '#F2F4F8',
             1: '#82BF56',
             6: '#F4A03E',
         }
-        localStorage.setItem('colors', JSON.stringify(colorCodes))
+        const calenderBackgroundColor = '#e5d1d2'
+        localStorage.setItem('colors', JSON.stringify(eventsColorCodes))
+        localStorage.setItem('calenderBackgroundColor', calenderBackgroundColor)
     }
     render() {
         const { events } = this.props
         return (
             // <div className='col-12 col-md-8 offset-md-2 col-lg-4 offset-lg-4 col-xl-4 offset-xl-4'>
-            <div >
+            <div className="col-12">
                 <PageHeader />
                 <WeeklyDayHeader />
-                {
+                <Calender />
+                {/* {
                     events.map((event, index) => {
                         return <li key={index}>{event.name}</li>
                     })
                 }
                 <button onClick={this.handleDelete}>delete</button>
-                <button onClick={this.handleEdit}>Edit</button>
+                <button onClick={this.handleEdit}>Edit</button> */}
             </div >
         )
     }

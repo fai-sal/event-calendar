@@ -1,3 +1,17 @@
-.normalButtons{
-    
-}
+@media screen and (max-width: 576px) {
+   .colorPickerButtonContainer{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0px !important;
+    margin: 0px;
+    margin-bottom: 10px
+   }
+  }
+  @media screen and (min-width: 577px) {
+    .colorPickerButtonContainer{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+       }
+   }
