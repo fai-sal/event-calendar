@@ -6,7 +6,6 @@
         flex-grow:1;
         flex-basis: 14.20%;
         margin: 0px;
-
     }
     .dayTitle{
         display: flex;
@@ -28,6 +27,7 @@
     }
     .weekdayTitle{
         padding: 0px;
+        padding-left: 6%;
         margin: 0px;
         color: grey;
         display: flex;

@@ -28,7 +28,7 @@ const rootReducer = (state = initialState, action) => {
 
 const initialState = {
     dates: [
-        { index: '1', tasks: ['buy milk', 'fuck you'] },
+        { index: '1', tasks: ['buy milk'] },
         { index: '2', tasks: [] },
         { index: '3', tasks: [] },
         { index: '4', tasks: [] },
