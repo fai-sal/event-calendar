@@ -6,22 +6,26 @@
         flex-grow:1;
         flex-basis: 14.20%;
         margin: 0px;
+        border: 1px solid #e6e6e6;
+        padding: 1%
     }
-    .singleDate{
+    .allDates{
         display: flex;
         flex-wrap: wrap;
         width:100%;
+        margin:10px;
+        background-color: white;
     }
     .calenderContainer{
-        border-top: 1px solid #d9d9d9;
-        border-bottom: 1px solid #d9d9d9;
+        background-color: #e5d1d2;
         padding: 0px;
         display: flex;
         align-items: center;
-        display: flex
+        display: flex;
+        margin-bottom: 10px;
     }
     .dateRow{
-        margin-left: 0px !important;
-        padding-left: 0px !important;
+        margin:10px;
         width: 100vw;
+        margin:10px
     }

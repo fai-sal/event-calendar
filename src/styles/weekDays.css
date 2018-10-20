@@ -26,3 +26,11 @@
         padding-left: 0px !important;
         width: 100vw;
     }
+    .weekdayTitle{
+        padding: 0px;
+        margin: 0px;
+        color: grey;
+        display: flex;
+        align-items: center;
+        min-height: 45px;
+    }

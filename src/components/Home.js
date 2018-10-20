@@ -29,6 +29,7 @@ class Home extends React.Component {
                 <PageHeader />
                 <WeeklyDayHeader />
                 <Calender />
+
                 {/* {
                     events.map((event, index) => {
                         return <li key={index}>{event.name}</li>

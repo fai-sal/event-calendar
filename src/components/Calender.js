@@ -12,7 +12,7 @@ class Calender extends React.Component {
         return (
             <Container fluid className="calenderContainer" >
                 <Row className="dateRow">
-                    <div className="singleDate">
+                    <div className="allDates">
                         {dates.map((date, index) => {
                             return <div className="date"> <SingleDate dayTitle={date.index} key={index} /></div>
                         })}

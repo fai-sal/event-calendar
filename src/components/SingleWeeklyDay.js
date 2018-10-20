@@ -1,15 +1,6 @@
 import React from 'react';
+import '../styles/weekDays.css'
 export default ({ dayTitle }) => {
-    return <h5 style={styles.dateTitle}>{dayTitle}</h5>
+    return <h5 className="weekdayTitle">{dayTitle}</h5>
 
-}
-const styles = {
-    dateTitle: {
-        padding: '0px',
-        margin: '0px',
-        color: 'grey',
-        display: 'flex',
-        alignItems: 'center',
-        minHeight: '45px',
-    }
 }
