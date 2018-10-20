@@ -9,17 +9,14 @@ export default () => {
                 {days.map((day, index) => {
                     return <Col style={styles.dateColumn}><SingleDay dayTitle={day} key={index} />   </Col>
                 })}
-
-
             </Row>
         </Container>
     )
 }
 const styles = {
     dayTitleContainerStyle: {
-        marginTop: '30px',
-        borderTop: '1px solid gray',
-        borderBottom: '1px solid gray',
+        borderTop: '1px solid #d9d9d9',
+        borderBottom: '1px solid #d9d9d9',
         padding: '0px',
         display: 'flex',
         alignItems: 'center'

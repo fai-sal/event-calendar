@@ -3,18 +3,30 @@ import { connect } from 'react-redux'
 import { deleteEvent } from '../actions/deleteEvent'
 import { editEvent } from '../actions/editEvent'
 import WeeklyDayHeader from '../components/WeekDayHeader'
+import PageHeader from '../components/PageHeader'
 class Home extends React.Component {
     constructor(props) {
         super(props)
     }
-
+    componentDidMount() {
+        const colorCodes = {
+            7: '#EA7E95',
+            2: '#638FC6',
+            3: '#F2F4F8',
+            1: '#82BF56',
+            6: '#F4A03E',
+        }
+        localStorage.setItem('colors', JSON.stringify(colorCodes))
+    }
     render() {
+        const { events } = this.props
         return (
             // <div className='col-12 col-md-8 offset-md-2 col-lg-4 offset-lg-4 col-xl-4 offset-xl-4'>
             <div >
+                <PageHeader />
                 <WeeklyDayHeader />
                 {
-                    this.props.events.map((event, index) => {
+                    events.map((event, index) => {
                         return <li key={index}>{event.name}</li>
                     })
                 }
@@ -33,9 +45,10 @@ class Home extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+    const { dates, colors } = state
     return {
         // events: state.dates.find(date => date.index == 1)
-        events: state.dates
+        events: dates
     }
 }
 

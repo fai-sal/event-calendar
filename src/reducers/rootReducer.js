@@ -31,6 +31,7 @@ const initialState = {
         { index: '1', name: 'one', tasks: [] },
         { index: '2', name: 'two', tasks: [] },
         { index: '3', name: 'three', tasks: [] }
-    ]
+    ],
+    colors: JSON.parse(localStorage.getItem('colors'))
 }
 export default rootReducer;
