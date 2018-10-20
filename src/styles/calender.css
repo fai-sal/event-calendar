@@ -2,18 +2,17 @@
     padding: 0px;
     margin: 0px
 }
-    .day{
+    .date{
         flex-grow:1;
         flex-basis: 14.20%;
         margin: 0px;
-
     }
-    .dayTitle{
+    .singleDate{
         display: flex;
         flex-wrap: wrap;
         width:100%;
     }
-    .dayTitleContainer{
+    .calenderContainer{
         border-top: 1px solid #d9d9d9;
         border-bottom: 1px solid #d9d9d9;
         padding: 0px;
@@ -21,7 +20,7 @@
         align-items: center;
         display: flex
     }
-    .dayTitleRow{
+    .dateRow{
         margin-left: 0px !important;
         padding-left: 0px !important;
         width: 100vw;

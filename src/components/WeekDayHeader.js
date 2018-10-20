@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import SingleDay from './SingleDay';
+import SingleDay from './SingleWeeklyDay';
 import '../styles/weekDays.css'
 
 export default () => {
@@ -9,7 +9,7 @@ export default () => {
     
     return (
         <Container fluid className="dayTitleContainer" >
-            <Row className="dayTitleContainer">
+            <Row className="dayTitleRow">
                 <div className="dayTitle">
                     {days.map((day, index) => {
                         return <div className="day"> <SingleDay dayTitle={day} key={index} /></div>
