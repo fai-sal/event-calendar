@@ -29,13 +29,13 @@ class Home extends React.Component {
                 <PageHeader />
                 <WeeklyDayHeader />
                 <Calender />
-                {
+                {/* {
                     events.map((event, index) => {
                         return <li key={index}>{event.name}</li>
                     })
                 }
                 <button onClick={this.handleDelete}>delete</button>
-                <button onClick={this.handleEdit}>Edit</button>
+                <button onClick={this.handleEdit}>Edit</button> */}
             </React.Fragment>
 
         )

@@ -1,6 +1,8 @@
 export const deleteEvent = (id) => {
-    return {
-        type: 'DELETE_EVENT',
-        index: id
+    return (dispatch, getState) => {
+        dispatch({
+            type: 'DELETE_EVENT',
+            index: id
+        })
     }
 }
