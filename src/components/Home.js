@@ -6,9 +6,7 @@ import WeeklyDayHeader from '../components/WeekDayHeader'
 import PageHeader from '../components/PageHeader'
 import Calender from '../components/Calender'
 class Home extends React.Component {
-    constructor(props) {
-        super(props)
-    }
+   
     componentDidMount() {
         const eventsColorCodes = {
             1: { text: 7, colorCode: '#EA7E95', textColor: '#ffffff' },
@@ -22,7 +20,6 @@ class Home extends React.Component {
         localStorage.setItem('calenderBackgroundColor', calenderBackgroundColor)
     }
     render() {
-        const { events } = this.props
         return (
             // <div className='col-12 col-md-8 offset-md-2 col-lg-4 offset-lg-4 col-xl-4 offset-xl-4'>
             <React.Fragment>
@@ -51,7 +48,7 @@ class Home extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    const { dates, colors } = state
+    const { dates } = state
     return {
         // events: state.dates.find(date => date.index == 1)
         events: dates

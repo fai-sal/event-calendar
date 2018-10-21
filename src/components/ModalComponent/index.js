@@ -1,20 +1,27 @@
 import React from 'react';
 import '../../styles/modal.css'
 import GenericButton from '../GenericButton';
-import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
-import Tasks from './Tasks';
+import Tasks from './TasksInModal';
 class TaskModal extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            open: this.props.open
+        }
+    }
+    handleClose = () => {
+        this.setState({
+            open: false
+        })
     }
     render() {
-        const { open, closeModal, date, fullScreen, tasks } = this.props
+        const { open, closeModal, date,tasks } = this.props
         return (
             <   Dialog
                 fullScreen={false}
@@ -27,7 +34,7 @@ class TaskModal extends React.Component {
                 <DialogTitle id="responsive-dialog-title">{date} September </DialogTitle>
                 <DialogContent   >
                     <DialogContentText>
-                        <Tasks  tasks={tasks} />
+                        <Tasks tasks={tasks} />
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions style={styles.buttonContainer} >

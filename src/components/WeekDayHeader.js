@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row } from 'reactstrap';
 import SingleDay from './SingleWeeklyDay';
 import '../styles/weekDays.css'
 

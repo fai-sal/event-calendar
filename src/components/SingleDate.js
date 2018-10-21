@@ -12,14 +12,18 @@ class SingleDate extends React.Component {
     }
     render() {
         const { dayTitle, date } = this.props
+        const { openModal } = this.state
         return (
-            <div style={styles.singleDate} onClick={this.openModalFunction}>
-                <Date date={dayTitle} />
-                {date.tasks.map(task => {
-                    return <Tasks task={task} />
-                })}
-                <ModalComponent open={this.state.openModal} tasks={date.tasks} date={dayTitle} closeModal={this.closeModalFunction} />
-            </div>
+            <React.Fragment>
+                <div className="individualDate" onClick={this.openModalFunction}>
+                    <Date date={dayTitle} />
+                    {date.tasks.map(task => {
+                        return <Tasks task={task} />
+                    })}
+                </div>
+                <ModalComponent open={openModal} tasks={date.tasks} date={dayTitle} closeModal={this.closeModalFunction} />
+            </React.Fragment>
+
         )
     }
     openModalFunction = () => {
@@ -30,32 +34,13 @@ class SingleDate extends React.Component {
     closeModalFunction = () => {
         this.setState({
             openModal: false
-        }, () => {
-            console.log('changed state : ', this.state)
         })
-
     }
-
-
 }
 const mapStateToProps = (store, ownProps) => {
-    const { dates, colors } = store
+    const { dates } = store
     return {
-        date: dates.find(date => date.index == ownProps.dayTitle)
+        date: dates.find(date => date.index === ownProps.dayTitle)
     }
 }
 export default connect(mapStateToProps, null)(SingleDate);
-const styles = {
-    dateTitle: {
-        padding: '0px',
-        margin: '0px',
-        display: 'flex',
-        alignItems: 'center',
-        minHeight: '45px',
-    },
-    singleDate: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    }
-}

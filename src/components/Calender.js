@@ -2,7 +2,7 @@ import React from 'react';
 import SingleDate from './SingleDate'
 import { connect } from 'react-redux';
 import '../styles/calender.css'
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row } from 'reactstrap';
 class Calender extends React.Component {
     constructor(props) {
         super(props)
@@ -31,7 +31,7 @@ class Calender extends React.Component {
     }
 }
 const mapStateToProps = (store) => {
-    const { dates, colors } = store
+    const { dates} = store
     return {
         dates
     }
