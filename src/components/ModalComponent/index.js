@@ -14,12 +14,12 @@ class TaskModal extends React.Component {
         super(props)
     }
     render() {
-        const { open, handleModal, date, fullScreen, tasks } = this.props
+        const { open, closeModal, date, fullScreen, tasks } = this.props
         return (
             <   Dialog
                 fullScreen={false}
                 open={open}
-                onClose={handleModal}
+                onClose={closeModal}
                 aria-labelledby="responsive-dialog-title"
                 maxWidth={'sm'}
                 fullWidth={true}
@@ -27,21 +27,17 @@ class TaskModal extends React.Component {
                 <DialogTitle id="responsive-dialog-title">{date} September </DialogTitle>
                 <DialogContent   >
                     <DialogContentText>
-                        <Tasks
-                            tasks={tasks} />
+                        <Tasks  tasks={tasks} />
                       
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions style={styles.buttonContainer} >
-                    <GenericButton customStyle={styles.buttonStyle} onClick={handleModal} >
+                    <GenericButton customStyle={styles.buttonStyle} onClick={closeModal} >
                         OK
                     </GenericButton>
                 </DialogActions>
             </Dialog >
         )
-    }
-    handleAddNewTaskButton = () => {
-        alert('add task clicked!!')
     }
 }
 

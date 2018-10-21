@@ -13,21 +13,26 @@ class SingleDate extends React.Component {
     render() {
         const { dayTitle, date } = this.props
         return (
-            <div style={styles.singleDate} onClick={this.handleModal}>
+            <div style={styles.singleDate} onClick={this.openModal}>
                 <Date date={dayTitle} />
                 {date.tasks.map(task => {
                     return <Tasks task={task} />
                 })}
-                <ModalComponent open={this.state.openModal} tasks={date.tasks} date={dayTitle} handleModal={this.handleModal} />
+                <ModalComponent open={this.state.openModal} tasks={date.tasks} date={dayTitle} closeModal={this.closeModal} />
             </div>
         )
     }
-    handleModal = () => {
+    openModal = () => {
         this.setState({
-            openModal: !this.state.openModal
+            openModal: true
         })
     }
 
+    closeModal = () => {
+        this.setState({
+            openModal: false
+        })
+    }
 }
 const mapStateToProps = (store, ownProps) => {
     const { dates, colors } = store
