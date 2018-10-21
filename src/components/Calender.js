@@ -3,7 +3,6 @@ import SingleDate from './SingleDate'
 import { connect } from 'react-redux';
 import '../styles/calender.css'
 import { Container, Row, Col } from 'reactstrap';
-import ModalComponent from './ModalComponent';
 class Calender extends React.Component {
     constructor(props) {
         super(props)
@@ -18,11 +17,10 @@ class Calender extends React.Component {
                 <Row className="dateRow">
                     <div className="allDates">
                         {dates.map((date, index) => {
-                            return <div className="date" onClick={this.handleModal}> <SingleDate dayTitle={date.index} key={index} /></div>
+                            return (  <div className="date" > <SingleDate dayTitle={date.index} key={index} /></div>   )
                         })}
                     </div>
                 </Row>
-                <ModalComponent open={this.state.openModal} handleModal={this.handleModal} />
             </Container>
         )
     }

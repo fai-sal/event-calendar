@@ -12,7 +12,7 @@ class TaskModal extends React.Component {
         super(props)
     }
     render() {
-        const { open, handleModal, fullScreen } = this.props
+        const { open, handleModal,date, fullScreen } = this.props
         return (
             <   Dialog
                 fullScreen={false}
@@ -20,7 +20,7 @@ class TaskModal extends React.Component {
                 onClose={handleModal}
                 aria-labelledby="responsive-dialog-title"
             >
-                <DialogTitle id="responsive-dialog-title">{"Use Google's location service?"}</DialogTitle>
+                <DialogTitle id="responsive-dialog-title">{`${date}`}</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
                         Let Google help apps determine location. This means sending anonymous location data to
@@ -28,12 +28,12 @@ class TaskModal extends React.Component {
               </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleModal} color="primary">
+                    {/* <Button onClick={handleModal} color="primary">
                         Disagree
               </Button>
                     <Button onClick={handleModal} color="primary" autoFocus>
                         Agree
-              </Button>
+              </Button> */}
                     <GenericButton customStyle={styles.buttonStyle} onClick={handleModal} >
                         OK
                     </GenericButton>
