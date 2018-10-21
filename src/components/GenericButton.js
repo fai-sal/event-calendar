@@ -1,12 +1,9 @@
 import React from 'react';
-import { Container, Row, Col, Card } from 'reactstrap';
 export default ({ children, customStyle, isDisabled, ...restProps }) => {
     return <button disabled={isDisabled} onClick={restProps.actionHandler} style={{ ...styles.buttonStyle, ...customStyle }}{...restProps}>{children}</button>
 }
-const styles =
-{
-    buttonStyle:
-    {
+const styles ={
+    buttonStyle:  {
         borderColor: '#F6D449',
         borderRadius: '12px',
         paddingLeft: '15%',
@@ -16,5 +13,6 @@ const styles =
         paddingBottom: '.1rem',
         fontSize: '105%',
         fontFamily: "'Source Sans Pro', sans-serif",
+        outline:'0px'
     }
-};
+}

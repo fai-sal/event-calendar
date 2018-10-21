@@ -8,6 +8,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
+import Tasks from './Tasks';
 class TaskModal extends React.Component {
     constructor(props) {
         super(props)
@@ -23,13 +24,12 @@ class TaskModal extends React.Component {
                 maxWidth={'sm'}
                 fullWidth={true}
             >
-                <DialogTitle id="responsive-dialog-title">{`${date}  Septermber`}</DialogTitle>
+                <DialogTitle id="responsive-dialog-title">{date} September </DialogTitle>
                 <DialogContent   >
                     <DialogContentText>
-                        <h4>Tasks</h4>
-                        {tasks.map(task => {
-                            return <p>{task}</p>
-                        })}
+                        <Tasks
+                            tasks={tasks} />
+                      
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions style={styles.buttonContainer} >
@@ -39,8 +39,9 @@ class TaskModal extends React.Component {
                 </DialogActions>
             </Dialog >
         )
-
-
+    }
+    handleAddNewTaskButton = () => {
+        alert('add task clicked!!')
     }
 }
 

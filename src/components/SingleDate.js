@@ -2,7 +2,7 @@ import React from 'react'
 import Date from './Date'
 import Tasks from './Tasks'
 import { connect } from 'react-redux';
-import ModalComponent from './ModalComponent/index';
+import ModalComponent from './ModalComponent';
 class SingleDate extends React.Component {
     constructor(props) {
         super(props)
