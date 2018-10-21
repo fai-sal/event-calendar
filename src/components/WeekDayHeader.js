@@ -5,7 +5,7 @@ import '../styles/weekDays.css'
 
 export default () => {
 
-    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
     
     return (
         <Container fluid className="dayTitleContainer" >

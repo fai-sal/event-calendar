@@ -16,15 +16,15 @@ const styles = {
         borderRadius: '4px',
         paddingLeft: '7%',
         paddingRight: '7%',
-        backgroundColor: '#82BF56',
+        backgroundColor: '#F4A03E',
         color: 'white',
         marginBottom: '2px'
     },
     task: {
         width: '100%',
         margin: '0px',
-        paddingTop: '4%',
-        paddingBottom: '4%',
+        paddingTop: '3%',
+        paddingBottom: '3%',
         paddingLeft: '1%'
     }
 } 
