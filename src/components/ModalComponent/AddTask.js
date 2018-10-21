@@ -1,8 +1,9 @@
 import React from 'react'
-import GenericButton from '../GenericButton'
-import ColorPicker from '../ColorPicker'
+import ColorButton from '../ColorPickerButton'
 import { Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-const AddTask = ({ flag, handleAddButton, handleOnChange, handleCancelButton }) => {
+const AddTask = ({ colors, flag, handleAddButton, handleOnChange, handleCancelButton, customValue }) => {
+    const colorIds = Object.keys(colors)
+    console.log('custom value : ', customValue)
     if (flag) {
         return (
             <React.Fragment>
@@ -11,15 +12,31 @@ const AddTask = ({ flag, handleAddButton, handleOnChange, handleCancelButton }) 
                         <Form>
                             <FormGroup >
                                 <Label for="newTask">Add new task</Label>
-                                <Input type="text" name="newTask" id="newTask" placeholder="New Task" onChange={handleOnChange} />
+                                <Input
+                                    type="text"
+                                    name="newTask"
+                                    id="newTask"
+                                    placeholder="New Task"
+                                    value={customValue}
+                                    onChange={handleOnChange}
+                                />
                             </FormGroup>
                         </Form>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col">
+                    <div className="col-12" >
                         <p>Choose color</p>
-                        <ColorPicker />
+                        {
+                            colorIds.map(colorId => {
+                                const currentColor = colors[colorId]
+                                const keys = Object.keys(currentColor)
+                                const text = currentColor[keys[0]]
+                                const colorCode = currentColor[keys[1]]
+                                const textColor = currentColor[keys[2]]
+                                return (<ColorButton colorCode={colorCode} colorId={text} textColor={textColor} />)
+                            })
+                        }
 
                     </div>
                 </div>

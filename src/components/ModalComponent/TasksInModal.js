@@ -12,11 +12,12 @@ class Tasks extends React.Component {
             addTaskFlag: false,
             newTask: {
                 id: this.props.date
-            }
+            },
+            currentTasks: this.props.tasks
         }
     }
     render() {
-        const { tasks } = this.props
+        const { tasks, colors } = this.props
         const { addTaskFlag } = this.state
         return (
             <React.Fragment>
@@ -35,13 +36,13 @@ class Tasks extends React.Component {
                 </div>
                 <div className="row">
                     <div className="col-8">
-                        {tasks.map((task, index) => {
+                        {this.state.currentTasks.map((task, index) => {
                             return <p>{`${index + 1}. ${task}`}</p>
                         })}
                     </div>
                 </div>
 
-                <AddTask flag={addTaskFlag} handleAddButton={this.handleAddButton} handleOnChange={this.handleOnChange} handleCancelButton={this.handleCancelButton} />
+                <AddTask colors={colors} flag={addTaskFlag} customValue={this.state.newTask.task} handleAddButton={this.handleAddButton} handleOnChange={this.handleOnChange} handleCancelButton={this.handleCancelButton} />
 
             </React.Fragment >
 
@@ -57,6 +58,16 @@ class Tasks extends React.Component {
         })
     }
     handleAddButton = () => {
+        let newTaskArray = this.state.currentTasks.map(task => task)
+        newTaskArray.push(this.state.newTask.task)
+        this.setState({
+            ...this.state,
+            currentTasks: newTaskArray,
+            newTask: {
+                ...this.setState.newTask,
+                task: ""
+            }
+        })
         this.props.addEvent(this.state.newTask)
     }
     handleAddNewTaskButton = () => {
@@ -71,6 +82,13 @@ class Tasks extends React.Component {
     }
 
 }
+const mapStateToProps = (state, ownProps) => {
+    const { colors } = state
+    return {
+        // events: state.dates.find(date => date.index == 1)
+        colors: colors
+    }
+}
 const mapDispatchToProps = (dispatch) => {
     return {
         deleteEvent: (id) => { dispatch(deleteEvent(2)) },
@@ -78,7 +96,7 @@ const mapDispatchToProps = (dispatch) => {
         addEvent: (task) => { dispatch(addEvent(task)) }
     }
 }
-export default connect(null, mapDispatchToProps)(Tasks);
+export default connect(mapStateToProps, mapDispatchToProps)(Tasks);
 const styles = {
     buttonStyle: {
         backgroundColor: '#d9d9d9',

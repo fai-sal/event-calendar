@@ -30,6 +30,7 @@ class TaskModal extends React.Component {
                 aria-labelledby="responsive-dialog-title"
                 maxWidth={'sm'}
                 fullWidth={true}
+                style={{ padding: '10px', }}
             >
                 <DialogTitle id="responsive-dialog-title">{date} September </DialogTitle>
                 <DialogContent   >
