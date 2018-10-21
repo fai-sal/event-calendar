@@ -2,7 +2,7 @@ import React from 'react'
 import Date from './Date'
 import Tasks from './Tasks'
 import { connect } from 'react-redux';
-import ModalComponent from './ModalComponent';
+import ModalComponent from './ModalComponent/index';
 class SingleDate extends React.Component {
     constructor(props) {
         super(props)
@@ -18,7 +18,7 @@ class SingleDate extends React.Component {
                 {date.tasks.map(task => {
                     return <Tasks task={task} />
                 })}
-                <ModalComponent open={this.state.openModal}  date={dayTitle}handleModal={this.handleModal} />
+                <ModalComponent open={this.state.openModal} tasks={date.tasks} date={dayTitle} handleModal={this.handleModal} />
             </div>
         )
     }

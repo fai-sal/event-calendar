@@ -1,5 +1,6 @@
 import React from 'react';
-import GenericButton from './GenericButton';
+import '../../styles/modal.css'
+import GenericButton from '../GenericButton';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -12,28 +13,26 @@ class TaskModal extends React.Component {
         super(props)
     }
     render() {
-        const { open, handleModal,date, fullScreen } = this.props
+        const { open, handleModal, date, fullScreen, tasks } = this.props
         return (
             <   Dialog
                 fullScreen={false}
                 open={open}
                 onClose={handleModal}
                 aria-labelledby="responsive-dialog-title"
+                maxWidth={'sm'}
+                fullWidth={true}
             >
-                <DialogTitle id="responsive-dialog-title">{`${date}`}</DialogTitle>
-                <DialogContent>
+                <DialogTitle id="responsive-dialog-title">{`${date}  Septermber`}</DialogTitle>
+                <DialogContent   >
                     <DialogContentText>
-                        Let Google help apps determine location. This means sending anonymous location data to
-                        Google, even when no apps are running.
-              </DialogContentText>
+                        <h4>Tasks</h4>
+                        {tasks.map(task => {
+                            return <p>{task}</p>
+                        })}
+                    </DialogContentText>
                 </DialogContent>
-                <DialogActions>
-                    {/* <Button onClick={handleModal} color="primary">
-                        Disagree
-              </Button>
-                    <Button onClick={handleModal} color="primary" autoFocus>
-                        Agree
-              </Button> */}
+                <DialogActions style={styles.buttonContainer} >
                     <GenericButton customStyle={styles.buttonStyle} onClick={handleModal} >
                         OK
                     </GenericButton>
@@ -53,14 +52,15 @@ const styles = {
         paddingRight: '0px',
         borderRadius: '35px',
         fontSize: '100%',
-        minWidth: '123px',
-        minHeight: '36px',
+        minWidth: '110px',
+        minHeight: '30px',
         borderWidth: '0px'
     },
     buttonContainer: {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'flex-end',
+        justifyContent: 'flex-end'
     }
+
 }
