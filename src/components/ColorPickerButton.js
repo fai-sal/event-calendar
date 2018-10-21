@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button } from 'reactstrap';
-const ColorPickerButton = ({ colorCode, colorId, textColor }) => {
+const ColorPickerButton = ({ colorCode, colorId, textColor, handleOnClick }) => {
 
-    return <Button style={{ ...styles.buttonStyle, backgroundColor: colorCode, color: textColor }}>{colorId}</Button>
+    return <Button onClick={() => { handleOnClick(colorCode, colorId, textColor) }} style={{ ...styles.buttonStyle, backgroundColor: colorCode, color: textColor }}>{colorId}</Button>
 
 }
 export default ColorPickerButton;
