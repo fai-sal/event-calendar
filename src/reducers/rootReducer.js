@@ -1,14 +1,17 @@
 const rootReducer = (state = initialState, action) => {
     console.log('in reducer : ', action)
     switch (action.type) {
+        case 'ADD_EVENT':
+            return {
+                ...state,
+                [1]: { index: '2', tasks: [action.newPayload.task] },
+            }
         case 'DELETE_EVENT':
             let newDates = state.dates.filter(date => action.index !== date.index)
             return {
                 ...state,
                 dates: newDates
             }
-           
-
         case 'EDIT_EVENT':
             let editedDates = state.dates.map(date => {
                 if (date.index === action.index) {
@@ -20,9 +23,9 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 dates: editedDates
             }
-      
+
         default:
-            return state 
+            return state
 
     }
 }

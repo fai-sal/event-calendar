@@ -1,7 +1,10 @@
 import React from 'react'
 import GenericButton from '../GenericButton'
 import AddTask from './AddTask'
-
+import { connect } from 'react-redux'
+import { deleteEvent } from '../../actions/deleteEvent'
+import { editEvent } from '../../actions/editEvent'
+import { addEvent } from '../../actions/addEvent'
 class Tasks extends React.Component {
     constructor(props) {
         super(props)
@@ -45,6 +48,7 @@ class Tasks extends React.Component {
     }
     handleAddButton = () => {
         console.log('add button clicked')
+        this.props.addEvent('add me!')
     }
     handleAddNewTaskButton = () => {
         this.setState({
@@ -58,7 +62,14 @@ class Tasks extends React.Component {
     }
 
 }
-export default Tasks
+const mapDispatchToProps = (dispatch) => {
+    return {
+        deleteEvent: (id) => { dispatch(deleteEvent(2)) },
+        editEvent: (id) => { dispatch(editEvent(3)) },
+        addEvent: (task) => { dispatch(addEvent(task)) }
+    }
+}
+export default connect(null, mapDispatchToProps)(Tasks);
 const styles = {
     buttonStyle: {
         backgroundColor: '#d9d9d9',
