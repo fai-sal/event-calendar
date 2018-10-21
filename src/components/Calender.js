@@ -22,7 +22,7 @@ class Calender extends React.Component {
                         })}
                     </div>
                 </Row>
-                <ModalComponent open={this.state.openModal} handleClose={this.handleModal} />
+                <ModalComponent open={this.state.openModal} handleModal={this.handleModal} />
             </Container>
         )
     }

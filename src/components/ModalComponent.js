@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import GenericButton from './GenericButton';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -12,12 +12,12 @@ class TaskModal extends React.Component {
         super(props)
     }
     render() {
-        const { open, handleClose, fullScreen } = this.props
+        const { open, handleModal, fullScreen } = this.props
         return (
             <   Dialog
                 fullScreen={false}
                 open={open}
-                onClose={handleClose}
+                onClose={handleModal}
                 aria-labelledby="responsive-dialog-title"
             >
                 <DialogTitle id="responsive-dialog-title">{"Use Google's location service?"}</DialogTitle>
@@ -28,12 +28,15 @@ class TaskModal extends React.Component {
               </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose} color="primary">
+                    <Button onClick={handleModal} color="primary">
                         Disagree
               </Button>
-                    <Button onClick={handleClose} color="primary" autoFocus>
+                    <Button onClick={handleModal} color="primary" autoFocus>
                         Agree
               </Button>
+                    <GenericButton customStyle={styles.buttonStyle} onClick={handleModal} >
+                        OK
+                    </GenericButton>
                 </DialogActions>
             </Dialog >
         )
@@ -43,3 +46,21 @@ class TaskModal extends React.Component {
 }
 
 export default withMobileDialog()(TaskModal);
+const styles = {
+    buttonStyle: {
+        backgroundColor: '#F6D449',
+        paddingLeft: '0px',
+        paddingRight: '0px',
+        borderRadius: '35px',
+        fontSize: '100%',
+        minWidth: '123px',
+        minHeight: '36px',
+        borderWidth: '0px'
+    },
+    buttonContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+    }
+}
