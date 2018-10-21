@@ -30,8 +30,10 @@ class SingleDate extends React.Component {
     closeModalFunction = () => {
         this.setState({
             openModal: false
+        }, () => {
+            console.log('changed state : ', this.state)
         })
-        console.log('state : ',this.state)
+
     }
 
 
