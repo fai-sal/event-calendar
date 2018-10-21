@@ -1,6 +1,6 @@
 import React from 'react'
 const AddTask = ({ flag }) => {
-    if(flag){
+    if (flag) {
         return (
             <div className="row">
                 <div className="col">
@@ -9,14 +9,10 @@ const AddTask = ({ flag }) => {
             </div>
         )
     }
-    else{
-        return (
-            <div>
-                bla bla
-            </div>
-        )
-    }
-    
+    else
+        return null
+
+
 }
 
 export default AddTask

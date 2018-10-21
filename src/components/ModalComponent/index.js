@@ -28,7 +28,6 @@ class TaskModal extends React.Component {
                 <DialogContent   >
                     <DialogContentText>
                         <Tasks  tasks={tasks} />
-                      
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions style={styles.buttonContainer} >
