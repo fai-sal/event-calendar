@@ -19,9 +19,14 @@ class Tasks extends React.Component {
                         <h3>Tasks</h3>
                     </div>
                     <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                        <GenericButton customStyle={styles.buttonStyle} onClick={this.handleAddNewTaskButton} >
-                            Add New Task
+                        {
+                            addTaskFlag ? <GenericButton customStyle={styles.buttonStyle} onClick={this.handleCancelButton} >
+                                Cancel
+                        </GenericButton> : <GenericButton customStyle={styles.buttonStyle} onClick={this.handleAddNewTaskButton} >
+                                    Add New Task
                         </GenericButton>
+                        }
+
                     </div>
                 </div>
                 <div className="row">
@@ -31,16 +36,24 @@ class Tasks extends React.Component {
                         })}
                     </div>
                 </div>
-                
-                <AddTask flag={addTaskFlag} />
+
+                <AddTask flag={addTaskFlag} handleAddButton={this.handleAddButton} />
 
             </React.Fragment >
 
         )
     }
+    handleAddButton = () => {
+        console.log('add button clicked')
+    }
     handleAddNewTaskButton = () => {
         this.setState({
             addTaskFlag: true
+        })
+    }
+    handleCancelButton = () => {
+        this.setState({
+            addTaskFlag: false
         })
     }
 
