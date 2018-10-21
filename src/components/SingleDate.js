@@ -9,7 +9,7 @@ class SingleDate extends React.Component {
     render() {
         const { dayTitle, date } = this.props
         return (
-            <div style={styles.singleDate}>
+            <div style={styles.singleDate} >
                 <Date date={dayTitle} />
                 {date.tasks.map(task => {
                     return <Tasks task={task} />

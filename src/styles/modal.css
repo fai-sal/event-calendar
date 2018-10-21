@@ -1,0 +1,31 @@
+
+.MuiPaper-root-9 MuiPaper-elevation24-35 MuiPaper-rounded-10 MuiDialog-paper-39 MuiDialog-paperWidthSm-41 MuiDialog-paperFullWidth-43{
+    overflow: auto;
+}
+.root{
+    overflow: visible !important
+}
+.paper{
+    overflow: visible !important
+}
+.paperFullWidth{
+    overflow: visible !important;
+}
+.scrollPaper{
+    overflow:visible !important;
+}
+.scrollBody{
+    overflow:visible !important;
+}
+.MuiPaper-root-65 MuiPaper-elevation24-91 MuiPaper-rounded-66 MuiDialog-paper-57 MuiDialog-paperWidthSm-59 MuiDialog-paperFullWidth-61{
+    overflow:visible !important;
+}
+.MuiDialog-paper-57 {
+    flex: 0 1 auto;
+    margin: 32px;
+    display: flex;
+    position: relative;
+    max-height: 90vh;
+    overflow: visible !important;
+    flex-direction: column;
+}
