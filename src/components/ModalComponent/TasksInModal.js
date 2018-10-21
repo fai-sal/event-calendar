@@ -26,10 +26,8 @@ class Tasks extends React.Component {
                     </div>
                     <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         {
-                            addTaskFlag ? <GenericButton customStyle={styles.buttonStyle} onClick={this.handleCancelButton} >
-                                Cancel
-                        </GenericButton> : <GenericButton customStyle={styles.buttonStyle} onClick={this.handleAddNewTaskButton} >
-                                    Add New Task
+                            addTaskFlag ? null : <GenericButton customStyle={styles.buttonStyle} onClick={this.handleAddNewTaskButton} >
+                                Add New Task
                         </GenericButton>
                         }
 
@@ -43,7 +41,7 @@ class Tasks extends React.Component {
                     </div>
                 </div>
 
-                <AddTask flag={addTaskFlag} handleAddButton={this.handleAddButton} handleOnChange={this.handleOnChange} />
+                <AddTask flag={addTaskFlag} handleAddButton={this.handleAddButton} handleOnChange={this.handleOnChange} handleCancelButton={this.handleCancelButton} />
 
             </React.Fragment >
 
