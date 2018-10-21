@@ -12,12 +12,13 @@ class Calender extends React.Component {
     }
     render() {
         const { dates } = this.props
+        console.log('dates : ', dates)
         return (
             <Container fluid className="calenderContainer" >
                 <Row className="dateRow">
                     <div className="allDates">
                         {dates.map((date, index) => {
-                            return (  <div className="date" > <SingleDate dayTitle={date.index} key={index} /></div>   )
+                            return (<div className="date" > <SingleDate dayTitle={date.index} key={index} /></div>)
                         })}
                     </div>
                 </Row>
@@ -31,7 +32,7 @@ class Calender extends React.Component {
     }
 }
 const mapStateToProps = (store) => {
-    const { dates} = store
+    const { dates } = store
     return {
         dates
     }

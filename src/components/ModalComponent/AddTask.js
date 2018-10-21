@@ -1,7 +1,7 @@
 import React from 'react'
 import GenericButton from '../GenericButton'
 import { Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-const AddTask = ({ flag, handleAddButton }) => {
+const AddTask = ({ flag, handleAddButton,handleOnChange }) => {
     if (flag) {
         return (
             <div className="row" style={{ display: 'flex', alignItems: 'center' }} >
@@ -9,7 +9,7 @@ const AddTask = ({ flag, handleAddButton }) => {
                     <Form>
                         <FormGroup >
                             <Label for="newTask">Add new task</Label>
-                            <Input type="text" name="newTask" id="newTask" placeholder="New Task" />
+                            <Input type="text" name="newTask" id="newTask" placeholder="New Task" onChange={handleOnChange}/>
                         </FormGroup>
                     </Form>
                 </div>

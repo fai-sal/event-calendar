@@ -3,9 +3,8 @@ export const addEvent = (task) => {
         dispatch({
             type: 'ADD_EVENT',
             index: 77,
-            newPayload: {
-                task: task
-            }
+            newtask: task
+
         })
     }
 }

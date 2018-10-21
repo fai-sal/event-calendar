@@ -9,7 +9,10 @@ class Tasks extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            addTaskFlag: false
+            addTaskFlag: false,
+            newTask: {
+                id: this.props.date
+            }
         }
     }
     render() {
@@ -40,15 +43,23 @@ class Tasks extends React.Component {
                     </div>
                 </div>
 
-                <AddTask flag={addTaskFlag} handleAddButton={this.handleAddButton} />
+                <AddTask flag={addTaskFlag} handleAddButton={this.handleAddButton} handleOnChange={this.handleOnChange} />
 
             </React.Fragment >
 
         )
     }
+    handleOnChange = (event) => {
+        this.setState({
+            ...this.state,
+            newTask: {
+                ...this.state.newTask,
+                task: event.target.value
+            }
+        })
+    }
     handleAddButton = () => {
-        console.log('add button clicked')
-        this.props.addEvent('add me!')
+        this.props.addEvent(this.state.newTask)
     }
     handleAddNewTaskButton = () => {
         this.setState({
