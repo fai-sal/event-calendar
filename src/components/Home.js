@@ -11,11 +11,11 @@ class Home extends React.Component {
     }
     componentDidMount() {
         const eventsColorCodes = {
-            7: '#EA7E95',
-            2: '#638FC6',
-            3: '#F2F4F8',
-            1: '#82BF56',
-            6: '#F4A03E',
+            1: { 7: '#EA7E95' },
+            2: { 2: '#638FC6' },
+            3: { 3: '#F2F4F8' },
+            4: { 1: '#82BF56' },
+            5: { 6: '#F4A03E' },
         }
         const calenderBackgroundColor = '#e5d1d2'
         localStorage.setItem('colors', JSON.stringify(eventsColorCodes))
