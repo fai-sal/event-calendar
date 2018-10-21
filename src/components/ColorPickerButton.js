@@ -1,12 +1,9 @@
 import React from 'react';
 import { Button } from 'reactstrap';
-const ColorPickerButton = ({ colorCode, colorId }) => {
-    if (colorId != 3) {
-        return <Button style={{ ...styles.buttonStyle, backgroundColor: colorCode }}>{colorId}</Button>
-    }
-    else {
-        return <Button style={{ ...styles.buttonStyle, backgroundColor: colorCode, color: 'black' }}>{colorId}</Button>
-    }
+const ColorPickerButton = ({ colorCode, colorId, textColor }) => {
+
+    return <Button style={{ ...styles.buttonStyle, backgroundColor: colorCode, color: textColor }}>{colorId}</Button>
+
 }
 export default ColorPickerButton;
 const styles = {
