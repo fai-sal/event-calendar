@@ -24,8 +24,8 @@ class Tasks extends React.Component {
     render() {
         const { tasks, colors } = this.props
         const { addTaskFlag } = this.state
-        console.log('tasks passed to modal : ',tasks)
-        console.log('initial current task : ',this.state.currentTasks)
+        console.log('tasks passed to modal : ', tasks)
+        console.log('initial current task : ', this.state.currentTasks)
         return (
             <React.Fragment>
                 <div className="row">
@@ -42,9 +42,9 @@ class Tasks extends React.Component {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-8">
+                    <div className="col-8" style={{ width: 'fit-content'}}>
                         {tasks.map((task, index) => {
-                            return<div style={{backgroundColor:task.colorCode}}> <p>{`${index + 1}. ${task.task}`}</p></div>
+                            return <div > <p style={{ ...styles.individualTask, backgroundColor: task.colorCode,color:task.textColor }}>{`${index + 1}. ${task.task}`}</p></div>
                         })}
                     </div>
                 </div>
@@ -75,7 +75,7 @@ class Tasks extends React.Component {
     }
     handleAddButton = () => {
         //console.log('current tasks : ',this.state.currentTasks)
-       // console.log('add task in modal : ',this.state.newTask)
+        // console.log('add task in modal : ',this.state.newTask)
         let newTaskArray = this.state.currentTasks.map(task => task)
         newTaskArray.push(this.state.newTask)
         //console.log('task array : ',newTaskArray)
@@ -148,5 +148,12 @@ const styles = {
         minWidth: '110px',
         minHeight: '30px',
         borderWidth: '0px'
+    },
+    individualTask: {
+        padding: '5px',
+        paddingLeft: '15px',
+        paddingRight: '15px',
+        width: 'fit-content',
+        borderRadius:'5px'
     }
 }
