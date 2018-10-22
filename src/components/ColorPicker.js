@@ -1,11 +1,10 @@
 import React from 'react'
-import { connect } from 'react-redux';
 import ColorButton from './ColorPickerButton'
 import { Col } from 'reactstrap'
 import '../styles/colorPickerButtons.css'
 class ColorPicker extends React.Component {
     render() {
-        const { colors } = this.props
+        const colors = JSON.parse(localStorage.getItem('colors'))
         const colorIds = Object.keys(colors)
         return (
             <Col sm={12} md={6} lg={6} xl={6} className="colorPickerButtonContainer">
@@ -17,17 +16,11 @@ class ColorPicker extends React.Component {
                     const textColor = currentColor[keys[2]]
                     return (<ColorButton colorCode={colorCode} colorId={text} textColor={textColor} />)
                 })}
-
             </Col>
 
         )
     }
 }
-const mapStateToProps = (store, ownProps) => {
-    const { colors } = store
-    return {
-        colors: colors
-    }
-}
-export default connect(mapStateToProps)(ColorPicker);
+
+export default ColorPicker;
 
