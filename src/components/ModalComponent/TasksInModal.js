@@ -30,7 +30,7 @@ class Tasks extends React.Component {
             <React.Fragment>
                 <div className="row">
                     <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                        <h3>Tasks</h3>
+                        <h4>Tasks</h4>
                     </div>
                     <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         {
@@ -42,7 +42,7 @@ class Tasks extends React.Component {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-8" style={{ width: 'fit-content'}}>
+                    <div className="col-sm-12 col-md-8 col-lg-8 col-xl-8" style={{ width: 'fit-content'}}>
                         {tasks.map((task, index) => {
                             return <div > <p style={{ ...styles.individualTask, backgroundColor: task.colorCode,color:task.textColor }}>{`${index + 1}. ${task.task}`}</p></div>
                         })}

@@ -31,6 +31,7 @@ class TaskModal extends React.Component {
                 maxWidth={'sm'}
                 fullWidth={true}
                 style={{ padding: '10px', }}
+                scroll='paper'
             >
                 <DialogTitle id="responsive-dialog-title">{date} September </DialogTitle>
                 <DialogContent   >
@@ -52,11 +53,13 @@ export default withMobileDialog()(TaskModal);
 const styles = {
     buttonStyle: {
         backgroundColor: '#F6D449',
-        paddingLeft: '0px',
-        paddingRight: '0px',
+        paddingLeft: '2%',
+        paddingRight: '2%',
+        paddingTop: '5px',
+        paddingBottom: '5px',
         borderRadius: '35px',
         fontSize: '100%',
-        minWidth: '110px',
+        minWidth: '12vw',
         minHeight: '30px',
         borderWidth: '0px'
     },
@@ -64,7 +67,7 @@ const styles = {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'flex-end'
+        justifyContent: 'center',
     }
 
 }

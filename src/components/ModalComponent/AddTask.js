@@ -1,5 +1,6 @@
 import React from 'react'
 import ColorButton from '../ColorPickerButton'
+import GenericButton from '../GenericButton'
 import { Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 class AddTask extends React.Component {
     constructor(props) {
@@ -13,7 +14,7 @@ class AddTask extends React.Component {
         }
     }
     render() {
-        const { colors, flag, handleAddButton, handleOnChange,selectedColor, handleCancelButton, customValue, handleColorButtonOnClick } = this.props
+        const { colors, flag, handleAddButton, handleOnChange, selectedColor, handleCancelButton, customValue, handleColorButtonOnClick } = this.props
         const colorIds = Object.keys(colors)
         const { colorCode, colorId, textColor } = this.state.selectedColor
         if (flag) {
@@ -57,9 +58,16 @@ class AddTask extends React.Component {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-6" style={{ marginTop: '15px', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
-                            <button onClick={handleAddButton}>Add</button>
-                            <button onClick={handleCancelButton}>Cancel</button>
+                        <div className="col-2" style={{ marginTop: '15px', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
+                            <GenericButton customStyle={styles.buttonStyle} onClick={handleAddButton}>
+                                Add
+                            </GenericButton>
+                        </div>
+                        <div className="col-2" style={{ marginTop: '15px', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
+                            <GenericButton customStyle={styles.buttonStyle} onClick={handleCancelButton}>
+                                Cancel
+                            </GenericButton>
+
                         </div>
                     </div>
                 </React.Fragment>
@@ -83,3 +91,18 @@ class AddTask extends React.Component {
 }
 
 export default AddTask
+
+const styles = {
+    buttonStyle: {
+        backgroundColor: '#d9d9d9',
+        paddingLeft: '1%',
+        paddingRight: '1%',
+        paddingTop: '5px',
+        paddingBottom: '5px',
+        borderRadius: '35px',
+        fontSize: '100%',
+        minWidth: '8vw',
+        minHeight: '25px',
+        borderWidth: '0px'
+    },
+}
