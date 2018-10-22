@@ -18,7 +18,7 @@ class SingleDate extends React.Component {
                 <div className="individualDate" onClick={this.openModalFunction}>
                     <Date date={dayTitle} />
                     {date.tasks.map(task => {
-                        return <Tasks task={task} />
+                        return <Tasks task={task.task} />
                     })}
                 </div>
                 <ModalComponent open={openModal} tasks={date.tasks} date={dayTitle} closeModal={this.closeModalFunction} />

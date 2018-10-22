@@ -1,7 +1,7 @@
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_EVENT': {
-            console.log('add : ',action.newtask)
+            console.log('add event : ', action.newtask)
             let newDates = state.dates.map(date => {
                 if (date.index === action.newtask.id) {
                     date.tasks.push(action.newtask.task)
@@ -40,7 +40,7 @@ const rootReducer = (state = initialState, action) => {
 
 const initialState = {
     dates: [
-        { index: '1', tasks: ['Buy milk', 'Go to gym'] },
+        { index: '1', tasks: [{ task: "Hello there", colorCode: "#F4A03E", colorId: 6, textColor: "#ffffff" }, { task: "Hello there", colorCode: "#F4A03E", colorId: 6, textColor: "#ffffff" }] },
         { index: '2', tasks: [] },
         { index: '3', tasks: [] },
         { index: '4', tasks: [] },
@@ -53,7 +53,7 @@ const initialState = {
         { index: '11', tasks: [] },
         { index: '12', tasks: [] },
         { index: '13', tasks: [] },
-        { index: '14', tasks: ['Go home'] },
+        { index: '14', tasks: [{ task: "Hello there", colorCode: "#F4A03E", colorId: 6, textColor: "#ffffff" }] },
         { index: '15', tasks: [] },
         { index: '16', tasks: [] },
         { index: '17', tasks: [] },

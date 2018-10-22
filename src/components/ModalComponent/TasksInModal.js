@@ -24,6 +24,8 @@ class Tasks extends React.Component {
     render() {
         const { tasks, colors } = this.props
         const { addTaskFlag } = this.state
+        console.log('tasks passed to modal : ',tasks)
+        console.log('initial current task : ',this.state.currentTasks)
         return (
             <React.Fragment>
                 <div className="row">
@@ -42,7 +44,7 @@ class Tasks extends React.Component {
                 <div className="row">
                     <div className="col-8">
                         {this.state.currentTasks.map((task, index) => {
-                            return <p>{`${index + 1}. ${task}`}</p>
+                            return <p>{`${index + 1}. ${task.task}`}</p>
                         })}
                     </div>
                 </div>
@@ -62,7 +64,7 @@ class Tasks extends React.Component {
         )
     }
     handleOnChange = (event) => {
-        console.log('event : ', event.target.value)
+        // console.log('event : ', event.target.value)
         this.setState({
             ...this.state,
             newTask: {
@@ -72,21 +74,32 @@ class Tasks extends React.Component {
         })
     }
     handleAddButton = () => {
+        //console.log('current tasks : ',this.state.currentTasks)
+       // console.log('add task in modal : ',this.state.newTask)
         let newTaskArray = this.state.currentTasks.map(task => task)
-        newTaskArray.push(this.state.newTask.task)
+        newTaskArray.push(this.state.newTask)
+        //console.log('task array : ',newTaskArray)
         this.setState({
             ...this.state,
             currentTasks: newTaskArray,
             newTask: {
                 ...this.state.newTask,
-                ...this.state.selectedColor,
                 task: ""
             }
         })
-        this.props.addEvent(this.state.newTask)
+
+        const newTask = {
+            id: this.state.newTask.id,
+            task: {
+                task: this.state.newTask.task,
+                ...this.state.selectedColor
+            },
+        }
+        //console.log('new task : ', newTask)
+        this.props.addEvent(newTask)
     }
     handleColorButtonOnClick = (...customProps) => {
-       // console.log('in modal ', customProps)
+        // console.log('in modal ', customProps)
         this.setState({
             selectedColor: {
                 colorCode: customProps[0],
@@ -94,7 +107,7 @@ class Tasks extends React.Component {
                 textColor: customProps[2]
             }
         })
-       // console.log('seleceted color : ', this.state.selectedColor)
+        // console.log('seleceted color : ', this.state.selectedColor)
     }
     handleAddNewTaskButton = () => {
         this.setState({
