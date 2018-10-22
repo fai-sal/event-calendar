@@ -24,8 +24,8 @@ class Tasks extends React.Component {
     render() {
         const { tasks, colors } = this.props
         const { addTaskFlag } = this.state
-        console.log('tasks passed to modal : ', tasks)
-        console.log('initial current task : ', this.state.currentTasks)
+       // console.log('tasks passed to modal : ', tasks)
+      //  console.log('initial current task : ', this.state.currentTasks)
         return (
             <React.Fragment>
                 <div className="row">

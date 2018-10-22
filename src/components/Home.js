@@ -7,7 +7,7 @@ import PageHeader from '../components/PageHeader'
 import Calender from '../components/Calender'
 class Home extends React.Component {
 
-    componentDidMount() {
+    render() {
         const { colors, calenderBackgroundColor, dates } = this.props
         if (!localStorage.getItem('colors')) {
             localStorage.setItem('colors', JSON.stringify(colors))
@@ -18,9 +18,6 @@ class Home extends React.Component {
         if (!localStorage.getItem('dates')) {
             localStorage.setItem('dates', JSON.stringify(dates))
         }
-
-    }
-    render() {
         return (
             // <div className='col-12 col-md-8 offset-md-2 col-lg-4 offset-lg-4 col-xl-4 offset-xl-4'>
             <React.Fragment>
