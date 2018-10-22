@@ -14,11 +14,14 @@ class ColorPicker extends React.Component {
                     const text = currentColor[keys[0]]
                     const colorCode = currentColor[keys[1]]
                     const textColor = currentColor[keys[2]]
-                    return (<ColorButton colorCode={colorCode} colorId={text} textColor={textColor} />)
+                    return (<ColorButton colorCode={colorCode} colorId={text} textColor={textColor} handleOnClick={this.handleOnClick} />)
                 })}
             </Col>
 
         )
+    }
+    handleOnClick = (...customArguments) => {
+        console.log("color button clicked, I don't know what to do with it")
     }
 }
 

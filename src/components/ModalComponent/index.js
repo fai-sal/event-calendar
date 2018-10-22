@@ -33,17 +33,25 @@ class TaskModal extends React.Component {
                 style={{ padding: '10px', }}
                 scroll='paper'
             >
-                <DialogTitle id="responsive-dialog-title">{date} September </DialogTitle>
+                <DialogTitle id="responsive-dialog-title">
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        {date} September
+                {/* <GenericButton customStyle={styles.buttonStyle} onClick={closeModal} >
+                            x
+                    </GenericButton> */}
+                        <button onClick={closeModal}>x</button>
+                    </div>
+                </DialogTitle>
                 <DialogContent   >
                     <DialogContentText>
                         <Tasks tasks={tasks} date={date} />
                     </DialogContentText>
                 </DialogContent>
-                <DialogActions style={styles.buttonContainer} >
+                {/* <DialogActions style={styles.buttonContainer} >
                     <GenericButton customStyle={styles.buttonStyle} onClick={closeModal} >
                         OK
                     </GenericButton>
-                </DialogActions>
+                </DialogActions> */}
             </Dialog >
         )
     }
@@ -53,14 +61,14 @@ export default withMobileDialog()(TaskModal);
 const styles = {
     buttonStyle: {
         backgroundColor: '#F6D449',
-        paddingLeft: '2%',
-        paddingRight: '2%',
-        paddingTop: '5px',
-        paddingBottom: '5px',
-        borderRadius: '35px',
+        paddingTop: '2px',
+        paddingBottom: '2px',
+        paddingLeft: '10px',
+        paddingRight: '10px',
+        borderRadius: '5px',
         fontSize: '100%',
-        minWidth: '12vw',
-        minHeight: '30px',
+        minWidth: '1vw',
+        minHeight: '5px',
         borderWidth: '0px'
     },
     buttonContainer: {
