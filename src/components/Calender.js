@@ -1,6 +1,6 @@
 import React from 'react';
 import SingleDate from './SingleDate'
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import '../styles/calender.css'
 import { Container, Row } from 'reactstrap';
 class Calender extends React.Component {
@@ -11,8 +11,8 @@ class Calender extends React.Component {
         }
     }
     render() {
-        const { dates } = this.props
-        console.log('dates : ', dates)
+        const dates = JSON.parse(localStorage.getItem('dates'))
+        console.log('dates in calender : ', dates)
         return (
             <Container fluid className="calenderContainer" >
                 <Row className="dateRow">
@@ -31,10 +31,10 @@ class Calender extends React.Component {
         })
     }
 }
-const mapStateToProps = (store) => {
-    const { dates } = store
-    return {
-        dates
-    }
-}
-export default connect(mapStateToProps, null)(Calender)
+// const mapStateToProps = (store) => {
+//     const { dates } = store
+//     return {
+//         dates
+//     }
+// }
+export default Calender
