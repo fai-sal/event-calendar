@@ -43,8 +43,8 @@ class Tasks extends React.Component {
                 </div>
                 <div className="row">
                     <div className="col-8">
-                        {this.state.currentTasks.map((task, index) => {
-                            return <p>{`${index + 1}. ${task.task}`}</p>
+                        {tasks.map((task, index) => {
+                            return<div style={{backgroundColor:task.colorCode}}> <p>{`${index + 1}. ${task.task}`}</p></div>
                         })}
                     </div>
                 </div>
