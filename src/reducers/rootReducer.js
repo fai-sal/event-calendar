@@ -39,6 +39,14 @@ const rootReducer = (state = initialState, action) => {
 }
 
 const initialState = {
+    colors: [
+        { text: 7, colorCode: '#EA7E95', textColor: '#ffffff' },
+        { text: 2, colorCode: '#638FC6', textColor: '#ffffff' },
+        { text: 3, colorCode: '#F2F4F8', textColor: '#000000' },
+        { text: 1, colorCode: '#82BF56', textColor: '#ffffff' },
+        { text: 6, colorCode: '#F4A03E', textColor: '#ffffff' }
+    ],
+    calenderBackgroundColor : '#e5d1d2',
     dates: [
         { index: '1', tasks: [{ task: "Hello there", colorCode: "#F4A03E", colorId: 6, textColor: "#ffffff" }, { task: "Hello there", colorCode: "#F4A03E", colorId: 6, textColor: "#ffffff" }] },
         { index: '2', tasks: [] },
@@ -70,7 +78,6 @@ const initialState = {
         { index: '28', tasks: [] },
         { index: '29', tasks: [] },
         { index: '30', tasks: [] }
-    ],
-    colors: JSON.parse(localStorage.getItem('colors'))
+    ]
 }
 export default rootReducer;

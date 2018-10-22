@@ -6,18 +6,19 @@ import WeeklyDayHeader from '../components/WeekDayHeader'
 import PageHeader from '../components/PageHeader'
 import Calender from '../components/Calender'
 class Home extends React.Component {
-   
+
     componentDidMount() {
-        const eventsColorCodes = {
-            1: { text: 7, colorCode: '#EA7E95', textColor: '#ffffff' },
-            2: { text: 2, colorCode: '#638FC6', textColor: '#ffffff' },
-            3: { text: 3, colorCode: '#F2F4F8', textColor: '#000000' },
-            4: { text: 1, colorCode: '#82BF56', textColor: '#ffffff' },
-            5: { text: 6, colorCode: '#F4A03E', textColor: '#ffffff' },
+        const { colors, calenderBackgroundColor, dates } = this.props
+        if (!localStorage.getItem('colors')) {
+            localStorage.setItem('colors', JSON.stringify(colors))
         }
-        const calenderBackgroundColor = '#e5d1d2'
-        localStorage.setItem('colors', JSON.stringify(eventsColorCodes))
-        localStorage.setItem('calenderBackgroundColor', calenderBackgroundColor)
+        if (!localStorage.getItem('calenderBackgroundColor')) {
+            localStorage.setItem('calenderBackgroundColor', calenderBackgroundColor)
+        }
+        if (!localStorage.getItem('dates')) {
+            localStorage.setItem('dates', JSON.stringify(dates))
+        }
+
     }
     render() {
         return (
@@ -48,10 +49,11 @@ class Home extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    const { dates } = state
+    const { dates, colors, calenderBackgroundColor } = state
     return {
-        // events: state.dates.find(date => date.index == 1)
-        events: dates
+        dates: dates,
+        colors: colors,
+        calenderBackgroundColor: calenderBackgroundColor
     }
 }
 
