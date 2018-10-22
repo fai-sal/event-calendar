@@ -13,7 +13,7 @@ class AddTask extends React.Component {
         }
     }
     render() {
-        const { colors, flag, handleAddButton, handleOnChange, handleCancelButton, customValue } = this.props
+        const { colors, flag, handleAddButton, handleOnChange,selectedColor, handleCancelButton, customValue, handleColorButtonOnClick } = this.props
         const colorIds = Object.keys(colors)
         const { colorCode, colorId, textColor } = this.state.selectedColor
         if (flag) {
@@ -31,13 +31,14 @@ class AddTask extends React.Component {
                                         placeholder="New Task"
                                         value={customValue}
                                         onChange={handleOnChange}
+                                        style={{ backgroundColor: selectedColor.colorCode, color: selectedColor.textColor, fontWeight: '300' }}
                                     />
                                 </FormGroup>
                             </Form>
                         </div>
-                        <div>
+                        {/* <div>
                             <ColorButton colorCode={colorCode} colorId={colorId} textColor={textColor} />
-                        </div>
+                        </div> */}
                     </div>
                     <div className="row">
                         <div className="col-12" >
@@ -49,7 +50,7 @@ class AddTask extends React.Component {
                                     const text = currentColor[keys[0]]
                                     const colorCode = currentColor[keys[1]]
                                     const textColor = currentColor[keys[2]]
-                                    return (<ColorButton colorCode={colorCode} colorId={text} textColor={textColor} handleOnClick={this.handleColorButtonOnClick} />)
+                                    return (<ColorButton colorCode={colorCode} colorId={text} textColor={textColor} handleOnClick={handleColorButtonOnClick} />)
                                 })
                             }
 

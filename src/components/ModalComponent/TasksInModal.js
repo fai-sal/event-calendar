@@ -13,7 +13,12 @@ class Tasks extends React.Component {
             newTask: {
                 id: this.props.date
             },
-            currentTasks: this.props.tasks
+            currentTasks: this.props.tasks,
+            selectedColor: {
+                colorCode: "#ffffff",
+                colorId: "3",
+                textColor: "#000000"
+            }
         }
     }
     render() {
@@ -42,13 +47,22 @@ class Tasks extends React.Component {
                     </div>
                 </div>
 
-                <AddTask colors={colors} flag={addTaskFlag} customValue={this.state.newTask.task} handleAddButton={this.handleAddButton} handleOnChange={this.handleOnChange} handleCancelButton={this.handleCancelButton} />
-
+                <AddTask
+                    colors={colors}
+                    selectedColor={this.state.selectedColor}
+                    flag={addTaskFlag}
+                    customValue={this.state.newTask.task}
+                    handleAddButton={this.handleAddButton}
+                    handleOnChange={this.handleOnChange}
+                    handleCancelButton={this.handleCancelButton}
+                    handleColorButtonOnClick={this.handleColorButtonOnClick}
+                />
             </React.Fragment >
 
         )
     }
     handleOnChange = (event) => {
+        console.log('event : ', event.target.value)
         this.setState({
             ...this.state,
             newTask: {
@@ -64,11 +78,23 @@ class Tasks extends React.Component {
             ...this.state,
             currentTasks: newTaskArray,
             newTask: {
-                ...this.setState.newTask,
+                ...this.state.newTask,
+                ...this.state.selectedColor,
                 task: ""
             }
         })
         this.props.addEvent(this.state.newTask)
+    }
+    handleColorButtonOnClick = (...customProps) => {
+       // console.log('in modal ', customProps)
+        this.setState({
+            selectedColor: {
+                colorCode: customProps[0],
+                colorId: customProps[1],
+                textColor: customProps[2]
+            }
+        })
+       // console.log('seleceted color : ', this.state.selectedColor)
     }
     handleAddNewTaskButton = () => {
         this.setState({

@@ -1,6 +1,7 @@
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_EVENT': {
+            console.log('add : ',action.newtask)
             let newDates = state.dates.map(date => {
                 if (date.index === action.newtask.id) {
                     date.tasks.push(action.newtask.task)
