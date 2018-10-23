@@ -16,12 +16,11 @@ class AddTask extends React.Component {
     render() {
         const { colors, flag, handleAddButton, handleOnChange, selectedColor, handleCancelButton, customValue, handleColorButtonOnClick } = this.props
         const colorIds = Object.keys(colors)
-        const { colorCode, colorId, textColor } = this.state.selectedColor
         if (flag) {
             return (
                 <React.Fragment>
-                    <div className="row" style={{ display: 'flex', alignItems: 'center' }} >
-                        <div className="col-sm-10 col-md-8 col-lg-8 col-xl-8" >
+                    <div className="row" style={{ display: 'flex', alignItems: 'center', ...styles.rowStyle }} >
+                        <div className="col-sm-10 col-md-8 col-lg-8 col-xl-8" style={{ padding: '0px' }}>
                             <Form>
                                 <FormGroup >
                                     <Label for="newTask">Add new task</Label>
@@ -37,12 +36,9 @@ class AddTask extends React.Component {
                                 </FormGroup>
                             </Form>
                         </div>
-                        {/* <div>
-                            <ColorButton colorCode={colorCode} colorId={colorId} textColor={textColor} />
-                        </div> */}
                     </div>
-                    <div className="row">
-                        <div className="col-12" >
+                    <div className="row" style={styles.rowStyle}>
+                        <div className="col-12" style={{ padding: '0px' }}>
                             <p>Choose color</p>
                             {
                                 colorIds.map(colorId => {
@@ -57,13 +53,13 @@ class AddTask extends React.Component {
 
                         </div>
                     </div>
-                    <div className="row" style={{ marginTop: '2%' }}>
-                        <div className="col-sm-12 col-md-3 col-lg-1 col-xl-1" style={styles.buttonContainer}>
-                            <GenericButton customStyle={styles.buttonStyle}  onClick={handleAddButton} >
+                    <div className="row" style={{ ...styles.rowStyle, marginTop: '2%' }}>
+                        <div className="col-sm-12 col-md-3 col-lg-1 col-xl-1" style={{...styles.buttonContainer,padding:'0px'}}>
+                            <GenericButton customStyle={styles.buttonStyle} onClick={handleAddButton} >
                                 Add
                             </GenericButton>
                         </div>
-                        <div className="col-sm-12 col-md-3 col-lg-2 col-xl-2 offset-lg-1 offset-xl-0" style={styles.buttonContainer}>
+                        <div className="col-sm-12 col-md-3 col-lg-2 col-xl-2 offset-lg-1 offset-xl-0" style={{...styles.buttonContainer,padding:'0px'}}>
                             <GenericButton customStyle={styles.buttonStyle} onClick={handleCancelButton}>
                                 Cancel
                             </GenericButton>
@@ -108,5 +104,9 @@ const styles = {
         display: 'flex',
         justifyContent: 'flex-start',
         alignItems: 'center'
+    },
+    rowStyle: {
+        padding: '0px',
+        margin: '0px'
     }
 }

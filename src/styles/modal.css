@@ -1,6 +1,17 @@
 .MuiDialog-paperWidthSm-8 {
-    max-width: 60vw !important;
-    min-width: 50vw !important;
+    max-width: 45vw !important;
+    min-width: 30vw !important;
     min-height: 30vh !important;
     padding: 1% !important;
+}
+.modalTitle{
+   display: flex; 
+   justify-content: space-between;
+   align-items: center;
+}
+.modalCloseButton{
+    padding-top: 5px ;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
 }

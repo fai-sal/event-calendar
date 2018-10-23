@@ -26,11 +26,11 @@ class Tasks extends React.Component {
         const { addTaskFlag } = this.state
         return (
             <React.Fragment>
-                <div className="row">
-                    <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <div className="row" style={styles.rowStyle}>
+                    <div className="col-6" >
                         <h4>Tasks</h4>
                     </div>
-                    <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div className="col-sm-6 col-md-6 col-lg-6 col-xl-6" >
                         {
                             addTaskFlag ? null : <GenericButton customStyle={styles.buttonStyle} onClick={this.handleAddNewTaskButton} >
                                 Add New Task
@@ -39,14 +39,14 @@ class Tasks extends React.Component {
 
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col-sm-12 col-md-8 col-lg-8 col-xl-8" style={{ width: 'fit-content' }}>
+                <div className="row" style={styles.rowStyle}>
+                    <div style={{ width: 'fit-content' }}>
                         {tasks.map((task, index) => {
                             return <div > <p style={{ ...styles.individualTask, backgroundColor: task.colorCode, color: task.textColor }}>{`${index + 1}. ${task.task}`}</p></div>
                         })}
                     </div>
                 </div>
-
+         
                 <AddTask
                     colors={colors}
                     selectedColor={this.state.selectedColor}
@@ -57,6 +57,8 @@ class Tasks extends React.Component {
                     handleCancelButton={this.handleCancelButton}
                     handleColorButtonOnClick={this.handleColorButtonOnClick}
                 />
+               
+               
             </React.Fragment >
 
         )
@@ -152,5 +154,9 @@ const styles = {
         paddingRight: '15px',
         width: 'fit-content',
         borderRadius: '5px'
+    },
+    rowStyle: {
+        padding: '0px',
+        margin: '0px'
     }
 }

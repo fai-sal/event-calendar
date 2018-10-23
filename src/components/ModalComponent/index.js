@@ -30,19 +30,19 @@ class TaskModal extends React.Component {
                 aria-labelledby="responsive-dialog-title"
                 maxWidth={'sm'}
                 fullWidth={true}
-                style={{ padding: '10px', }}
                 scroll='paper'
             >
                 <DialogTitle id="responsive-dialog-title">
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        {date} September
-                {/* <GenericButton customStyle={styles.buttonStyle} onClick={closeModal} >
-                            x
-                    </GenericButton> */}
-                        <button onClick={closeModal}>x</button>
+                    <div className="modalTitle">
+                        <div className="col-6" style={{ padding: '0px' }} >
+                            <h4> {`${date}  September`}</h4>
+                        </div>
+                        <div className="col-4">
+                            <button className="modalCloseButton" onClick={closeModal}>x</button>
+                        </div>
                     </div>
                 </DialogTitle>
-                <DialogContent   >
+                <DialogContent style={{ padding: '10px', }}>
                     <DialogContentText>
                         <Tasks tasks={tasks} date={date} />
                     </DialogContentText>
