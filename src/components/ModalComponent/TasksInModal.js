@@ -26,11 +26,11 @@ class Tasks extends React.Component {
         const { addTaskFlag } = this.state
         return (
             <React.Fragment>
-                <div className="row" style={styles.rowStyle}>
-                    <div className="col-6" >
+                <div className="row" style={{...styles.rowStyle,display:'flex',justifyContent:'space-between'}}>
+                    <div className="col-4" style={styles.rowStyle}>
                         <h4>Tasks</h4>
                     </div>
-                    <div className="col-sm-6 col-md-6 col-lg-6 col-xl-6" >
+                    <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6"  style={{paddingLeft:'0px'}}>
                         {
                             addTaskFlag ? null : <GenericButton customStyle={styles.buttonStyle} onClick={this.handleAddNewTaskButton} >
                                 Add New Task

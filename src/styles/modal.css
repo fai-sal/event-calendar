@@ -6,12 +6,19 @@
 }
 .modalTitle{
    display: flex; 
+   flex-direction: column;
    justify-content: space-between;
-   align-items: center;
+   /* align-items: center; */
 }
 .modalCloseButton{
-    padding-top: 5px ;
+    padding-top: 0px ;
     padding-bottom: 5px;
     padding-left: 10px;
     padding-right: 10px;
+    background-color: transparent;
+    border-width: 0px;
+    border-color: transparent;
+}
+.modalCloseButton:focus{
+    outline: 0px;
 }
