@@ -59,7 +59,7 @@ class AddTask extends React.Component {
                                 Add
                             </GenericButton>
                         </div>
-                        <div className="col-sm-12 col-md-3 col-lg-2 col-xl-2 offset-lg-1 offset-xl-0" style={{...styles.buttonContainer,padding:'0px'}}>
+                        <div className="col-sm-12 col-md-3 col-lg-2 col-xl-2 offset-md-1 offset-lg-2 offset-xl-1" style={{...styles.buttonContainer,padding:'0px'}}>
                             <GenericButton customStyle={styles.buttonStyle} onClick={handleCancelButton}>
                                 Cancel
                             </GenericButton>

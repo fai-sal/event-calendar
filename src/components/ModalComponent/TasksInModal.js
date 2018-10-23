@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import { deleteEvent } from '../../actions/deleteEvent'
 import { editEvent } from '../../actions/editEvent'
 import { addEvent } from '../../actions/addEvent'
+import { Button } from 'reactstrap'
+import '../../styles/modal.css'
 class Tasks extends React.Component {
     constructor(props) {
         super(props)
@@ -30,13 +32,19 @@ class Tasks extends React.Component {
                     <div className="col-4" style={styles.rowStyle}>
                         <h4>Tasks</h4>
                     </div>
-                    <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6" style={{ paddingLeft: '0px' }}>
+                    {/* <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6" style={{ paddingLeft: '0px' }}>
                         {
                             addTaskFlag ? null : <GenericButton customStyle={styles.buttonStyle} onClick={this.handleAddNewTaskButton} >
                                 Add New Task
                         </GenericButton>
                         }
-
+                    </div> */}
+                    <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6" style={{ paddingLeft: '0px' }}>
+                        {
+                            addTaskFlag ? null : <button className="addTaskButton" onClick={this.handleAddNewTaskButton} >
+                                Add New Task
+                        </button>
+                        }
                     </div>
                 </div>
                 <div className="row" style={styles.rowStyle}>

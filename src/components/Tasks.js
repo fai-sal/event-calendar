@@ -1,8 +1,8 @@
 import React from 'react'
-
+import '../styles/calender.css'
 const Task = ({ task }) => {
     return (
-        <p style={{ ...styles.individualTask, backgroundColor: task.colorCode, color: task.textColor }}>{task.task}</p>
+        <p  className="taskInCalender"style={{  backgroundColor: task.colorCode, color: task.textColor }}>{task.task}</p>
     )
 }
 export default Task
@@ -12,6 +12,7 @@ const styles = {
         paddingLeft: '15px',
         paddingRight: '15px',
         borderRadius: '5px',
-        marginBottom:'5px'
+        marginBottom:'5px',
+        wordWrap: 'break-word',
     }
 } 

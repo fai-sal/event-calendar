@@ -12,6 +12,7 @@ const styles = {
         padding: '8px',
         paddingRight: '15px',
         paddingLeft: '15px',
-        marginRight: '10px'
+        marginRight: '10px',
+        marginBottom:'7px',
     }
 }

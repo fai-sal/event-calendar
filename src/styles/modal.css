@@ -1,6 +1,6 @@
 .MuiDialog-paperWidthSm-8 {
-    max-width: 45vw !important;
-    min-width: 30vw !important;
+    max-width: 55vw !important;
+    min-width: 35vw !important;
     min-height: 30vh !important;
     padding: 1% !important;
 }
@@ -26,4 +26,45 @@
     padding-right: 10px !important;
     outline: 0px;
     background-color: #e0e0d1;
+}
+.addTaskButton{
+        background-color: #d9d9d9;
+        padding-left: 2vw;
+        padding-right: 2vw;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-radius: 35px;
+        font-size: 100%;
+        min-width: 110px;
+        min-height: 30px;
+        border-width: 0px;
+}
+@media only screen and (min-width: 761px) and (max-width: 1000px) {
+    .MuiDialog-paperWidthSm-8 {
+        max-width: 70vw !important;
+        min-width: 50vw !important;
+        min-height: 30vh !important;
+        padding: 1% !important;
+    }
+}
+@media only screen and (max-width: 760px) {
+    .MuiDialog-paperWidthSm-8 {
+        max-width: 80vw !important;
+        min-width: 60vw !important;
+        min-height: 30vh !important;
+        padding: 1% !important;
+    }
+    .addTaskButton{
+        background-color: #d9d9d9;
+        padding-left: 3vw;
+        padding-right: 3vw;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-radius: 35px;
+        font-size: 90%;
+        min-width: 110px;
+        min-height: 30px;
+        border-width: 0px;
+        margin-bottom: 10px;
+}
 }
