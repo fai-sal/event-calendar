@@ -24,8 +24,8 @@ class Tasks extends React.Component {
     render() {
         const { tasks, colors } = this.props
         const { addTaskFlag } = this.state
-       // console.log('tasks passed to modal : ', tasks)
-      //  console.log('initial current task : ', this.state.currentTasks)
+        // console.log('tasks passed to modal : ', tasks)
+        //  console.log('initial current task : ', this.state.currentTasks)
         return (
             <React.Fragment>
                 <div className="row">
@@ -42,9 +42,9 @@ class Tasks extends React.Component {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-sm-12 col-md-8 col-lg-8 col-xl-8" style={{ width: 'fit-content'}}>
+                    <div className="col-sm-12 col-md-8 col-lg-8 col-xl-8" style={{ width: 'fit-content' }}>
                         {tasks.map((task, index) => {
-                            return <div > <p style={{ ...styles.individualTask, backgroundColor: task.colorCode,color:task.textColor }}>{`${index + 1}. ${task.task}`}</p></div>
+                            return <div > <p style={{ ...styles.individualTask, backgroundColor: task.colorCode, color: task.textColor }}>{`${index + 1}. ${task.task}`}</p></div>
                         })}
                     </div>
                 </div>
@@ -74,32 +74,36 @@ class Tasks extends React.Component {
         })
     }
     handleAddButton = () => {
-        //console.log('current tasks : ',this.state.currentTasks)
-        // console.log('add task in modal : ',this.state.newTask)
-        let newTaskArray = this.state.currentTasks.map(task => task)
-        newTaskArray.push(this.state.newTask)
-        //console.log('task array : ',newTaskArray)
-        this.setState({
-            ...this.state,
-            currentTasks: newTaskArray,
-            newTask: {
-                ...this.state.newTask,
-                task: ""
-            }
-        })
+        let { newTask, currentTasks, selectedColor } = this.state
+        if (newTask.task) {
+            let newTaskArray = currentTasks.map(task => task)
+            newTaskArray.push(newTask)
 
-        const newTask = {
-            id: this.state.newTask.id,
-            task: {
-                task: this.state.newTask.task,
-                ...this.state.selectedColor
-            },
+            this.setState({
+                ...this.state,
+                currentTasks: newTaskArray,
+                newTask: {
+                    ...newTask,
+                    task: ""
+                }
+            })
+
+            const formattedNewTask = {
+                id: newTask.id,
+                task: {
+                    task: newTask.task,
+                    ...selectedColor
+                },
+            }
+
+            this.props.addEvent(formattedNewTask)
         }
-        //console.log('new task : ', newTask)
-        this.props.addEvent(newTask)
+        else {
+            alert("New task can't be empty")
+        }
+
     }
     handleColorButtonOnClick = (...customProps) => {
-        // console.log('in modal ', customProps)
         this.setState({
             selectedColor: {
                 colorCode: customProps[0],
@@ -154,6 +158,6 @@ const styles = {
         paddingLeft: '15px',
         paddingRight: '15px',
         width: 'fit-content',
-        borderRadius:'5px'
+        borderRadius: '5px'
     }
 }

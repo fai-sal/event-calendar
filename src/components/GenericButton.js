@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/genericButton.css'
 export default ({ children, customStyle, isDisabled, ...restProps }) => {
     return <button disabled={isDisabled} onClick={restProps.actionHandler} style={{ ...styles.buttonStyle, ...customStyle }}{...restProps}>{children}</button>
 }

@@ -59,7 +59,7 @@ class AddTask extends React.Component {
                     </div>
                     <div className="row" style={{ marginTop: '2%' }}>
                         <div className="col-sm-12 col-md-3 col-lg-1 col-xl-1" style={styles.buttonContainer}>
-                            <GenericButton customStyle={styles.buttonStyle} onClick={handleAddButton}>
+                            <GenericButton customStyle={styles.buttonStyle}  onClick={handleAddButton} >
                                 Add
                             </GenericButton>
                         </div>
