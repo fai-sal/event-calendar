@@ -11,6 +11,7 @@ const styles = {
         padding: '5px',
         paddingLeft: '15px',
         paddingRight: '15px',
-        borderRadius: '5px'
+        borderRadius: '5px',
+        marginBottom:'5px'
     }
 } 

@@ -26,11 +26,11 @@ class Tasks extends React.Component {
         const { addTaskFlag } = this.state
         return (
             <React.Fragment>
-                <div className="row" style={{...styles.rowStyle,display:'flex',justifyContent:'space-between'}}>
+                <div className="row" style={{ ...styles.rowStyle, display: 'flex', justifyContent: 'space-between' }}>
                     <div className="col-4" style={styles.rowStyle}>
                         <h4>Tasks</h4>
                     </div>
-                    <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6"  style={{paddingLeft:'0px'}}>
+                    <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6" style={{ paddingLeft: '0px' }}>
                         {
                             addTaskFlag ? null : <GenericButton customStyle={styles.buttonStyle} onClick={this.handleAddNewTaskButton} >
                                 Add New Task
@@ -46,7 +46,7 @@ class Tasks extends React.Component {
                         })}
                     </div>
                 </div>
-         
+
                 <AddTask
                     colors={colors}
                     selectedColor={this.state.selectedColor}
@@ -57,8 +57,8 @@ class Tasks extends React.Component {
                     handleCancelButton={this.handleCancelButton}
                     handleColorButtonOnClick={this.handleColorButtonOnClick}
                 />
-               
-               
+
+
             </React.Fragment >
 
         )
@@ -153,7 +153,8 @@ const styles = {
         paddingLeft: '15px',
         paddingRight: '15px',
         width: 'fit-content',
-        borderRadius: '5px'
+        borderRadius: '5px',
+        marginBottom: '7px'
     },
     rowStyle: {
         padding: '0px',

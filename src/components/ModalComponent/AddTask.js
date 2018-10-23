@@ -19,7 +19,7 @@ class AddTask extends React.Component {
         if (flag) {
             return (
                 <React.Fragment>
-                    <div className="row" style={{ display: 'flex', alignItems: 'center', ...styles.rowStyle }} >
+                    <div className="row" style={{ display: 'flex', alignItems: 'center', ...styles.rowStyle,paddingTop:'10px' }} >
                         <div className="col-sm-10 col-md-8 col-lg-8 col-xl-8" style={{ padding: '0px' }}>
                             <Form>
                                 <FormGroup >
