@@ -12,13 +12,18 @@
 }
 .modalCloseButton{
     padding-top: 0px ;
-    padding-bottom: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-bottom: 5px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
     background-color: transparent;
     border-width: 0px;
     border-color: transparent;
 }
-.modalCloseButton:focus{
+.modalCloseButton:hover{
+    padding-top: 0px ;
+    padding-bottom: 5px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
     outline: 0px;
+    background-color: #e0e0d1;
 }

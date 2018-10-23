@@ -32,15 +32,15 @@ class TaskModal extends React.Component {
                 fullWidth={true}
                 scroll='paper'
             >
-                <DialogTitle id="responsive-dialog-title" style={{ paddingRight: '0px',paddingTop:'0px',paddingBottom:'0px' }}>
+                <DialogTitle id="responsive-dialog-title" style={{ paddingRight: '0px', paddingTop: '0px', paddingBottom: '0px' }}>
                     <div className="modalTitle" >
-                        <div className="row" >
-                            <div className="col-2 offset-10" style={{ backgroundColor: 'transparent', display: 'flex', justifyContent: 'flex-end' }}>
-                                <button className="modalCloseButton" onClick={closeModal} >x</button>
+                        <div className="row" style={{ padding: '0px', marginRight: '0px' }} >
+                            <div className="col-2 offset-10" style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                                <button className="modalCloseButton" style={{ padding: '0px', margin: '0px' }} onClick={closeModal} >x</button>
                             </div>
                         </div>
-                        
-                        <div className="row" >
+
+                        <div className="row" style={{ padding: '0px', marginRight: '1px' }} >
                             <div className="col-12" style={{ padding: '0px' }} >
                                 <h4> {`${date}  September`}</h4>
                             </div>
