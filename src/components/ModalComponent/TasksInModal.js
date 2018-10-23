@@ -1,11 +1,9 @@
 import React from 'react'
-import GenericButton from '../GenericButton'
 import AddTask from './AddTask'
 import { connect } from 'react-redux'
 import { deleteEvent } from '../../actions/deleteEvent'
 import { editEvent } from '../../actions/editEvent'
 import { addEvent } from '../../actions/addEvent'
-import { Button } from 'reactstrap'
 import '../../styles/modal.css'
 class Tasks extends React.Component {
     constructor(props) {
@@ -25,20 +23,13 @@ class Tasks extends React.Component {
     }
     render() {
         const { tasks, colors } = this.props
-        const { addTaskFlag } = this.state
+        const { addTaskFlag, selectedColor, newTask } = this.state
         return (
             <React.Fragment>
                 <div className="row" style={{ ...styles.rowStyle, display: 'flex', justifyContent: 'space-between' }}>
                     <div className="col-4" style={styles.rowStyle}>
                         <h4>Tasks</h4>
                     </div>
-                    {/* <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6" style={{ paddingLeft: '0px' }}>
-                        {
-                            addTaskFlag ? null : <GenericButton customStyle={styles.buttonStyle} onClick={this.handleAddNewTaskButton} >
-                                Add New Task
-                        </GenericButton>
-                        }
-                    </div> */}
                     <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6" style={{ paddingLeft: '0px' }}>
                         {
                             addTaskFlag ? null : <button className="addTaskButton" onClick={this.handleAddNewTaskButton} >
@@ -57,16 +48,14 @@ class Tasks extends React.Component {
 
                 <AddTask
                     colors={colors}
-                    selectedColor={this.state.selectedColor}
+                    selectedColor={selectedColor}
                     flag={addTaskFlag}
-                    customValue={this.state.newTask.task}
+                    customValue={newTask.task}
                     handleAddButton={this.handleAddButton}
                     handleOnChange={this.handleOnChange}
                     handleCancelButton={this.handleCancelButton}
                     handleColorButtonOnClick={this.handleColorButtonOnClick}
                 />
-
-
             </React.Fragment >
 
         )

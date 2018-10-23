@@ -1,8 +1,6 @@
 import React from 'react';
 import '../../styles/modal.css'
-import GenericButton from '../GenericButton';
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -65,24 +63,3 @@ class TaskModal extends React.Component {
 }
 
 export default withMobileDialog()(TaskModal);
-const styles = {
-    buttonStyle: {
-        backgroundColor: '#F6D449',
-        paddingTop: '2px',
-        paddingBottom: '2px',
-        paddingLeft: '10px',
-        paddingRight: '10px',
-        borderRadius: '5px',
-        fontSize: '100%',
-        minWidth: '1vw',
-        minHeight: '5px',
-        borderWidth: '0px'
-    },
-    buttonContainer: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-    }
-
-}

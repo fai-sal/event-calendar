@@ -1,7 +1,7 @@
 import React from 'react'
 import ColorButton from '../ColorPickerButton'
 import GenericButton from '../GenericButton'
-import { Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Form, FormGroup, Label, Input } from 'reactstrap';
 class AddTask extends React.Component {
     constructor(props) {
         super(props)
