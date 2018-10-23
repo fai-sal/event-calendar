@@ -1,7 +1,6 @@
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_EVENT': {
-            console.log('add event : ', action.newtask)
             let newDates = state.dates.map(date => {
                 if (date.index === action.newtask.id) {
                     date.tasks.push(action.newtask.task)
@@ -16,7 +15,6 @@ const rootReducer = (state = initialState, action) => {
 
         case 'DELETE_EVENT':
             {
-                console.log('event received in reducer : ', action.payload)
                 return {
                     ...state,
                     dates: action.payload
