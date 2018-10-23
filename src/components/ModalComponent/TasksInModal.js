@@ -42,8 +42,8 @@ class Tasks extends React.Component {
                     <div style={{ width: 'fit-content' }}>
                         {
                             tasks.map((task, index) => {
-                            return  <p style={{ ...styles.individualTask, backgroundColor: task.colorCode, color: task.textColor }}>{`${index + 1}. ${task.task}`}</p>
-                        })}
+                                return <p style={{ ...styles.individualTask, backgroundColor: task.colorCode, color: task.textColor }}>{`${index + 1}. ${task.task}`}</p>
+                            })}
                     </div>
                 </div>
 
@@ -55,6 +55,7 @@ class Tasks extends React.Component {
                     handleAddButton={this.handleAddButton}
                     handleOnChange={this.handleOnChange}
                     handleCancelButton={this.handleCancelButton}
+                    handleOnKeyPress={this.handleOnKeyPress}
                     handleColorButtonOnClick={this.handleColorButtonOnClick}
                 />
             </React.Fragment >
@@ -69,6 +70,14 @@ class Tasks extends React.Component {
                 task: event.target.value
             }
         })
+
+    }
+    handleOnKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            // Do code here
+            event.preventDefault();
+            this.handleAddButton();
+        }
     }
     handleAddButton = () => {
         let { newTask, currentTasks, selectedColor } = this.state

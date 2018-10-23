@@ -14,12 +14,12 @@ class AddTask extends React.Component {
         }
     }
     render() {
-        const { colors, flag, handleAddButton, handleOnChange, selectedColor, handleCancelButton, customValue, handleColorButtonOnClick } = this.props
+        const { colors, flag, handleAddButton, handleOnKeyPress, handleOnChange, selectedColor, handleCancelButton, customValue, handleColorButtonOnClick } = this.props
         const colorIds = Object.keys(colors)
         if (flag) {
             return (
                 <React.Fragment>
-                    <div className="row" style={{ display: 'flex', alignItems: 'center', ...styles.rowStyle,paddingTop:'10px' }} >
+                    <div className="row" style={{ display: 'flex', alignItems: 'center', ...styles.rowStyle, paddingTop: '10px' }} >
                         <div className="col-sm-10 col-md-8 col-lg-8 col-xl-8" style={{ padding: '0px' }}>
                             <Form>
                                 <FormGroup >
@@ -31,6 +31,7 @@ class AddTask extends React.Component {
                                         placeholder="New Task"
                                         value={customValue}
                                         onChange={handleOnChange}
+                                        onKeyPress={handleOnKeyPress}
                                         style={{ backgroundColor: selectedColor.colorCode, color: selectedColor.textColor, fontWeight: '300' }}
                                     />
                                 </FormGroup>
@@ -54,12 +55,12 @@ class AddTask extends React.Component {
                         </div>
                     </div>
                     <div className="row" style={{ ...styles.rowStyle, marginTop: '2%' }}>
-                        <div className="col-sm-12 col-md-3 col-lg-1 col-xl-1" style={{...styles.buttonContainer,padding:'0px'}}>
+                        <div className="col-sm-12 col-md-3 col-lg-1 col-xl-1" style={{ ...styles.buttonContainer, padding: '0px' }}>
                             <GenericButton customStyle={styles.buttonStyle} onClick={handleAddButton} >
                                 Add
                             </GenericButton>
                         </div>
-                        <div className="col-sm-12 col-md-3 col-lg-2 col-xl-2 offset-md-1 offset-lg-2 offset-xl-1" style={{...styles.buttonContainer,padding:'0px'}}>
+                        <div className="col-sm-12 col-md-3 col-lg-2 col-xl-2 offset-md-1 offset-lg-2 offset-xl-1" style={{ ...styles.buttonContainer, padding: '0px' }}>
                             <GenericButton customStyle={styles.buttonStyle} onClick={handleCancelButton}>
                                 Cancel
                             </GenericButton>
