@@ -5,6 +5,7 @@ import { deleteEvent } from '../../actions/deleteEvent'
 import { editEvent } from '../../actions/editEvent'
 import { addEvent } from '../../actions/addEvent'
 import '../../styles/modal.css'
+import deleteIcon from '../../assets/delete2.png'
 class Tasks extends React.Component {
     constructor(props) {
         super(props)
@@ -45,9 +46,12 @@ class Tasks extends React.Component {
                             return <div className="col-12" style={{ padding: '0px' }} >
                                 <div style={{ display: 'flex', alignItems: 'center', width: 'fit-content' }}>
                                     <p style={{ ...styles.individualTask, backgroundColor: task.colorCode, color: task.textColor }}>{`${index + 1}. ${task.task}`}</p>
-                                    <button onClick={(event) => {
+                                    {/* <button onClick={(event) => {
                                         this.deleteEvent(index, task)
-                                    }}>x</button>
+                                    }}>x</button> */}
+                                    <img src={deleteIcon} width="auto" height="auto" style={{ marginBottom: '7px' }} onClick={(event) => {
+                                        this.deleteEvent(index, task)
+                                    }} />
                                 </div>
                             </div>
                         })
@@ -77,7 +81,7 @@ class Tasks extends React.Component {
             task: selectdTask[1].task
 
         }
-       // console.log('delete event invoked : ', eventTobeDeleted)
+        // console.log('delete event invoked : ', eventTobeDeleted)
         this.props.deleteEvent(eventTobeDeleted)
     }
     handleOnChange = (event) => {
