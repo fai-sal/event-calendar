@@ -15,11 +15,14 @@ const rootReducer = (state = initialState, action) => {
         }
 
         case 'DELETE_EVENT':
-            let newDates = state.dates.filter(date => action.index !== date.index)
-            return {
-                ...state,
-                dates: newDates
+            {
+                console.log('event received in reducer : ', action.payload)
+                return {
+                    ...state,
+                    dates: action.payload
+                }
             }
+
         case 'EDIT_EVENT':
             let editedDates = state.dates.map(date => {
                 if (date.index === action.index) {
@@ -46,7 +49,7 @@ const initialState = {
         { text: 1, colorCode: '#82BF56', textColor: '#ffffff' },
         { text: 6, colorCode: '#F4A03E', textColor: '#ffffff' }
     ],
-    calenderBackgroundColor : '#e5d1d2',
+    calenderBackgroundColor: '#e5d1d2',
     dates: [
         { index: '1', tasks: [{ task: "Hello there", colorCode: "#F4A03E", colorId: 6, textColor: "#ffffff" }, { task: "Hello there", colorCode: "#F4A03E", colorId: 6, textColor: "#ffffff" }] },
         { index: '2', tasks: [] },

@@ -23,6 +23,7 @@ class Tasks extends React.Component {
     }
     render() {
         const { tasks, colors } = this.props
+        console.log('date in render : ', this.props.date)
         const { addTaskFlag, selectedColor, newTask } = this.state
         return (
             <React.Fragment>
@@ -39,12 +40,18 @@ class Tasks extends React.Component {
                     </div>
                 </div>
                 <div className="row" style={styles.rowStyle}>
-                    <div style={{ width: 'fit-content' }}>
-                        {
-                            tasks.map((task, index) => {
-                                return <p style={{ ...styles.individualTask, backgroundColor: task.colorCode, color: task.textColor }}>{`${index + 1}. ${task.task}`}</p>
-                            })}
-                    </div>
+                    {
+                        tasks.map((task, index) => {
+                            return <div className="col-12" style={{ padding: '0px' }} >
+                                <div style={{ display: 'flex', alignItems: 'center', width: 'fit-content' }}>
+                                    <p style={{ ...styles.individualTask, backgroundColor: task.colorCode, color: task.textColor }}>{`${index + 1}. ${task.task}`}</p>
+                                    <button onClick={(event) => {
+                                        this.deleteEvent(index, task)
+                                    }}>x</button>
+                                </div>
+                            </div>
+                        })
+                    }
                 </div>
 
                 <AddTask
@@ -62,6 +69,17 @@ class Tasks extends React.Component {
 
         )
     }
+    deleteEvent = (...selectdTask) => {
+        const { date } = this.props
+        const eventTobeDeleted = {
+            date: date,
+            taskIndex: selectdTask[0],
+            task: selectdTask[1].task
+
+        }
+       // console.log('delete event invoked : ', eventTobeDeleted)
+        this.props.deleteEvent(eventTobeDeleted)
+    }
     handleOnChange = (event) => {
         this.setState({
             ...this.state,
@@ -74,7 +92,6 @@ class Tasks extends React.Component {
     }
     handleOnKeyPress = (event) => {
         if (event.key === 'Enter') {
-            // Do code here
             event.preventDefault();
             this.handleAddButton();
         }
@@ -136,7 +153,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        deleteEvent: (id) => { dispatch(deleteEvent(2)) },
+        deleteEvent: (event) => { dispatch(deleteEvent(event)) },
         editEvent: (id) => { dispatch(editEvent(3)) },
         addEvent: (task) => { dispatch(addEvent(task)) }
     }
