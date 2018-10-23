@@ -24,8 +24,6 @@ class Tasks extends React.Component {
     render() {
         const { tasks, colors } = this.props
         const { addTaskFlag } = this.state
-        // console.log('tasks passed to modal : ', tasks)
-        //  console.log('initial current task : ', this.state.currentTasks)
         return (
             <React.Fragment>
                 <div className="row">
@@ -64,7 +62,6 @@ class Tasks extends React.Component {
         )
     }
     handleOnChange = (event) => {
-        // console.log('event : ', event.target.value)
         this.setState({
             ...this.state,
             newTask: {
@@ -95,7 +92,6 @@ class Tasks extends React.Component {
                     ...selectedColor
                 },
             }
-
             this.props.addEvent(formattedNewTask)
         }
         else {
@@ -111,7 +107,6 @@ class Tasks extends React.Component {
                 textColor: customProps[2]
             }
         })
-        // console.log('seleceted color : ', this.state.selectedColor)
     }
     handleAddNewTaskButton = () => {
         this.setState({
@@ -123,12 +118,10 @@ class Tasks extends React.Component {
             addTaskFlag: false
         })
     }
-
 }
 const mapStateToProps = (state, ownProps) => {
     const { colors } = state
     return {
-        // events: state.dates.find(date => date.index == 1)
         colors: colors
     }
 }
