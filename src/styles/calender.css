@@ -4,7 +4,9 @@
 }
     .date{
         flex-grow:1;
-        flex-basis: 14.20%;
+        /* flex-basis: 14.20%; */
+        min-width: 14.20%;
+        max-width: 14.20%;
         margin: 0px;
         border: 1px solid #e6e6e6;
         padding: 1%
