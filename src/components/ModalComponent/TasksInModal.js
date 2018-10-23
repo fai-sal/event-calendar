@@ -40,8 +40,9 @@ class Tasks extends React.Component {
                 </div>
                 <div className="row" style={styles.rowStyle}>
                     <div style={{ width: 'fit-content' }}>
-                        {tasks.map((task, index) => {
-                            return <div > <p style={{ ...styles.individualTask, backgroundColor: task.colorCode, color: task.textColor }}>{`${index + 1}. ${task.task}`}</p></div>
+                        {
+                            tasks.map((task, index) => {
+                            return  <p style={{ ...styles.individualTask, backgroundColor: task.colorCode, color: task.textColor }}>{`${index + 1}. ${task.task}`}</p>
                         })}
                     </div>
                 </div>

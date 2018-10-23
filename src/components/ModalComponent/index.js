@@ -43,8 +43,6 @@ class TaskModal extends React.Component {
                                 <h4> {`${date}  September`}</h4>
                             </div>
                         </div>
-
-
                     </div>
                 </DialogTitle>
                 <DialogContent style={{ padding: '10px', }}>
@@ -52,11 +50,6 @@ class TaskModal extends React.Component {
                         <Tasks tasks={tasks} date={date} />
                     </DialogContentText>
                 </DialogContent>
-                {/* <DialogActions style={styles.buttonContainer} >
-                    <GenericButton customStyle={styles.buttonStyle} onClick={closeModal} >
-                        OK
-                    </GenericButton>
-                </DialogActions> */}
             </Dialog >
         )
     }
