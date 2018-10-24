@@ -38,19 +38,21 @@ const deleteEvent = (event) => {
 const editEvent = (event) => {
     return (dispatch, getState) => {
         const existingDates = JSON.parse(localStorage.getItem('dates'))
+
         let modifiedDates = existingDates.map(date => {
             if (date.index == event.date) {
-                date.tasks = date.tasks.filter((task, index) => {
-                    if (index != event.taskIndex) {
-                        return task
+                date.tasks = date.tasks.map((task, index) => {
+                    if (index == event.taskIndex) {
+                      return event.task
                     }
+                    return task
                 })
             }
             return date
         })
         localStorage.setItem('dates', JSON.stringify(modifiedDates))
         dispatch({
-            type: 'DELETE_EVENT',
+            type: 'EDIT_EVENT',
             payload: modifiedDates
         })
     }

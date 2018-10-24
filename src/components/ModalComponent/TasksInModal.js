@@ -78,11 +78,11 @@ class Tasks extends React.Component {
     }
     renderEditForm = (task, index) => {
         console.log('task ', task, ', index : ', index)
-        return <div style={{ display: 'flex', padding: '0px',paddingTop:'10px', alignItems: 'center', width: '100%' }}>
-            <Form style={{ width: '60%',padding:'0px' }}>
+        return <div style={{ display: 'flex', padding: '0px', paddingTop: '10px', alignItems: 'center', width: '100%' }}>
+            <Form style={{ width: '60%', padding: '0px' }}>
                 <FormGroup >
                     <Input
-                    autoFocus
+                        autoFocus
                         type="text"
                         name="editTask"
                         value={this.state.modifiedTasks[index].task}
@@ -101,10 +101,10 @@ class Tasks extends React.Component {
                 </FormGroup>
             </Form>
             <img src={okayIcon} className="okayIcon" alt="okayIcon" onClick={() => {
-               this.toggleEditFlag(task, index)
+                this.saveEditedEvent(task, index)
             }} />
-               <img src={cancelIcon} className="cancelIcon" alt="cancelIcon" onClick={() => {
-               this.toggleEditFlag(task, index)
+            <img src={cancelIcon} className="cancelIcon" alt="cancelIcon" onClick={() => {
+                this.toggleEditFlag(task, index)
             }} />
         </div>
     }
@@ -121,15 +121,14 @@ class Tasks extends React.Component {
         })
     }
     toggleEditFlag = (task, taskIndex) => {
-        const test = this.state.modifiedTasks.filter((task, index) => {
-            if (index == taskIndex) {
-                task.editFlag = !task.editFlag
-            }
-            return task
-        })
         this.setState({
             ...this.state,
-            modifiedTasks: test
+            modifiedTasks: this.state.modifiedTasks.filter((task, index) => {
+                if (index == taskIndex) {
+                    task.editFlag = !task.editFlag
+                }
+                return task
+            })
         })
     }
 
@@ -159,7 +158,24 @@ class Tasks extends React.Component {
                     return task
             })
         })
-        this.props.deleteEvent(eventTobeDeleted)
+    }
+    saveEditedEvent = (task, taskIndex) => {
+        const { date } = this.props
+        const eventTobeEdited = {
+            date: date,
+            taskIndex: taskIndex,
+            task: task
+        }
+        this.setState({
+            ...this.state,
+            modifiedTasks: this.state.modifiedTasks.filter((task, index) => {
+                if (index == taskIndex) {
+                    task.editFlag = !task.editFlag
+                }
+                return task
+            })
+        })
+        this.props.editEvent(eventTobeEdited)
     }
     handleOnChange = (event) => {
         this.setState({
@@ -239,7 +255,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         deleteEvent: (event) => { dispatch(deleteEvent(event)) },
-        editEvent: (id) => { dispatch(editEvent(3)) },
+        editEvent: (eventTobeEdited) => { dispatch(editEvent(eventTobeEdited)) },
         addEvent: (task) => { dispatch(addEvent(task)) }
     }
 }
