@@ -14,6 +14,10 @@ class Tasks extends React.Component {
                 id: this.props.date
             },
             currentTasks: this.props.tasks,
+            modifiedTasks: this.props.tasks.map(task => {
+                task.editFlg = false
+                return task
+            }),
             selectedColor: {
                 colorCode: "#ffffff",
                 colorId: "3",
@@ -23,8 +27,9 @@ class Tasks extends React.Component {
     }
     render() {
         const { tasks, colors } = this.props
+        console.log('tasks : ',this.props.tasks)
         console.log('date in render : ', this.props.date)
-        const { addTaskFlag, selectedColor, newTask } = this.state
+        const { addTaskFlag, selectedColor, newTask, modifiedTasks } = this.state
         return (
             <React.Fragment>
                 <div className="row" style={styles.modalContentHeader}>
@@ -41,9 +46,9 @@ class Tasks extends React.Component {
                 </div>
                 <div className="row" style={styles.removePadding}>
                     {
-                        tasks.map((task, index) => {
+                        modifiedTasks.map((task, index) => {
                             return <div className="col-12" style={styles.taskContainer} >
-                                {this.renderTask(task,index)}
+                                {this.renderTask(task, index)}
                             </div>
                         })
                     }
@@ -101,20 +106,11 @@ class Tasks extends React.Component {
         }
     }
     handleAddButton = () => {
+      //  console.log('modified tasks : ',this.state.modifiedTasks)
         let { newTask, currentTasks, selectedColor } = this.state
         if (newTask.task) {
             let newTaskArray = currentTasks.map(task => task)
             newTaskArray.push(newTask)
-
-            this.setState({
-                ...this.state,
-                currentTasks: newTaskArray,
-                newTask: {
-                    ...newTask,
-                    task: ""
-                }
-            })
-
             const formattedNewTask = {
                 id: newTask.id,
                 task: {
@@ -122,6 +118,19 @@ class Tasks extends React.Component {
                     ...selectedColor
                 },
             }
+            const test=this.state.modifiedTasks.map(task=>task)
+            test.push(formattedNewTask.task)
+           // console.log('test : ',test)
+            this.setState({
+                ...this.state,
+                currentTasks: newTaskArray,
+                newTask: {
+                    ...newTask,
+                    task: ""
+                },
+                 modifiedTasks: test
+            })
+           // console.log('after ',this.state.modifiedTasks)
             this.props.addEvent(formattedNewTask)
         }
         else {
