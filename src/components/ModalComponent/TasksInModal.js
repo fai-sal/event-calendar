@@ -5,7 +5,8 @@ import { deleteEvent } from '../../actions/deleteEvent'
 import { editEvent } from '../../actions/editEvent'
 import { addEvent } from '../../actions/addEvent'
 import '../../styles/modal.css'
-import deleteIcon from '../../assets/delete2.png'
+import deleteIcon from '../../assets/deleteIcon.png'
+import editIcon from '../../assets/pencil.png'
 class Tasks extends React.Component {
     constructor(props) {
         super(props)
@@ -28,8 +29,8 @@ class Tasks extends React.Component {
         const { addTaskFlag, selectedColor, newTask } = this.state
         return (
             <React.Fragment>
-                <div className="row" style={{ ...styles.rowStyle, display: 'flex', justifyContent: 'space-between' }}>
-                    <div className="col-4" style={styles.rowStyle}>
+                <div className="row" style={styles.modalContentHeader}>
+                    <div className="col-4" style={styles.removePadding}>
                         <h4>Tasks</h4>
                     </div>
                     <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6" style={{ paddingLeft: '0px' }}>
@@ -40,19 +41,17 @@ class Tasks extends React.Component {
                         }
                     </div>
                 </div>
-                <div className="row" style={styles.rowStyle}>
+                <div className="row" style={styles.removePadding}>
                     {
                         tasks.map((task, index) => {
-                            return <div className="col-12" style={{ padding: '0px' }} >
-                                <div style={{ display: 'flex', alignItems: 'center', width: 'fit-content' }}>
-                                    <p style={{ ...styles.individualTask, backgroundColor: task.colorCode, color: task.textColor }}>{`${index + 1}. ${task.task}`}</p>
-                                    {/* <button onClick={(event) => {
-                                        this.deleteEvent(index, task)
-                                    }}>x</button> */}
-                                    <img src={deleteIcon} width="auto" height="auto" style={{ marginBottom: '7px' }} onClick={(event) => {
-                                        this.deleteEvent(index, task)
-                                    }} />
-                                </div>
+                            return <div className="col-12" style={styles.taskContainer} >
+                                <p style={{ ...styles.individualTask, backgroundColor: task.colorCode, color: task.textColor }}>{`${index + 1}. ${task.task}`}</p>
+                                <img src={editIcon} className="icons" onClick={() => {
+                                    alert('edit icon clicked')
+                                }} />
+                                <img src={deleteIcon} className="icons" onClick={() => {
+                                    this.deleteEvent(index, task)
+                                }} />
                             </div>
                         })
                     }
@@ -79,9 +78,7 @@ class Tasks extends React.Component {
             date: date,
             taskIndex: selectdTask[0],
             task: selectdTask[1].task
-
         }
-        // console.log('delete event invoked : ', eventTobeDeleted)
         this.props.deleteEvent(eventTobeDeleted)
     }
     handleOnChange = (event) => {
@@ -164,28 +161,31 @@ const mapDispatchToProps = (dispatch) => {
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Tasks);
 const styles = {
-    buttonStyle: {
-        backgroundColor: '#d9d9d9',
-        paddingLeft: '2vw',
-        paddingRight: '2vw',
-        paddingTop: '5px',
-        paddingBottom: '5px',
-        borderRadius: '35px',
-        fontSize: '100%',
-        minWidth: '110px',
-        minHeight: '30px',
-        borderWidth: '0px'
-    },
     individualTask: {
         padding: '5px',
         paddingLeft: '15px',
         paddingRight: '15px',
         width: 'fit-content',
         borderRadius: '5px',
-        marginBottom: '7px'
+        marginBottom: '7px',
+        marginRight: '15px'
     },
-    rowStyle: {
+    removePadding: {
         padding: '0px',
         margin: '0px'
+    },
+    modalContentHeader: {
+        padding: '0px',
+        paddingTop: '10px',
+        paddingBottom: '10px',
+        margin: '0px',
+        display: 'flex',
+        justifyContent: 'space-between'
+    },
+    taskContainer: {
+        padding: '0px',
+        display: 'flex',
+        alignItems: 'center',
+        width: 'fit-content'
     }
 }

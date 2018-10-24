@@ -8,7 +8,6 @@
    display: flex; 
    flex-direction: column;
    justify-content: space-between;
-   /* align-items: center; */
 }
 .modalCloseButton{
     padding-top: 0px ;
@@ -67,4 +66,14 @@
         border-width: 0px;
         margin-bottom: 10px;
 }
+}
+.icons{
+    width:auto;
+    height:auto;
+    margin-bottom: 7px;
+    margin-right: 10px;
+}
+.modalContent{
+    padding:10px;
+    padding-bottom: 25px;
 }

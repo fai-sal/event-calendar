@@ -45,7 +45,7 @@ class TaskModal extends React.Component {
                         </div>
                     </div>
                 </DialogTitle>
-                <DialogContent style={{ padding: '10px', }}>
+                <DialogContent className="modalContent">
                     <DialogContentText>
                         <Tasks tasks={tasks} date={date} />
                     </DialogContentText>
