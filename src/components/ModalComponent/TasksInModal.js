@@ -180,6 +180,7 @@ class Tasks extends React.Component {
                     return task
             })
         })
+        this.props.deleteEvent(eventTobeDeleted)
     }
     saveEditedEvent = (task, taskIndex) => {
         const { date } = this.props
