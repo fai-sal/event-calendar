@@ -38,6 +38,9 @@
         min-height: 30px;
         border-width: 0px;
 }
+.addTaskButton:active{
+    outline: 0px;
+}
 @media only screen and (min-width: 761px) and (max-width: 1000px) {
     .MuiDialog-paperWidthSm-8 {
         max-width: 70vw !important;

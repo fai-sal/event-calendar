@@ -39,7 +39,7 @@ class TaskModal extends React.Component {
                         </div>
 
                         <div className="row" style={{ padding: '0px', marginRight: '1px' }} >
-                            <div className="col-12" style={{ padding: '0px' }} >
+                            <div className="col-12" >
                                 <h4> {`${date}  September`}</h4>
                             </div>
                         </div>
