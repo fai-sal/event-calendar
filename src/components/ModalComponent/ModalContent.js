@@ -1,17 +1,16 @@
 import React from 'react'
+import Tasks from './Tasks'
 import AddTask from './AddTask'
-import { connect } from 'react-redux'
-import { addEvent, deleteEvent, editEvent } from '../../actions'
 import '../../styles/modal.css'
 import EditForm from './EditForm'
-import deleteIcon from '../../assets/delete.png'
-import editIcon from '../../assets/editPen.png'
-class Tasks extends React.Component {
+import ModalHeader from './ModalHeader'
+import { connect } from 'react-redux'
+import { addEvent, deleteEvent, editEvent } from '../../actions'
+class ModalContent extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             addTaskFlag: false,
-            tempTask: "",
             newTask: {
                 id: this.props.date
             },
@@ -28,51 +27,39 @@ class Tasks extends React.Component {
         }
     }
     render() {
-        const { tasks, colors } = this.props
-        console.log('tasks : ', this.props.tasks)
-        console.log('date in render : ', this.props.date)
+        const { colors } = this.props
         const { addTaskFlag, selectedColor, newTask, modifiedTasks } = this.state
         return (
             <React.Fragment>
-                <div className="row" style={styles.modalContentHeader}>
-                    <div className="col-4" style={styles.removePadding}>
-                        <h4>Tasks</h4>
-                    </div>
-                    <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6" style={{ paddingLeft: '0px' }}>
-                        {
-                            addTaskFlag ? null : <button className="addTaskButton" onClick={this.handleAddNewTaskButton} >
-                                Add New Task
-                        </button>
-                        }
-                    </div>
-                </div>
-                <div className="row" style={styles.removePadding}>
+                <ModalHeader addTaskFlag={addTaskFlag} toggleAddTaskFlag={this.toggleAddTaskFlag} />
+                <div className="row" >
                     {
                         modifiedTasks.map((task, index) => {
-                            return <div className="col-12" style={styles.taskContainer} >
+                            return <div className="col-12 individualTask" >
                                 {
-                                    // task.editFlag ? this.renderEditForm(task, index)
-                                    //     :
-                                    //     this.renderTask(task, index)
                                     task.editFlag ?
                                         <EditForm
                                             task={task}
-                                            index={index}
+                                            taskIndex={index}
                                             value={this.state.modifiedTasks[index].task}
                                             editOnKeyPress={this.editOnKeyPress}
                                             editOnChange={this.editOnChange}
                                             saveEditedEvent={this.saveEditedEvent}
                                             cancelEditTask={this.cancelEditTask}
-
                                         />
                                         :
-                                        this.renderTask(task, index)
+                                        <Tasks
+                                            task={task}
+                                            taskIndex={index}
+                                            toggleEditFlag={this.toggleEditFlag}
+                                            deleteEvent={this.deleteEvent}
+                                        />
                                 }
                             </div>
                         })
                     }
                 </div>
-
+                
                 <AddTask
                     colors={colors}
                     selectedColor={selectedColor}
@@ -80,19 +67,17 @@ class Tasks extends React.Component {
                     customValue={newTask.task}
                     handleAddButton={this.handleAddButton}
                     handleOnChange={this.handleOnChange}
-                    handleCancelButton={this.handleCancelButton}
+                    handleCancelButton={this.toggleAddTaskFlag}
                     handleOnKeyPress={this.handleOnKeyPress}
                     handleColorButtonOnClick={this.handleColorButtonOnClick}
                 />
             </React.Fragment >
-
         )
     }
 
     editOnChange = (taskIndex, changedValue) => {
         this.setState({
             ...this.state,
-            tempTask: this.state.modifiedTasks[taskIndex].task,
             modifiedTasks: this.state.modifiedTasks.filter((task, index) => {
                 if (index == taskIndex) {
                     task.task = changedValue
@@ -100,9 +85,14 @@ class Tasks extends React.Component {
                 return task
             })
         })
-
     }
-    cancelEditTask = (task, taskIndex) => {
+    editOnKeyPress = (event, task, taskIndex) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            this.saveEditedEvent(task, taskIndex);
+        }
+    }
+    cancelEditTask = (taskIndex) => {
         const { date } = this.props
         const existingDates = JSON.parse(localStorage.getItem('dates'))
         this.setState({
@@ -116,7 +106,6 @@ class Tasks extends React.Component {
         })
     }
     toggleEditFlag = (task, taskIndex) => {
-
         this.setState({
             ...this.state,
             modifiedTasks: this.state.modifiedTasks.filter((task, index) => {
@@ -126,17 +115,6 @@ class Tasks extends React.Component {
                 return task
             })
         })
-    }
-    renderTask = (task, index) => {
-        return <React.Fragment>
-            <p style={{ ...styles.individualTask, backgroundColor: task.colorCode, color: task.textColor }}>{`${index + 1}. ${task.task}`}</p>
-            <img src={editIcon} className="icons" alt="editIcon" onClick={() => {
-                this.toggleEditFlag(task, index)
-            }} />
-            <img src={deleteIcon} className="icons" alt="deleteIcon" onClick={() => {
-                this.deleteEvent(index, task)
-            }} />
-        </React.Fragment>
     }
 
     deleteEvent = (...selectdTask) => {
@@ -189,14 +167,8 @@ class Tasks extends React.Component {
             this.handleAddButton();
         }
     }
-    editOnKeyPress = (event, task, taskIndex) => {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            this.saveEditedEvent(task, taskIndex);
-        }
-    }
+
     handleAddButton = () => {
-        //  console.log('modified tasks : ',this.state.modifiedTasks)
         let { newTask, currentTasks, selectedColor } = this.state
         if (newTask.task) {
             let newTaskArray = currentTasks.map(task => task)
@@ -210,7 +182,6 @@ class Tasks extends React.Component {
             }
             const test = this.state.modifiedTasks.map(task => task)
             test.push(formattedNewTask.task)
-            // console.log('test : ',test)
             this.setState({
                 ...this.state,
                 currentTasks: newTaskArray,
@@ -220,13 +191,11 @@ class Tasks extends React.Component {
                 },
                 modifiedTasks: test
             })
-            // console.log('after ',this.state.modifiedTasks)
             this.props.addEvent(formattedNewTask)
         }
         else {
             alert("New task can't be empty")
         }
-
     }
     handleColorButtonOnClick = (...customProps) => {
         this.setState({
@@ -237,14 +206,9 @@ class Tasks extends React.Component {
             }
         })
     }
-    handleAddNewTaskButton = () => {
+    toggleAddTaskFlag = () => {
         this.setState({
-            addTaskFlag: true
-        })
-    }
-    handleCancelButton = () => {
-        this.setState({
-            addTaskFlag: false
+            addTaskFlag: !this.state.addTaskFlag
         })
     }
 }
@@ -261,33 +225,4 @@ const mapDispatchToProps = (dispatch) => {
         addEvent: (task) => { dispatch(addEvent(task)) }
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Tasks);
-const styles = {
-    individualTask: {
-        padding: '5px',
-        paddingLeft: '15px',
-        paddingRight: '15px',
-        width: 'fit-content',
-        borderRadius: '5px',
-        marginBottom: '7px',
-        marginRight: '15px'
-    },
-    removePadding: {
-        padding: '0px',
-        margin: '0px'
-    },
-    modalContentHeader: {
-        padding: '0px',
-        paddingTop: '10px',
-        paddingBottom: '10px',
-        margin: '0px',
-        display: 'flex',
-        justifyContent: 'space-between'
-    },
-    taskContainer: {
-        padding: '0px',
-        display: 'flex',
-        alignItems: 'center',
-        width: 'fit-content'
-    }
-}
+export default connect(mapStateToProps, mapDispatchToProps)(ModalContent);

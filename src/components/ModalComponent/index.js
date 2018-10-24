@@ -5,7 +5,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
-import Tasks from './ModalContent';
+import ModalContent from './ModalContent';
 class TaskModal extends React.Component {
     constructor(props) {
         super(props)
@@ -47,7 +47,7 @@ class TaskModal extends React.Component {
                 </DialogTitle>
                 <DialogContent className="modalContent">
                     <DialogContentText>
-                        <Tasks tasks={tasks} date={date} />
+                        <ModalContent tasks={tasks} date={date} />
                     </DialogContentText>
                 </DialogContent>
             </Dialog >
