@@ -5,6 +5,7 @@ import { addEvent, deleteEvent, editEvent } from '../../actions'
 import '../../styles/modal.css'
 import deleteIcon from '../../assets/deleteIcon.png'
 import editIcon from '../../assets/pencil.png'
+import { Form, FormGroup, Label, Input } from 'reactstrap';
 class Tasks extends React.Component {
     constructor(props) {
         super(props)
@@ -15,7 +16,7 @@ class Tasks extends React.Component {
             },
             currentTasks: this.props.tasks,
             modifiedTasks: this.props.tasks.map(task => {
-                task.editFlg = false
+                task.editFlag = false
                 return task
             }),
             selectedColor: {
@@ -48,7 +49,11 @@ class Tasks extends React.Component {
                     {
                         modifiedTasks.map((task, index) => {
                             return <div className="col-12" style={styles.taskContainer} >
-                                {this.renderTask(task, index)}
+                                {
+                                    task.editFlag ? this.renderEditForm(task, index)
+                                        :
+                                        this.renderTask(task, index)
+                                }
                             </div>
                         })
                     }
@@ -69,17 +74,74 @@ class Tasks extends React.Component {
 
         )
     }
+    renderEditForm = (task, index) => {
+        console.log('task ', task, ', index : ', index)
+        return <div style={{ display: 'flex', padding: '0px', alignItems: 'center', width: '100%' }}>
+            <Form style={{ width: '60%' }}>
+                <FormGroup >
+                    <Input
+                        type="text"
+                        name="editTask"
+                        value={this.state.modifiedTasks[index].task}
+                        //     id="newTask"
+                        //     placeholder="New Task"
+                        //     value={customValue}
+                        //     onChange={handleOnChange}
+                        //     onKeyPress={handleOnKeyPress}
+                        onChange={(event) => {
+                            console.log(event.target.value)
+                            const changedValue = event.target.value
+                            this.editOnChange(index, changedValue)
+                        }}
+                        style={{ backgroundColor: task.colorCode, color: task.textColor, fontWeight: 'normal' }}
+                    // />
+                    />
+                </FormGroup>
+            </Form>
+            <button onClick={() => {
+                this.toggleEditFlag(task, index)
+            }}>cancel</button>
+        </div>
+    }
+    editOnChange = (taskIndex, changedValue) => {
+        console.log('tasks :',this.state.modifiedTasks)
+        const test = this.state.modifiedTasks.filter((task, index) => {
+            if (index == taskIndex){
+                task.task=changedValue
+            }
+                return task
+        })
+       this.setState({
+         ...this.state,
+         modifiedTasks:test
+       })
+    }
+    toggleEditFlag = (task, taskIndex) => {
+        const test = this.state.modifiedTasks.filter((task, index) => {
+            if (index == taskIndex) {
+                task.editFlag = !task.editFlag
+            }
+            return task
+        })
+        this.setState({
+            ...this.state,
+            modifiedTasks: test
+        })
+        //console.log('edit button clicked : ', test)
+    }
+
     renderTask = (task, index) => {
         return <React.Fragment>
             <p style={{ ...styles.individualTask, backgroundColor: task.colorCode, color: task.textColor }}>{`${index + 1}. ${task.task}`}</p>
             <img src={editIcon} className="icons" alt="editIcon" onClick={() => {
-                alert('edit icon clicked')
+                this.toggleEditFlag(task, index)
             }} />
             <img src={deleteIcon} className="icons" alt="deleteIcon" onClick={() => {
                 this.deleteEvent(index, task)
             }} />
         </React.Fragment>
     }
+
     deleteEvent = (...selectdTask) => {
         const { date } = this.props
         const eventTobeDeleted = {

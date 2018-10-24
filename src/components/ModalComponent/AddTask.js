@@ -32,7 +32,7 @@ class AddTask extends React.Component {
                                         value={customValue}
                                         onChange={handleOnChange}
                                         onKeyPress={handleOnKeyPress}
-                                        style={{ backgroundColor: selectedColor.colorCode, color: selectedColor.textColor, fontWeight: '300' }}
+                                        style={{ backgroundColor: selectedColor.colorCode, color: selectedColor.textColor }}
                                     />
                                 </FormGroup>
                             </Form>
