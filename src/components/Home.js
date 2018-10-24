@@ -15,6 +15,8 @@ class Home extends React.Component {
             </React.Fragment>
         )
     }
+    //check if data is avialable in localstorage or not,
+    // if not available then store data
     checkLocalStorage = () => {
         const { colors, calenderBackgroundColor, dates } = this.props
         if (!localStorage.getItem('colors')) {

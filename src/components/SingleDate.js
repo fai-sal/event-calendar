@@ -1,7 +1,6 @@
 import React from 'react'
 import Date from './Date'
 import Tasks from './Tasks'
-//import '../styles/individual.css'
 import ModalComponent from './ModalComponent';
 class SingleDate extends React.Component {
     constructor(props) {
@@ -12,9 +11,7 @@ class SingleDate extends React.Component {
     }
     render() {
         const { dayTitle } = this.props
-        //   console.log('individual date from redux: ', date)
         const date = JSON.parse(localStorage.getItem('dates')).find(date => date.index === dayTitle)
-        // console.log('individual date from storage : ', test)
         const { openModal } = this.state
         return (
             <React.Fragment>

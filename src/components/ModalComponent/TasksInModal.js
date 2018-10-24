@@ -1,9 +1,7 @@
 import React from 'react'
 import AddTask from './AddTask'
 import { connect } from 'react-redux'
-import { deleteEvent } from '../../actions/deleteEvent'
-import { editEvent } from '../../actions/editEvent'
-import { addEvent } from '../../actions/addEvent'
+import {addEvent,deleteEvent,editEvent} from '../../actions'
 import '../../styles/modal.css'
 import deleteIcon from '../../assets/deleteIcon.png'
 import editIcon from '../../assets/pencil.png'
@@ -46,10 +44,10 @@ class Tasks extends React.Component {
                         tasks.map((task, index) => {
                             return <div className="col-12" style={styles.taskContainer} >
                                 <p style={{ ...styles.individualTask, backgroundColor: task.colorCode, color: task.textColor }}>{`${index + 1}. ${task.task}`}</p>
-                                <img src={editIcon} className="icons" onClick={() => {
+                                <img src={editIcon} className="icons" alt="editIcon" onClick={() => {
                                     alert('edit icon clicked')
                                 }} />
-                                <img src={deleteIcon} className="icons" onClick={() => {
+                                <img src={deleteIcon} className="icons" alt="deleteIcon"onClick={() => {
                                     this.deleteEvent(index, task)
                                 }} />
                             </div>
