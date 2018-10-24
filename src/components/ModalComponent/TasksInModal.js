@@ -3,8 +3,10 @@ import AddTask from './AddTask'
 import { connect } from 'react-redux'
 import { addEvent, deleteEvent, editEvent } from '../../actions'
 import '../../styles/modal.css'
-import deleteIcon from '../../assets/deleteIcon.png'
-import editIcon from '../../assets/pencil.png'
+import deleteIcon from '../../assets/delete.png'
+import editIcon from '../../assets/editPen.png'
+import cancelIcon from '../../assets/cancel.png'
+import okayIcon from '../../assets/ok.png'
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 class Tasks extends React.Component {
     constructor(props) {
@@ -76,17 +78,17 @@ class Tasks extends React.Component {
     }
     renderEditForm = (task, index) => {
         console.log('task ', task, ', index : ', index)
-        return <div style={{ display: 'flex', padding: '0px', alignItems: 'center', width: '100%' }}>
-            <Form style={{ width: '60%' }}>
+        return <div style={{ display: 'flex', padding: '0px',paddingTop:'10px', alignItems: 'center', width: '100%' }}>
+            <Form style={{ width: '60%',padding:'0px' }}>
                 <FormGroup >
                     <Input
+                    autoFocus
                         type="text"
                         name="editTask"
                         value={this.state.modifiedTasks[index].task}
                         //     id="newTask"
                         //     placeholder="New Task"
                         //     value={customValue}
-                        //     onChange={handleOnChange}
                         //     onKeyPress={handleOnKeyPress}
                         onChange={(event) => {
                             console.log(event.target.value)
@@ -98,23 +100,25 @@ class Tasks extends React.Component {
                     />
                 </FormGroup>
             </Form>
-            <button onClick={() => {
-                this.toggleEditFlag(task, index)
-            }}>cancel</button>
+            <img src={okayIcon} className="okayIcon" alt="okayIcon" onClick={() => {
+               this.toggleEditFlag(task, index)
+            }} />
+               <img src={cancelIcon} className="cancelIcon" alt="cancelIcon" onClick={() => {
+               this.toggleEditFlag(task, index)
+            }} />
         </div>
     }
     editOnChange = (taskIndex, changedValue) => {
-        console.log('tasks :',this.state.modifiedTasks)
-        const test = this.state.modifiedTasks.filter((task, index) => {
-            if (index == taskIndex){
-                task.task=changedValue
-            }
+        console.log('tasks :', this.state.modifiedTasks)
+        this.setState({
+            ...this.state,
+            modifiedTasks: this.state.modifiedTasks.filter((task, index) => {
+                if (index == taskIndex) {
+                    task.task = changedValue
+                }
                 return task
+            })
         })
-       this.setState({
-         ...this.state,
-         modifiedTasks:test
-       })
     }
     toggleEditFlag = (task, taskIndex) => {
         const test = this.state.modifiedTasks.filter((task, index) => {
@@ -127,7 +131,6 @@ class Tasks extends React.Component {
             ...this.state,
             modifiedTasks: test
         })
-        //console.log('edit button clicked : ', test)
     }
 
     renderTask = (task, index) => {
@@ -149,13 +152,12 @@ class Tasks extends React.Component {
             taskIndex: selectdTask[0],
             task: selectdTask[1].task
         }
-        const test = this.state.modifiedTasks.filter((task, index) => {
-            if (index != eventTobeDeleted.taskIndex)
-                return task
-        })
         this.setState({
             ...this.state,
-            modifiedTasks: test
+            modifiedTasks: this.state.modifiedTasks.filter((task, index) => {
+                if (index != eventTobeDeleted.taskIndex)
+                    return task
+            })
         })
         this.props.deleteEvent(eventTobeDeleted)
     }

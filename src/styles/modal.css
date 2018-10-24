@@ -68,12 +68,27 @@
 }
 }
 .icons{
-    width:auto;
+    width: 32px;
     height:auto;
-    margin-bottom: 7px;
-    margin-right: 10px;
+    padding: 0px;
+     margin-bottom: 7px;
 }
 .modalContent{
     padding:10px;
     padding-bottom: 25px;
+}
+.cancelIcon{
+    width: 30px;
+    height:auto;
+    padding: 0px;
+    margin-bottom: 7px;
+    margin-right: 10px;
+    margin-left: 15px;
+}
+.okayIcon{
+    width: 35px;
+    height:auto;
+    padding: 0px;
+    margin-bottom: 7px;
+    margin-left: 25px;
 }
