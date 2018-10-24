@@ -90,7 +90,7 @@ class Tasks extends React.Component {
                         //     id="newTask"
                         //     placeholder="New Task"
                         //     value={customValue}
-                        //     onKeyPress={handleOnKeyPress}
+                        onKeyPress={(event) => this.editOnKeyPress(event, task, index)}
                         onChange={(event) => {
                             // console.log(event.target.value)
                             const changedValue = event.target.value
@@ -130,10 +130,10 @@ class Tasks extends React.Component {
         // console.log('old event : ', existingDates[date - 1].tasks[taskIndex].task)
         // console.log('index : ', taskIndex)
         // console.log('BEFORE cancel button clicked: ', this.state.modifiedTasks)
-        
+
         this.setState({
             ...this.state,
-            modifiedTasks: existingDates[date-1].tasks.map((task, index) => {
+            modifiedTasks: existingDates[date - 1].tasks.map((task, index) => {
                 if (index == taskIndex) {
                     task.editFlag = false
                 }
@@ -214,6 +214,12 @@ class Tasks extends React.Component {
         if (event.key === 'Enter') {
             event.preventDefault();
             this.handleAddButton();
+        }
+    }
+    editOnKeyPress = (event, task, taskIndex) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            this.saveEditedEvent(task, taskIndex);
         }
     }
     handleAddButton = () => {
