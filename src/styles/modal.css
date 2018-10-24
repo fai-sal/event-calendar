@@ -26,6 +26,10 @@
     outline: 0px;
     background-color: #e0e0d1;
 }
+.editForm{
+    width: 60%;
+    padding: 0px
+}
 .addTaskButton{
         background-color: #d9d9d9;
         padding-left: 2vw;
