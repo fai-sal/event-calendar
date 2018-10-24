@@ -13,6 +13,7 @@ class Tasks extends React.Component {
         super(props)
         this.state = {
             addTaskFlag: false,
+            tempTask: "",
             newTask: {
                 id: this.props.date
             },
@@ -77,7 +78,7 @@ class Tasks extends React.Component {
         )
     }
     renderEditForm = (task, index) => {
-        console.log('task ', task, ', index : ', index)
+        //  console.log('task ', task, ', index : ', index)
         return <div style={{ display: 'flex', padding: '0px', paddingTop: '10px', alignItems: 'center', width: '100%' }}>
             <Form style={{ width: '60%', padding: '0px' }}>
                 <FormGroup >
@@ -91,7 +92,7 @@ class Tasks extends React.Component {
                         //     value={customValue}
                         //     onKeyPress={handleOnKeyPress}
                         onChange={(event) => {
-                            console.log(event.target.value)
+                            // console.log(event.target.value)
                             const changedValue = event.target.value
                             this.editOnChange(index, changedValue)
                         }}
@@ -104,14 +105,15 @@ class Tasks extends React.Component {
                 this.saveEditedEvent(task, index)
             }} />
             <img src={cancelIcon} className="cancelIcon" alt="cancelIcon" onClick={() => {
-                this.toggleEditFlag(task, index)
+                this.cancelEditTask(task, index)
             }} />
         </div>
     }
     editOnChange = (taskIndex, changedValue) => {
-        console.log('tasks :', this.state.modifiedTasks)
+        // console.log('old task : ', this.state.modifiedTasks[taskIndex].task)
         this.setState({
             ...this.state,
+            tempTask: this.state.modifiedTasks[taskIndex].task,
             modifiedTasks: this.state.modifiedTasks.filter((task, index) => {
                 if (index == taskIndex) {
                     task.task = changedValue
@@ -119,8 +121,29 @@ class Tasks extends React.Component {
                 return task
             })
         })
+        // console.log('tasks :', this.state.modifiedTasks)
+        // console.log('old task :', this.state.tempTask)
+    }
+    cancelEditTask = (task, taskIndex) => {
+        const { date } = this.props
+        const existingDates = JSON.parse(localStorage.getItem('dates'))
+        // console.log('old event : ', existingDates[date - 1].tasks[taskIndex].task)
+        // console.log('index : ', taskIndex)
+        // console.log('BEFORE cancel button clicked: ', this.state.modifiedTasks)
+        
+        this.setState({
+            ...this.state,
+            modifiedTasks: existingDates[date-1].tasks.map((task, index) => {
+                if (index == taskIndex) {
+                    task.editFlag = false
+                }
+                return task
+            })
+        })
+        //console.log('after cancel button clicked: ', this.state.modifiedTasks)
     }
     toggleEditFlag = (task, taskIndex) => {
+
         this.setState({
             ...this.state,
             modifiedTasks: this.state.modifiedTasks.filter((task, index) => {
@@ -131,7 +154,6 @@ class Tasks extends React.Component {
             })
         })
     }
-
     renderTask = (task, index) => {
         return <React.Fragment>
             <p style={{ ...styles.individualTask, backgroundColor: task.colorCode, color: task.textColor }}>{`${index + 1}. ${task.task}`}</p>
