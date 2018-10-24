@@ -27,7 +27,7 @@ class Tasks extends React.Component {
     }
     render() {
         const { tasks, colors } = this.props
-        console.log('tasks : ',this.props.tasks)
+        console.log('tasks : ', this.props.tasks)
         console.log('date in render : ', this.props.date)
         const { addTaskFlag, selectedColor, newTask, modifiedTasks } = this.state
         return (
@@ -87,6 +87,14 @@ class Tasks extends React.Component {
             taskIndex: selectdTask[0],
             task: selectdTask[1].task
         }
+        const test = this.state.modifiedTasks.filter((task, index) => {
+            if (index != eventTobeDeleted.taskIndex)
+                return task
+        })
+        this.setState({
+            ...this.state,
+            modifiedTasks: test
+        })
         this.props.deleteEvent(eventTobeDeleted)
     }
     handleOnChange = (event) => {
@@ -106,7 +114,7 @@ class Tasks extends React.Component {
         }
     }
     handleAddButton = () => {
-      //  console.log('modified tasks : ',this.state.modifiedTasks)
+        //  console.log('modified tasks : ',this.state.modifiedTasks)
         let { newTask, currentTasks, selectedColor } = this.state
         if (newTask.task) {
             let newTaskArray = currentTasks.map(task => task)
@@ -118,9 +126,9 @@ class Tasks extends React.Component {
                     ...selectedColor
                 },
             }
-            const test=this.state.modifiedTasks.map(task=>task)
+            const test = this.state.modifiedTasks.map(task => task)
             test.push(formattedNewTask.task)
-           // console.log('test : ',test)
+            // console.log('test : ',test)
             this.setState({
                 ...this.state,
                 currentTasks: newTaskArray,
@@ -128,9 +136,9 @@ class Tasks extends React.Component {
                     ...newTask,
                     task: ""
                 },
-                 modifiedTasks: test
+                modifiedTasks: test
             })
-           // console.log('after ',this.state.modifiedTasks)
+            // console.log('after ',this.state.modifiedTasks)
             this.props.addEvent(formattedNewTask)
         }
         else {
