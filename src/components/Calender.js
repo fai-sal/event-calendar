@@ -1,5 +1,5 @@
 import React from 'react';
-import SingleDate from './SingleDate'
+import IndividualDate from './IndividualDate'
 import '../styles/calender.css'
 import { Container, Row } from 'reactstrap';
 class Calender extends React.Component {
@@ -15,12 +15,9 @@ class Calender extends React.Component {
             <Container fluid className="calenderContainer" >
                 <Row className="dateRow">
                     <div className="allDates">
-                        {dates.map((date, index) => {
+                        {dates.map(date => {
                             return <div className="date" >
-                                <SingleDate
-                                    dayTitle={date.index}
-                                    key={index}
-                                />
+                                <IndividualDate dateIndex={date.index} />
                             </div>
                         })}
                     </div>

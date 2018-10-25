@@ -1,0 +1,40 @@
+import React from 'react'
+import Tasks from './Tasks'
+import '../styles/individualDate.css'
+import ModalComponent from './ModalComponent';
+class SingleDate extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            openModal: false,
+        }
+    }
+    render() {
+        const { dateIndex } = this.props
+        const date = JSON.parse(localStorage.getItem('dates')).find(date => date.index === dateIndex)
+        const { openModal } = this.state
+        return (
+            <React.Fragment>
+                <div className="individualDate" onClick={this.toggleOpenModal}>
+                    <div className="dateIndex">
+                        <h5 >{dateIndex}</h5>
+                    </div>
+                    {date.tasks.map(task => <Tasks task={task} />)}
+                </div>
+                <ModalComponent
+                    open={openModal}
+                    tasks={date.tasks}
+                    date={dateIndex}
+                    closeModal={this.toggleOpenModal}
+                />
+            </React.Fragment>
+        )
+    }
+    toggleOpenModal = () => {
+        this.setState({
+            openModal: !this.state.openModal
+        })
+    }
+}
+
+export default SingleDate;

@@ -92,19 +92,7 @@ class ModalContent extends React.Component {
             this.saveEditedEvent(task, taskIndex);
         }
     }
-    cancelEditTask = (taskIndex) => {
-        const { date } = this.props
-        const existingDates = JSON.parse(localStorage.getItem('dates'))
-        this.setState({
-            ...this.state,
-            modifiedTasks: existingDates[date - 1].tasks.map((task, index) => {
-                if (index === taskIndex) {
-                    task.editFlag = false
-                }
-                return task
-            })
-        })
-    }
+
     toggleEditFlag = (task, taskIndex) => {
         this.setState({
             ...this.state,
@@ -147,6 +135,21 @@ class ModalContent extends React.Component {
             })
         })
         this.props.editEvent(eventTobeEdited)
+    }
+    cancelEditTask = (taskIndex) => {
+        const { date } = this.props
+        const existingDates = JSON.parse(localStorage.getItem('dates'))
+        const previousTask = existingDates[date - 1].tasks.filter((task, index) => index === taskIndex)[0].task
+        this.setState({
+            ...this.state,
+            modifiedTasks: this.state.modifiedTasks.filter((task, index) => {
+                if (index === taskIndex) {
+                    task.editFlag = !task.editFlag
+                    task.task = previousTask
+                }
+                return task
+            })
+        })
     }
     handleOnChange = (event) => {
         this.setState({
