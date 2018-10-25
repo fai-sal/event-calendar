@@ -32,3 +32,8 @@
         align-items: center;
         min-height: 45px;
     }
+    @media only screen and  (max-width: 600px) {
+        .weekdayName{
+         font-size: 90%
+        }
+    }

@@ -1,5 +1,5 @@
 const addEvent = (task) => {
-    return (dispatch, getState) => {
+    return dispatch => {
         let newDates = JSON.parse(localStorage.getItem('dates')).map(date => {
             if (date.index === task.id) {
                 date.tasks.push(task.task)
@@ -15,7 +15,7 @@ const addEvent = (task) => {
 }
 
 const deleteEvent = (event) => {
-    return (dispatch, getState) => {
+    return dispatch => {
         const existingDates = JSON.parse(localStorage.getItem('dates'))
         let modifiedDates = existingDates.map(date => {
             if (date.index === event.date) {
@@ -32,7 +32,7 @@ const deleteEvent = (event) => {
 }
 
 const editEvent = (event) => {
-    return (dispatch, getState) => {
+    return dispatch => {
         const existingDates = JSON.parse(localStorage.getItem('dates'))
 
         let modifiedDates = existingDates.map(date => {
