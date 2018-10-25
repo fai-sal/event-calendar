@@ -59,7 +59,7 @@ class ModalContent extends React.Component {
                         })
                     }
                 </div>
-                
+
                 <AddTask
                     colors={colors}
                     selectedColor={selectedColor}
@@ -79,7 +79,7 @@ class ModalContent extends React.Component {
         this.setState({
             ...this.state,
             modifiedTasks: this.state.modifiedTasks.filter((task, index) => {
-                if (index == taskIndex) {
+                if (index === taskIndex) {
                     task.task = changedValue
                 }
                 return task
@@ -98,7 +98,7 @@ class ModalContent extends React.Component {
         this.setState({
             ...this.state,
             modifiedTasks: existingDates[date - 1].tasks.map((task, index) => {
-                if (index == taskIndex) {
+                if (index === taskIndex) {
                     task.editFlag = false
                 }
                 return task
@@ -109,7 +109,7 @@ class ModalContent extends React.Component {
         this.setState({
             ...this.state,
             modifiedTasks: this.state.modifiedTasks.filter((task, index) => {
-                if (index == taskIndex) {
+                if (index === taskIndex) {
                     task.editFlag = !task.editFlag
                 }
                 return task
@@ -126,10 +126,7 @@ class ModalContent extends React.Component {
         }
         this.setState({
             ...this.state,
-            modifiedTasks: this.state.modifiedTasks.filter((task, index) => {
-                if (index != eventTobeDeleted.taskIndex)
-                    return task
-            })
+            modifiedTasks: this.state.modifiedTasks.filter((task, index) => index !== eventTobeDeleted.taskIndex)
         })
         this.props.deleteEvent(eventTobeDeleted)
     }
@@ -143,7 +140,7 @@ class ModalContent extends React.Component {
         this.setState({
             ...this.state,
             modifiedTasks: this.state.modifiedTasks.filter((task, index) => {
-                if (index == taskIndex) {
+                if (index === taskIndex) {
                     task.editFlag = !task.editFlag
                 }
                 return task
