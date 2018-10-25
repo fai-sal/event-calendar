@@ -16,7 +16,12 @@ class Calender extends React.Component {
                 <Row className="dateRow">
                     <div className="allDates">
                         {dates.map((date, index) => {
-                            return (<div className="date" > <SingleDate dayTitle={date.index} key={index} /></div>)
+                            return <div className="date" >
+                                <SingleDate
+                                    dayTitle={date.index}
+                                    key={index}
+                                />
+                            </div>
                         })}
                     </div>
                 </Row>

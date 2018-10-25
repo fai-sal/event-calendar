@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import WeeklyDayHeader from '../components/WeekDayHeader'
+import WeeklyDaysName from '../components/WeeklyDaysName'
 import PageHeader from '../components/PageHeader'
 import Calender from '../components/Calender'
 class Home extends React.Component {
@@ -10,7 +10,7 @@ class Home extends React.Component {
         return (
             <React.Fragment>
                 <PageHeader />
-                <WeeklyDayHeader />
+                <WeeklyDaysName />
                 <Calender />
             </React.Fragment>
         )

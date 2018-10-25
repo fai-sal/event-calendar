@@ -2,17 +2,13 @@
     padding: 0px;
     margin: 0px
 }
-    .day{
+    .singleday{
         flex-grow:1;
-        flex-basis: 14.20%;
+        min-width: 14.20%;
+        max-width: 14.20%;
         margin: 0px;
     }
-    .dayTitle{
-        display: flex;
-        flex-wrap: wrap;
-        width:100%;
-    }
-    .dayTitleContainer{
+    .dayNameContainer{
         border-top: 1px solid #d9d9d9;
         border-bottom: 1px solid #d9d9d9;
         padding: 0px;
@@ -20,12 +16,14 @@
         align-items: center;
         display: flex
     }
-    .dayTitleRow{
+    .dayNameRow{
         margin-left: 0px !important;
         padding-left: 0px !important;
-        width: 100vw;
+        display: flex;
+        flex-wrap: wrap;
+        width:100%;
     }
-    .weekdayTitle{
+    .weekdayName{
         padding: 0px;
         padding-left: 6%;
         margin: 0px;
