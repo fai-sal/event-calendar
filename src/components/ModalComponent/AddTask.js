@@ -56,12 +56,12 @@ class AddTask extends React.Component {
                     </div>
                     <div className="row" style={{ ...styles.rowStyle, marginTop: '2%' }}>
                         <div className="col-sm-12 col-md-3 col-lg-1 col-xl-1" style={{ ...styles.buttonContainer, padding: '0px' }}>
-                            <GenericButton customStyle={styles.buttonStyle} onClick={handleAddButton} >
+                            <GenericButton handleOnClick={handleAddButton} >
                                 Add
                             </GenericButton>
                         </div>
                         <div className="col-sm-12 col-md-3 col-lg-2 col-xl-2 offset-md-1 offset-lg-2 offset-xl-1" style={{ ...styles.buttonContainer, padding: '0px' }}>
-                            <GenericButton customStyle={styles.buttonStyle} onClick={handleCancelButton}>
+                            <GenericButton handleOnClick={handleCancelButton}>
                                 Cancel
                             </GenericButton>
 
@@ -90,16 +90,6 @@ class AddTask extends React.Component {
 export default AddTask
 
 const styles = {
-    buttonStyle: {
-        backgroundColor: '#d9d9d9',
-        paddingLeft: '20px',
-        paddingRight: '20px',
-        paddingTop: '5px',
-        paddingBottom: '5px',
-        borderRadius: '35px',
-        fontSize: '100%',
-        borderWidth: '0px'
-    },
     buttonContainer: {
         marginTop: '15px',
         display: 'flex',

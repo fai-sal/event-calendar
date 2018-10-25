@@ -31,15 +31,6 @@
         width: 100vw;
         margin:10px
     }
-    .taskInCalender{
-        padding: 5px;
-        padding-left: 15px;
-        padding-right: 15px;
-        border-radius: 5px;
-        margin-bottom:5px;
-        word-break: normal;
-        word-wrap: break-word;
-    }
     @media only screen and (max-width: 760px) {
         .taskInCalender{
             padding: 2px;

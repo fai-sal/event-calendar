@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../styles/modal.css'
-const ModalHeader = ({addTaskFlag,toggleAddTaskFlag}) => {
+const ModalHeader = ({ addTaskFlag, toggleAddTaskFlag }) => {
     return <React.Fragment>
         <div className="row modalContentHeader" >
             <div className="col-4">
@@ -8,8 +8,11 @@ const ModalHeader = ({addTaskFlag,toggleAddTaskFlag}) => {
             </div>
             <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6" >
                 {
-                    addTaskFlag ? null : <button className="addTaskButton" onClick={toggleAddTaskFlag} >
-                        Add New Task
+                    addTaskFlag ? null
+                        : <button
+                            className="addTaskButton"
+                            onClick={toggleAddTaskFlag} >
+                            Add New Task
                         </button>
                 }
             </div>

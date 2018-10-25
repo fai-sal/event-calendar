@@ -170,6 +170,7 @@ class ModalContent extends React.Component {
 
     handleAddButton = () => {
         let { newTask, currentTasks, selectedColor } = this.state
+       // console.log('clicked')
         if (newTask.task) {
             let newTaskArray = currentTasks.map(task => task)
             newTaskArray.push(newTask)

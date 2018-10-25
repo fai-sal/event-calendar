@@ -21,11 +21,7 @@ class Home extends React.Component {
         const { colors, calenderBackgroundColor, dates } = this.props
         if (!localStorage.getItem('colors')) {
             localStorage.setItem('colors', JSON.stringify(colors))
-        }
-        if (!localStorage.getItem('calenderBackgroundColor')) {
             localStorage.setItem('calenderBackgroundColor', calenderBackgroundColor)
-        }
-        if (!localStorage.getItem('dates')) {
             localStorage.setItem('dates', JSON.stringify(dates))
         }
     }

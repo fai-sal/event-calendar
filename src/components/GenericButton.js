@@ -1,9 +1,9 @@
 import React from 'react';
 import '../styles/genericButton.css'
-export default ({ children, customStyle, isDisabled, ...restProps }) => {
+export default ({ children, handleOnClick }) => {
     return <button
         className="genericButton"
-        onClick={restProps.actionHandler}
+        onClick={handleOnClick}
     >
         {children}
     </button>

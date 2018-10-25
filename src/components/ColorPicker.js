@@ -1,5 +1,5 @@
 import React from 'react'
-import ColorButton from './ColorPickerButton'
+import ColorPickerButton from './ColorPickerButton'
 import { Col } from 'reactstrap'
 import '../styles/colorPickerButtons.css'
 class ColorPicker extends React.Component {
@@ -14,7 +14,12 @@ class ColorPicker extends React.Component {
                     const text = currentColor[keys[0]]
                     const colorCode = currentColor[keys[1]]
                     const textColor = currentColor[keys[2]]
-                    return (<ColorButton colorCode={colorCode} colorId={text} textColor={textColor} handleOnClick={this.handleOnClick} />)
+                    return (<ColorPickerButton
+                        colorCode={colorCode}
+                        colorId={text}
+                        textColor={textColor}
+                        handleOnClick={this.handleOnClick}
+                    />)
                 })}
             </Col>
         )
