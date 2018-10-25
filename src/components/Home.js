@@ -6,12 +6,13 @@ import Calender from '../components/Calender'
 class Home extends React.Component {
 
     render() {
+        const { colors, dates } = this.props
         this.checkLocalStorage()
         return (
             <React.Fragment>
-                <PageHeader />
+                <PageHeader colors={colors} />
                 <WeeklyDaysName />
-                <Calender />
+                <Calender dates={dates} />
             </React.Fragment>
         )
     }
@@ -19,11 +20,16 @@ class Home extends React.Component {
     // if not available then store data
     checkLocalStorage = () => {
         const { colors, calenderBackgroundColor, dates } = this.props
-        if (!localStorage.getItem('colors')) {
+
+        if (!localStorage.getItem('colors'))
             localStorage.setItem('colors', JSON.stringify(colors))
+
+        if (!localStorage.getItem('calenderBackgroundColor'))
             localStorage.setItem('calenderBackgroundColor', calenderBackgroundColor)
+
+        if (!localStorage.getItem('dates'))
             localStorage.setItem('dates', JSON.stringify(dates))
-        }
+
     }
 }
 

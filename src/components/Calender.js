@@ -10,7 +10,7 @@ class Calender extends React.Component {
         }
     }
     render() {
-        const dates = JSON.parse(localStorage.getItem('dates'))
+        const { dates } = this.props
         return (
             <Container fluid className="calenderContainer" >
                 <Row className="dateRow">

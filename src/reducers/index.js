@@ -1,38 +1,25 @@
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_EVENT': {
-            let newDates = state.dates.map(date => {
-                if (date.index === action.newtask.id) {
-                    date.tasks.push(action.newtask.task)
-                }
-                return date
-            })
             return {
                 ...state,
-                dates: newDates
+                dates: action.payload
             }
         }
 
-        case 'DELETE_EVENT':
-            {
-                return {
-                    ...state,
-                    dates: action.payload
-                }
-            }
-
-        case 'EDIT_EVENT':
-            let editedDates = state.dates.map(date => {
-                if (date.index === action.index) {
-                    date.name = action.newPayload.name
-                }
-                return date
-            })
+        case 'DELETE_EVENT': {
             return {
                 ...state,
-                dates: editedDates
+                dates: action.payload
             }
+        }
 
+        case 'EDIT_EVENT': {
+            return {
+                ...state,
+                dates: action.payload
+            }
+        }
         default:
             return state
 
@@ -49,7 +36,7 @@ const initialState = {
     ],
     calenderBackgroundColor: '#e5d1d2',
     dates: [
-        { index: '1', tasks: [{ task: "Hello there", colorCode: "#F4A03E", colorId: 6, textColor: "#ffffff" }, { task: "Hello there", colorCode: "#F4A03E", colorId: 6, textColor: "#ffffff" }] },
+        { index: '1', tasks: [{ task: "Hello there", colorCode: "#F4A03E", colorId: 6, textColor: "#ffffff" }] },
         { index: '2', tasks: [] },
         { index: '3', tasks: [] },
         { index: '4', tasks: [] },
@@ -62,7 +49,7 @@ const initialState = {
         { index: '11', tasks: [] },
         { index: '12', tasks: [] },
         { index: '13', tasks: [] },
-        { index: '14', tasks: [{ task: "Hello there", colorCode: "#F4A03E", colorId: 6, textColor: "#ffffff" }] },
+        { index: '14', tasks: [] },
         { index: '15', tasks: [] },
         { index: '16', tasks: [] },
         { index: '17', tasks: [] },

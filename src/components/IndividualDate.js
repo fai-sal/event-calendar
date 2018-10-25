@@ -1,8 +1,9 @@
 import React from 'react'
 import Tasks from './Tasks'
+import { connect } from 'react-redux'
 import '../styles/individualDate.css'
 import ModalComponent from './ModalComponent';
-class SingleDate extends React.Component {
+class IndividualDate extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -10,8 +11,8 @@ class SingleDate extends React.Component {
         }
     }
     render() {
-        const { dateIndex } = this.props
-        const date = JSON.parse(localStorage.getItem('dates')).find(date => date.index === dateIndex)
+        const { dateIndex, dates } = this.props
+        const date = dates.find(date => date.index === dateIndex)
         const { openModal } = this.state
         return (
             <React.Fragment>
@@ -37,4 +38,11 @@ class SingleDate extends React.Component {
     }
 }
 
-export default SingleDate;
+const mapStateToProps = (store) => {
+    const { dates } = store
+    return {
+        dates: dates
+    }
+}
+
+export default connect(mapStateToProps, null)(IndividualDate);

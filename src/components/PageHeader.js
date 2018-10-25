@@ -3,12 +3,12 @@ import '../styles/pageHeader.css'
 import MonthTitle from './MonthTitle'
 import ColorPicker from './ColorPicker'
 import { Container, Row } from 'reactstrap'
-const PageHeader = () => {
+const PageHeader = ({ colors } ) => {
     return (
         <Container fluid className="headerContainer" >
             <Row className="header">
                 <MonthTitle />
-                <ColorPicker />
+                <ColorPicker colors={colors} />
             </Row>
         </Container>
     )

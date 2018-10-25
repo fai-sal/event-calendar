@@ -170,7 +170,6 @@ class ModalContent extends React.Component {
 
     handleAddButton = () => {
         let { newTask, currentTasks, selectedColor } = this.state
-       // console.log('clicked')
         if (newTask.task) {
             let newTaskArray = currentTasks.map(task => task)
             newTaskArray.push(newTask)
@@ -214,9 +213,10 @@ class ModalContent extends React.Component {
     }
 }
 const mapStateToProps = (state, ownProps) => {
-    const { colors } = state
+    const { colors, dates } = state
     return {
-        colors: colors
+        colors: colors,
+        dates: dates
     }
 }
 const mapDispatchToProps = (dispatch) => {

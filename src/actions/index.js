@@ -9,7 +9,7 @@ const addEvent = (task) => {
         localStorage.setItem('dates', JSON.stringify(newDates))
         dispatch({
             type: 'ADD_EVENT',
-            newtask: task
+            payload: newDates
         })
     }
 }
