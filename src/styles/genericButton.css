@@ -2,3 +2,14 @@
     opacity: 0.6;
     cursor: not-allowed;
 }
+.genericButton{
+    background-color: #d9d9d9;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 35px;
+    font-size: 100%;
+    border-width: 0px;
+    outline: 0px;
+}
