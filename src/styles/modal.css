@@ -9,6 +9,11 @@
    flex-direction: column;
    justify-content: space-between;
 }
+#responsive-dialog-title{
+    padding-right: 0px;
+    padding-top: 0px; 
+    padding-bottom: 0px;
+}
 .modalContentHeader{
     padding-top: 10px;
     padding-bottom: 10px;
@@ -110,4 +115,12 @@
     padding: 0px;
     margin-bottom: 7px;
     margin-left: 25px;
+}
+.closeButton{
+    display: flex;
+    justify-content: flex-end; 
+}
+.closeButtonRow{
+    padding: 0px;
+    margin-right: 0px;
 }

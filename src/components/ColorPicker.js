@@ -17,11 +17,10 @@ class ColorPicker extends React.Component {
                     return (<ColorButton colorCode={colorCode} colorId={text} textColor={textColor} handleOnClick={this.handleOnClick} />)
                 })}
             </Col>
-
         )
     }
     handleOnClick = (...customArguments) => {
-        console.log("color button clicked, I don't know what to do with it")
+        alert("I don't know what to do with this onClick function")
     }
 }
 
