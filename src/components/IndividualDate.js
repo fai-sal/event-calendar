@@ -15,7 +15,7 @@ class SingleDate extends React.Component {
         const { openModal } = this.state
         return (
             <React.Fragment>
-                <div className="individualDate" onClick={this.toggleModalStatus}>
+                <div className="individualDate" onClick={this.toggleModalStatus} >
                     <div className="dateIndex">
                         <h5 >{dateIndex}</h5>
                     </div>

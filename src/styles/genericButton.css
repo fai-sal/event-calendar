@@ -13,3 +13,7 @@
     border-width: 0px;
     outline: 0px;
 }
+
+.genericButton:focus{
+    outline: 0px;
+}

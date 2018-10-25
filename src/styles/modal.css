@@ -119,8 +119,9 @@
 .closeButton{
     display: flex;
     justify-content: flex-end; 
+    padding: 0px !important;
 }
 .closeButtonRow{
-    padding: 0px;
+    padding-right: 0px !important;
     margin-right: 0px;
 }
