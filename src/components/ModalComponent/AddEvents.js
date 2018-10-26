@@ -23,12 +23,12 @@ class AddEvents extends React.Component {
                         <div className="col-sm-10 col-md-8 col-lg-8 col-xl-8" style={{ padding: '0px' }}>
                             <Form>
                                 <FormGroup >
-                                    <Label for="newTask">Add new task</Label>
+                                    <Label for="newTask">Add new event</Label>
                                     <Input
                                         type="text"
                                         name="newTask"
                                         id="newTask"
-                                        placeholder="New Task"
+                                        placeholder="New Event"
                                         value={customValue}
                                         onChange={handleOnChange}
                                         onKeyPress={handleOnKeyPress}

@@ -10,14 +10,14 @@ class ModalContent extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            addTaskFlag: false,
-            newTask: {
+            addEventFlag: false,
+            newEvent: {
                 id: this.props.date
             },
-            currentTasks: this.props.tasks,
-            modifiedTasks: this.props.tasks.map(task => {
-                task.editFlag = false
-                return task
+            currentEvents: this.props.events,
+            modifiedEvents: this.props.events.map(event => {
+                event.editFlag = false
+                return event
             }),
             selectedColor: {
                 colorCode: "#ffffff",
@@ -28,28 +28,29 @@ class ModalContent extends React.Component {
     }
     render() {
         const { colors } = this.props
-        const { addTaskFlag, selectedColor, newTask, modifiedTasks } = this.state
+        const { addEventFlag, selectedColor, newEvent, modifiedEvents } = this.state
+        console.log('events :', modifiedEvents)
         return (
             <React.Fragment>
-                <ModalHeader addTaskFlag={addTaskFlag} toggleAddTaskFlag={this.toggleAddTaskFlag} />
+                <ModalHeader addEventFlag={addEventFlag} toggleaddEventFlag={this.toggleaddEventFlag} />
                 <div className="row" >
                     {
-                        modifiedTasks.map((task, index) => {
+                        modifiedEvents.map((event, index) => {
                             return <div className="col-12 individualTask" >
                                 {
-                                    task.editFlag ?
+                                    event.editFlag ?
                                         <EditForm
-                                            event={task}
+                                            event={event}
                                             eventIndex={index}
-                                            value={this.state.modifiedTasks[index].task}
+                                            value={this.state.modifiedEvents[index].event}
                                             editOnKeyPress={this.editOnKeyPress}
                                             editOnChange={this.editOnChange}
                                             saveEditedEvent={this.saveEditedEvent}
-                                            cancelEditTask={this.cancelEditTask}
+                                            cancelEditedEvent={this.cancelEditEvent}
                                         />
                                         :
                                         <Events
-                                            event={task}
+                                            event={event}
                                             eventIndex={index}
                                             toggleEditFlag={this.toggleEditFlag}
                                             deleteEvent={this.deleteEvent}
@@ -63,11 +64,11 @@ class ModalContent extends React.Component {
                 <AddEvents
                     colors={colors}
                     selectedColor={selectedColor}
-                    flag={addTaskFlag}
-                    customValue={newTask.task}
+                    flag={addEventFlag}
+                    customValue={newEvent.event}
                     handleAddButton={this.handleAddButton}
                     handleOnChange={this.handleOnChange}
-                    handleCancelButton={this.toggleAddTaskFlag}
+                    handleCancelButton={this.toggleaddEventFlag}
                     handleOnKeyPress={this.handleOnKeyPress}
                     handleColorButtonOnClick={this.handleColorButtonOnClick}
                 />
@@ -75,88 +76,88 @@ class ModalContent extends React.Component {
         )
     }
 
-    editOnChange = (taskIndex, changedValue) => {
+    editOnChange = (eventIndex, changedValue) => {
         this.setState({
             ...this.state,
-            modifiedTasks: this.state.modifiedTasks.filter((task, index) => {
-                if (index === taskIndex) {
-                    task.task = changedValue
+            modifiedEvents: this.state.modifiedEvents.filter((event, index) => {
+                if (index === eventIndex) {
+                    event.event = changedValue
                 }
-                return task
+                return event
             })
         })
     }
-    editOnKeyPress = (event, task, taskIndex) => {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            this.saveEditedEvent(task, taskIndex);
+    editOnKeyPress = (keyboardevent, event, eventIndex) => {
+        if (keyboardevent.key === 'Enter') {
+            keyboardevent.preventDefault();
+            this.saveEditedEvent(event, eventIndex);
         }
     }
 
-    toggleEditFlag = (task, taskIndex) => {
+    toggleEditFlag = (event, eventIndex) => {
         this.setState({
             ...this.state,
-            modifiedTasks: this.state.modifiedTasks.filter((task, index) => {
-                if (index === taskIndex) {
-                    task.editFlag = !task.editFlag
+            modifiedEvents: this.state.modifiedEvents.filter((event, index) => {
+                if (index === eventIndex) {
+                    event.editFlag = !event.editFlag
                 }
-                return task
+                return event
             })
         })
     }
 
-    deleteEvent = (...selectdTask) => {
+    deleteEvent = (...selectdEvent) => {
         const { date } = this.props
         const eventTobeDeleted = {
             date: date,
-            taskIndex: selectdTask[0],
-            task: selectdTask[1].task
+            eventIndex: selectdEvent[0],
+            event: selectdEvent[1].event
         }
         this.setState({
             ...this.state,
-            modifiedTasks: this.state.modifiedTasks.filter((task, index) => index !== eventTobeDeleted.taskIndex)
+            modifiedEvents: this.state.modifiedEvents.filter((event, index) => index !== eventTobeDeleted.eventIndex)
         })
         this.props.deleteEvent(eventTobeDeleted)
     }
-    saveEditedEvent = (task, taskIndex) => {
+    saveEditedEvent = (event, eventIndex) => {
         const { date } = this.props
         const eventTobeEdited = {
             date: date,
-            taskIndex: taskIndex,
-            task: task
+            eventIndex: eventIndex,
+            event: event
         }
         this.setState({
             ...this.state,
-            modifiedTasks: this.state.modifiedTasks.filter((task, index) => {
-                if (index === taskIndex) {
-                    task.editFlag = !task.editFlag
+            modifiedEvents: this.state.modifiedEvents.filter((event, index) => {
+                if (index === eventIndex) {
+                    event.editFlag = !event.editFlag
                 }
-                return task
+                return event
             })
         })
         this.props.editEvent(eventTobeEdited)
     }
-    cancelEditTask = (taskIndex) => {
+    cancelEditEvent = (eventIndex) => {
         const { date } = this.props
         const existingDates = JSON.parse(localStorage.getItem('dates'))
-        const previousTask = existingDates[date - 1].tasks.filter((task, index) => index === taskIndex)[0].task
+        const previousEvent = existingDates[date - 1].events.filter((event, index) => index === eventIndex)[0].event
         this.setState({
             ...this.state,
-            modifiedTasks: this.state.modifiedTasks.filter((task, index) => {
-                if (index === taskIndex) {
-                    task.editFlag = !task.editFlag
-                    task.task = previousTask
+            modifiedEvents: this.state.modifiedEvents.filter((event, index) => {
+                if (index === eventIndex) {
+                    event.editFlag = !event.editFlag
+                    event.event = previousEvent
                 }
-                return task
+                return event
             })
         })
     }
     handleOnChange = (event) => {
         this.setState({
             ...this.state,
-            newTask: {
-                ...this.state.newTask,
-                task: event.target.value
+            newEvent: {
+                ...this.state.newEvent,
+                event: event.target.value
             }
         })
 
@@ -169,32 +170,32 @@ class ModalContent extends React.Component {
     }
 
     handleAddButton = () => {
-        let { newTask, currentTasks, selectedColor } = this.state
-        if (newTask.task) {
-            let newTaskArray = currentTasks.map(task => task)
-            newTaskArray.push(newTask)
-            const formattedNewTask = {
-                id: newTask.id,
-                task: {
-                    task: newTask.task,
+        let { newEvent, currentEvents, selectedColor } = this.state
+        if (newEvent.event) {
+            let newEventArray = currentEvents.map(event => event)
+            newEventArray.push(newEvent)
+            const formattednewEvent = {
+                id: newEvent.id,
+                event: {
+                    event: newEvent.event,
                     ...selectedColor
                 },
             }
-            const test = this.state.modifiedTasks.map(task => task)
-            test.push(formattedNewTask.task)
+            const test = this.state.modifiedEvents.map(event => event)
+            test.push(formattednewEvent.event)
             this.setState({
                 ...this.state,
-                currentTasks: newTaskArray,
-                newTask: {
-                    ...newTask,
-                    task: ""
+                currentEvents: newEventArray,
+                newEvent: {
+                    ...newEvent,
+                    event: ""
                 },
-                modifiedTasks: test
+                modifiedEvents: test
             })
-            this.props.addEvent(formattedNewTask)
+            this.props.addEvent(formattednewEvent)
         }
         else {
-            alert("New task can't be empty")
+            alert("New event can't be empty")
         }
     }
     handleColorButtonOnClick = (...customProps) => {
@@ -206,9 +207,9 @@ class ModalContent extends React.Component {
             }
         })
     }
-    toggleAddTaskFlag = () => {
+    toggleaddEventFlag = () => {
         this.setState({
-            addTaskFlag: !this.state.addTaskFlag
+            addEventFlag: !this.state.addEventFlag
         })
     }
 }
@@ -223,7 +224,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         deleteEvent: (event) => { dispatch(deleteEvent(event)) },
         editEvent: (eventTobeEdited) => { dispatch(editEvent(eventTobeEdited)) },
-        addEvent: (task) => { dispatch(addEvent(task)) }
+        addEvent: (event) => { dispatch(addEvent(event)) }
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ModalContent);

@@ -4,7 +4,7 @@ import editIcon from '../../assets/editPen.png'
 import '../../styles/modal.css'
 export default ({ event, eventIndex, toggleEditFlag, deleteEvent }) => {
     return <React.Fragment>
-        <p style={{ ...individualTask, backgroundColor: event.colorCode, color: event.textColor }}>{`${eventIndex + 1}. ${event.task}`}</p>
+        <p style={{ ...individualEvent, backgroundColor: event.colorCode, color: event.textColor }}>{`${eventIndex + 1}. ${event.event}`}</p>
         <img src={editIcon} className="icons" alt="editIcon" onClick={() => {
             toggleEditFlag(event, eventIndex)
         }} />
@@ -13,7 +13,7 @@ export default ({ event, eventIndex, toggleEditFlag, deleteEvent }) => {
         }} />
     </React.Fragment>
 }
-const individualTask={
+const individualEvent={
     padding: '5px',
     paddingLeft: '15px',
     paddingRight: '15px',

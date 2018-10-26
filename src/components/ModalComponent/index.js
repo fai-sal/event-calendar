@@ -19,7 +19,7 @@ class TaskModal extends React.Component {
         })
     }
     render() {
-        const { open, closeModal, date, tasks } = this.props
+        const { open, closeModal, date, events } = this.props
         return (
             <   Dialog
                 fullScreen={false}
@@ -47,7 +47,7 @@ class TaskModal extends React.Component {
 
                 <DialogContent className="modalContent">
                     <DialogContentText>
-                        <ModalContent tasks={tasks} date={date} />
+                        <ModalContent events={events} date={date} />
                     </DialogContentText>
                 </DialogContent>
             </Dialog >

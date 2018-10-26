@@ -21,12 +21,12 @@ class IndividualDate extends React.Component {
                     <div className="dateIndex">
                         <h5 >{dateIndex}</h5>
                     </div>
-                    {date.tasks.map(task => <Events event={task} />)}
+                    {date.events.map(event => <Events event={event} />)}
                 </div>
                 {/* modal component has been used to add new event, edit event , delete event */}
                 <ModalComponent
                     open={openModal}
-                    tasks={date.tasks}
+                    events={date.events}
                     date={dateIndex}
                     closeModal={this.toggleModalStatus}
                 />

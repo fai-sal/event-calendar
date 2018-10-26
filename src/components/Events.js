@@ -7,7 +7,7 @@ export default ({ event }) => {
                 backgroundColor: event.colorCode,
                 color: event.textColor
             }}>
-            {event.task}
+            {event.event}
         </p>
     )
 }
