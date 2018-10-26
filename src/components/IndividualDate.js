@@ -1,6 +1,5 @@
 import React from 'react'
 import Tasks from './Tasks'
-import { connect } from 'react-redux'
 import '../styles/individualDate.css'
 import ModalComponent from './ModalComponent';
 class IndividualDate extends React.Component {
@@ -38,11 +37,5 @@ class IndividualDate extends React.Component {
     }
 }
 
-const mapStateToProps = (store) => {
-    const { dates } = store
-    return {
-        dates: dates
-    }
-}
 
-export default connect(mapStateToProps, null)(IndividualDate);
+export default IndividualDate;

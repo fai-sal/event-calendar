@@ -36,7 +36,7 @@ const initialState = {
     ],
     calenderBackgroundColor: '#e5d1d2',
     dates: [
-        { index: '1', tasks: [{ task: "Hello there", colorCode: "#F4A03E", colorId: 6, textColor: "#ffffff" }] },
+        { index: '1', tasks: [{ task: "Dummy event 1", colorCode: "#F4A03E", colorId: 6, textColor: "#ffffff" }] },
         { index: '2', tasks: [] },
         { index: '3', tasks: [] },
         { index: '4', tasks: [] },
@@ -45,7 +45,7 @@ const initialState = {
         { index: '7', tasks: [] },
         { index: '8', tasks: [] },
         { index: '9', tasks: [] },
-        { index: '10', tasks: [] },
+        { index: '10', tasks: [{ task: "Dummy event 1", colorCode: "#638FC6", colorId: 6, textColor: "#ffffff" }] },
         { index: '11', tasks: [] },
         { index: '12', tasks: [] },
         { index: '13', tasks: [] },
@@ -55,16 +55,16 @@ const initialState = {
         { index: '17', tasks: [] },
         { index: '18', tasks: [] },
         { index: '19', tasks: [] },
-        { index: '20', tasks: [] },
+        { index: '20', tasks: [{ task: "Dummy event 1", colorCode: "#F4A03E", colorId: 6, textColor: "#ffffff" }] },
         { index: '21', tasks: [] },
         { index: '22', tasks: [] },
         { index: '23', tasks: [] },
         { index: '24', tasks: [] },
         { index: '25', tasks: [] },
         { index: '26', tasks: [] },
-        { index: '27', tasks: [] },
+        { index: '27', tasks: [{ task: "Dummy event 1", colorCode: "#82BF56", colorId: 6, textColor: "#ffffff" }] },
         { index: '28', tasks: [] },
-        { index: '29', tasks: [] },
+        { index: '29', tasks: [{ task: "Dummy event 1", colorCode: "#82BF56", colorId: 6, textColor: "#ffffff" }] },
         { index: '30', tasks: [] }
     ]
 }

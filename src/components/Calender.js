@@ -17,7 +17,7 @@ class Calender extends React.Component {
                     <div className="allDates">
                         {dates.map(date => {
                             return <div className="date" >
-                                <IndividualDate dateIndex={date.index} />
+                                <IndividualDate dates={dates} dateIndex={date.index} />
                             </div>
                         })}
                     </div>

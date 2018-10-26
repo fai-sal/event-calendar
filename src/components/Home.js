@@ -7,7 +7,6 @@ class Home extends React.Component {
 
     render() {
         const { colors, dates } = this.props
-        this.checkLocalStorage()
         return (
             <React.Fragment>
                 <PageHeader colors={colors} />
@@ -16,29 +15,23 @@ class Home extends React.Component {
             </React.Fragment>
         )
     }
-    //check if data is avialable in localstorage or not,
-    // if not available then store data
-    checkLocalStorage = () => {
-        const { colors, calenderBackgroundColor, dates } = this.props
-
-        if (!localStorage.getItem('colors'))
-            localStorage.setItem('colors', JSON.stringify(colors))
-
-        if (!localStorage.getItem('calenderBackgroundColor'))
-            localStorage.setItem('calenderBackgroundColor', calenderBackgroundColor)
-
-        if (!localStorage.getItem('dates'))
-            localStorage.setItem('dates', JSON.stringify(dates))
-
-    }
 }
 
 const mapStateToProps = (state, ownProps) => {
-    const { dates, colors, calenderBackgroundColor } = state
+    let { dates, colors } = state
+    //check wheather local storage is  holding some events or not 
+    //if not then store current redux store in local storage
+    if (!localStorage.getItem('colors'))
+        localStorage.setItem('colors', JSON.stringify(colors))
+
+    if (!localStorage.getItem('dates'))
+        localStorage.setItem('dates', JSON.stringify(dates))
+    else
+        dates = JSON.parse(localStorage.getItem('dates'))
+
     return {
         dates: dates,
         colors: colors,
-        calenderBackgroundColor: calenderBackgroundColor
     }
 }
 
