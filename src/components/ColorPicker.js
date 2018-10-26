@@ -25,7 +25,7 @@ class ColorPicker extends React.Component {
         )
     }
     handleOnClick = (...customArguments) => {
-        alert("No function assigned to this buttons")
+        alert("no functionality assigned to this button")
     }
 }
 
