@@ -36,7 +36,7 @@ class ModalContent extends React.Component {
                 <div className="row" >
                     {
                         modifiedEvents.map((event, index) => {
-                            return <div className="col-12 individualTask" >
+                            return <div className="col-12 individualEvent" >
                                 {
                                     event.editFlag ?
                                         <EditForm

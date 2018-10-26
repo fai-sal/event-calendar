@@ -2,7 +2,9 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding:5%;
+    padding:3%;
+    width: 100%;
+    height: 100%;
 }
 .dateIndex{
     width: 100%;

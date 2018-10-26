@@ -1,5 +1,4 @@
-//in this project tasks and events are considered as same.
-// and they have been used as alternative words
+
 import React from 'react'
 import Events from './Events'
 import '../styles/individualDate.css'
@@ -17,7 +16,7 @@ class IndividualDate extends React.Component {
         const { openModal } = this.state
         return (
             <React.Fragment>
-                <div className="individualDate" onClick={this.toggleModalStatus} >
+                <div className="individualDate" onClick={this.toggleModalStatus}>
                     <div className="dateIndex">
                         <h5 >{dateIndex}</h5>
                     </div>

@@ -35,8 +35,6 @@ const initialState = {
         { text: 6, colorCode: '#F4A03E', textColor: '#ffffff' }
     ],
     calenderBackgroundColor: '#e5d1d2',
-    //in this project tasks and events are considered as same.
-    // and they have been used as alternative words
     dates: [
         { index: '1', events: [{ event: "Dummy event 1", colorCode: "#F4A03E", colorId: 6, textColor: "#ffffff" }] },
         { index: '2', events: [] },
@@ -57,14 +55,14 @@ const initialState = {
         { index: '17', events: [] },
         { index: '18', events: [] },
         { index: '19', events: [] },
-        { index: '20', events: [{ event: "Dummy event 3", colorCode: "#F4A03E", colorId: 6, textColor: "#ffffff" }] },
+        { index: '20', events: [{ event: "Dummy event 3", colorCode: "#EA7E95", colorId: 6, textColor: "#ffffff" }] },
         { index: '21', events: [] },
         { index: '22', events: [] },
         { index: '23', events: [] },
         { index: '24', events: [] },
-        { index: '25', events: [] },
+        { index: '25', events: [{ event: "Dummy event 4", colorCode: "#82BF56", colorId: 6, textColor: "#ffffff" }] },
         { index: '26', events: [] },
-        { index: '27', events: [{ event: "Dummy event 4", colorCode: "#82BF56", colorId: 6, textColor: "#ffffff" }] },
+        { index: '27', events: [] },
         { index: '28', events: [] },
         { index: '29', events: [{ event: "Dummy event 5", colorCode: "#82BF56", colorId: 6, textColor: "#ffffff" }] },
         { index: '30', events: [] }

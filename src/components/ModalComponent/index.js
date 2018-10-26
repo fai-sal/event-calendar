@@ -6,7 +6,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
 import ModalContent from './ModalContent';
-class TaskModal extends React.Component {
+class EventModal extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -54,7 +54,7 @@ class TaskModal extends React.Component {
         )
     }
 }
-export default withMobileDialog()(TaskModal);
+export default withMobileDialog()(EventModal);
 const rowsInsideModal={
     padding: '0px', 
     marginRight: '0px'

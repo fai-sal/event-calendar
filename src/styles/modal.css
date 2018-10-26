@@ -57,7 +57,7 @@
 .addTaskButton:active{
     outline: 0px;
 }
-.individualTask{
+.individualEvent{
     display: flex;
     align-items: center;
     width: fit-content;
