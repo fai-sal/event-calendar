@@ -1,6 +1,6 @@
 import React from 'react'
-import Tasks from './Tasks'
-import AddTask from './AddTask'
+import Events from './Events'
+import AddEvents from './AddEvents'
 import '../../styles/modal.css'
 import EditForm from './EditForm'
 import ModalHeader from './ModalHeader'
@@ -39,8 +39,8 @@ class ModalContent extends React.Component {
                                 {
                                     task.editFlag ?
                                         <EditForm
-                                            task={task}
-                                            taskIndex={index}
+                                            event={task}
+                                            eventIndex={index}
                                             value={this.state.modifiedTasks[index].task}
                                             editOnKeyPress={this.editOnKeyPress}
                                             editOnChange={this.editOnChange}
@@ -48,9 +48,9 @@ class ModalContent extends React.Component {
                                             cancelEditTask={this.cancelEditTask}
                                         />
                                         :
-                                        <Tasks
-                                            task={task}
-                                            taskIndex={index}
+                                        <Events
+                                            event={task}
+                                            eventIndex={index}
                                             toggleEditFlag={this.toggleEditFlag}
                                             deleteEvent={this.deleteEvent}
                                         />
@@ -60,7 +60,7 @@ class ModalContent extends React.Component {
                     }
                 </div>
 
-                <AddTask
+                <AddEvents
                     colors={colors}
                     selectedColor={selectedColor}
                     flag={addTaskFlag}

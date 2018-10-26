@@ -2,7 +2,7 @@ import React from 'react'
 import ColorButton from '../ColorPickerButton'
 import GenericButton from '../GenericButton'
 import { Form, FormGroup, Label, Input } from 'reactstrap';
-class AddTask extends React.Component {
+class AddEvents extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -87,7 +87,7 @@ class AddTask extends React.Component {
 
 }
 
-export default AddTask
+export default AddEvents
 
 const styles = {
     buttonContainer: {

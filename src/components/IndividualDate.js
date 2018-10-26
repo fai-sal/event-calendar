@@ -1,5 +1,5 @@
 import React from 'react'
-import Tasks from './Tasks'
+import Events from './Events'
 import '../styles/individualDate.css'
 import ModalComponent from './ModalComponent';
 class IndividualDate extends React.Component {
@@ -19,7 +19,7 @@ class IndividualDate extends React.Component {
                     <div className="dateIndex">
                         <h5 >{dateIndex}</h5>
                     </div>
-                    {date.tasks.map(task => <Tasks task={task} />)}
+                    {date.tasks.map(task => <Events event={task} />)}
                 </div>
                 <ModalComponent
                     open={openModal}
