@@ -23,6 +23,7 @@ class IndividualDate extends React.Component {
                     </div>
                     {date.tasks.map(task => <Events event={task} />)}
                 </div>
+                {/* modal component has been used to add new event, edit event , delete event */}
                 <ModalComponent
                     open={openModal}
                     tasks={date.tasks}
