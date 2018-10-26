@@ -171,7 +171,6 @@ class ModalContent extends React.Component {
 
     handleAddButton = () => {
         let { newEvent, currentEvents, selectedColor } = this.state
-        if (newEvent.event) {
             let newEventArray = currentEvents.map(event => event)
             newEventArray.push(newEvent)
             const formattednewEvent = {
@@ -193,10 +192,6 @@ class ModalContent extends React.Component {
                 modifiedEvents: test
             })
             this.props.addEvent(formattednewEvent)
-        }
-        else {
-            alert("New event can't be empty")
-        }
     }
     handleColorButtonOnClick = (...customProps) => {
         this.setState({

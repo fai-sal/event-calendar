@@ -56,12 +56,12 @@ class AddEvents extends React.Component {
                     </div>
                     <div className="row" style={{ ...styles.rowStyle, marginTop: '2%' }}>
                         <div className="col-sm-12 col-md-3 col-lg-1 col-xl-1" style={{ ...styles.buttonContainer, padding: '0px' }}>
-                            <GenericButton handleOnClick={handleAddButton} >
+                            <GenericButton handleOnClick={handleAddButton} disabledFlag={customValue ? false : true} >
                                 Add
                             </GenericButton>
                         </div>
                         <div className="col-sm-12 col-md-3 col-lg-2 col-xl-2 offset-md-1 offset-lg-2 offset-xl-1" style={{ ...styles.buttonContainer, padding: '0px' }}>
-                            <GenericButton handleOnClick={handleCancelButton}>
+                            <GenericButton handleOnClick={handleCancelButton} disabledFlag={false}>
                                 Cancel
                             </GenericButton>
 
