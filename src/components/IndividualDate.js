@@ -1,3 +1,5 @@
+//in this project tasks and events are considered as same.
+// and they have been used as alternative words
 import React from 'react'
 import Events from './Events'
 import '../styles/individualDate.css'
