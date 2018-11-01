@@ -1,3 +1,4 @@
+
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_EVENT': {
@@ -25,7 +26,16 @@ const rootReducer = (state = initialState, action) => {
 
     }
 }
-
+let date = new Date();
+let monthIndex = date.getMonth()
+let year = date.getFullYear()
+let daysInMonth = new Date(year, monthIndex + 1, 0).getDate()
+let daysofCurrentMonth = []
+let i = 1
+while (i <= daysInMonth) {
+    daysofCurrentMonth.push({ index: i, events: [] })
+    i++
+}
 const initialState = {
     colors: [
         { text: 7, colorCode: '#EA7E95', textColor: '#ffffff' },
@@ -35,37 +45,6 @@ const initialState = {
         { text: 6, colorCode: '#F4A03E', textColor: '#ffffff' }
     ],
     calenderBackgroundColor: '#e5d1d2',
-    dates: [
-        { index: '1', events: [{ event: "Dummy event 1", colorCode: "#F4A03E", colorId: 6, textColor: "#ffffff" }] },
-        { index: '2', events: [] },
-        { index: '3', events: [] },
-        { index: '4', events: [] },
-        { index: '5', events: [] },
-        { index: '6', events: [] },
-        { index: '7', events: [] },
-        { index: '8', events: [] },
-        { index: '9', events: [] },
-        { index: '10', events: [{ event: "Dummy event 2", colorCode: "#638FC6", colorId: 6, textColor: "#ffffff" }] },
-        { index: '11', events: [] },
-        { index: '12', events: [] },
-        { index: '13', events: [] },
-        { index: '14', events: [] },
-        { index: '15', events: [] },
-        { index: '16', events: [] },
-        { index: '17', events: [] },
-        { index: '18', events: [] },
-        { index: '19', events: [] },
-        { index: '20', events: [{ event: "Dummy event 3", colorCode: "#EA7E95", colorId: 6, textColor: "#ffffff" }] },
-        { index: '21', events: [] },
-        { index: '22', events: [] },
-        { index: '23', events: [] },
-        { index: '24', events: [] },
-        { index: '25', events: [{ event: "Dummy event 4", colorCode: "#82BF56", colorId: 6, textColor: "#ffffff" }] },
-        { index: '26', events: [] },
-        { index: '27', events: [] },
-        { index: '28', events: [] },
-        { index: '29', events: [{ event: "Dummy event 5", colorCode: "#82BF56", colorId: 6, textColor: "#ffffff" }] },
-        { index: '30', events: [] }
-    ]
+    dates: daysofCurrentMonth
 }
 export default rootReducer;
