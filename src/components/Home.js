@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import WeeklyDaysName from '../components/WeeklyDaysName'
-import PageHeader from '../components/PageHeader'
-import Calender from '../components/Calender'
+import WeeklyDaysName from './WeeklyDaysName'
+import PageHeader from './PageHeader'
+import Calender from './Calender'
 class Home extends React.Component {
 
     render() {

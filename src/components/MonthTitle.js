@@ -1,5 +1,5 @@
 import React from 'react'
-import moment from 'moment'
+import * as moment from 'moment';
 import { Col } from 'reactstrap'
 export default () => {
     const monthName = moment().format('MMMM')
