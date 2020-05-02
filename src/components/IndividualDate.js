@@ -1,8 +1,8 @@
 
-import React from 'react'
-import Events from './Events'
-import '../styles/individualDate.css'
-import ModalComponent from './ModalComponent';
+import React from 'react';
+import Events from './Events';
+import '../styles/individualDate.css';
+import ModalComponent from './modal-component';
 class IndividualDate extends React.Component {
     constructor(props) {
         super(props)

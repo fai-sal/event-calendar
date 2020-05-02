@@ -1,7 +1,12 @@
 import React from 'react';
-import IndividualDate from './IndividualDate'
-import '../styles/calender.css'
-import { Container, Row } from 'reactstrap';
+import '../../styles/calendar.scss';
+import {
+    Row,
+    Container
+} from 'reactstrap';
+
+import IndividualDate from '../IndividualDate';
+
 class Calendar extends React.Component {
     constructor(props) {
         super(props)
@@ -31,4 +36,4 @@ class Calendar extends React.Component {
         })
     }
 }
-export default Calendar
+export default Calendar;
