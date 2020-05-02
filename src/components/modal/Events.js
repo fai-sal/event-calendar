@@ -1,7 +1,7 @@
 import React from 'react'
 import deleteIcon from '../../assets/delete.png'
 import editIcon from '../../assets/editPen.png'
-import '../../styles/modal.css'
+import '../../styles/modal.scss'
 export default ({ event, eventIndex, toggleEditFlag, deleteEvent }) => {
     return <React.Fragment>
         <p style={{ ...individualEvent, backgroundColor: event.colorCode, color: event.textColor }}>{`${eventIndex + 1}. ${event.event}`}</p>

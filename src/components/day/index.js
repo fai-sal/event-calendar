@@ -1,9 +1,9 @@
 
 import React from 'react';
-import Events from './Events';
-import '../styles/individualDate.css';
-import ModalComponent from './modal-component';
-class IndividualDate extends React.Component {
+import Events from '../Events';
+import '../../styles/day.scss';
+import ModalComponent from '../modal';
+class Day extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -20,7 +20,7 @@ class IndividualDate extends React.Component {
                     <div className="dateIndex">
                         <h5 >{dateIndex}</h5>
                     </div>
-                    {date.events.map(event => <Events event={event} />)}
+                    {date.events.map(event => <Events key={event} event={event} />)}
                 </div>
                 {/* modal component has been used to add new event, edit event , delete event */}
                 <ModalComponent
@@ -40,4 +40,4 @@ class IndividualDate extends React.Component {
 }
 
 
-export default IndividualDate;
+export default Day;

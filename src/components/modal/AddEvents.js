@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../button';
-import ColorButton from '../ColorPickerButton';
+import ColorPicker from '../color-picker';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 
 class AddEvents extends React.Component {
@@ -49,7 +49,7 @@ class AddEvents extends React.Component {
                                     const text = currentColor[keys[0]]
                                     const colorCode = currentColor[keys[1]]
                                     const textColor = currentColor[keys[2]]
-                                    return (<ColorButton colorCode={colorCode} colorId={text} textColor={textColor} handleOnClick={handleColorButtonOnClick} />)
+                                    return (<ColorPicker colorCode={colorCode} colorId={text} textColor={textColor} handleOnClick={handleColorButtonOnClick} />)
                                 })
                             }
 

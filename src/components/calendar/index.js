@@ -5,7 +5,9 @@ import {
     Container
 } from 'reactstrap';
 
-import IndividualDate from '../IndividualDate';
+
+import Day from '../day';
+
 
 class Calendar extends React.Component {
     constructor(props) {
@@ -20,11 +22,13 @@ class Calendar extends React.Component {
             <Container fluid className="calenderContainer" >
                 <Row className="dateRow">
                     <div className="allDates">
-                        {dates.map(date => {
-                            return <div className="date" >
-                                <IndividualDate dates={dates} dateIndex={date.index} />
-                            </div>
-                        })}
+                        {
+                            dates.map((date, index) => (
+                                <div className="date" key={date + index}>
+                                    <Day dates={dates} dateIndex={date.index} />
+                                </div>
+                            ))
+                        }
                     </div>
                 </Row>
             </Container>

@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../styles/modal.css'
+import '../../styles/modal.scss'
 import cancelIcon from '../../assets/cancel.png'
 import okayIcon from '../../assets/ok.png'
 import { Form, FormGroup, Input } from 'reactstrap';

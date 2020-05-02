@@ -1,7 +1,7 @@
 import React from 'react'
 import deleteIcon from '../../assets/delete.png'
 import editIcon from '../../assets/editPen.png'
-import '../../styles/modal.css'
+import '../../styles/modal.scss'
 export default ({ task, taskIndex, toggleEditFlag, deleteEvent }) => {
     return <React.Fragment>
         <p
