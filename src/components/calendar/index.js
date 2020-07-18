@@ -46,7 +46,7 @@ function Calendar(props) {
         });
 
         let blanks = []
-        for (let index = 1; index < firstDayOfMonth; index++) {
+        for (let index = 0; index < firstDayOfMonth; index++) {
             let tempDay = moment(startOfMonth).subtract(firstDayOfMonth - index, 'days');
             blanks.push(dateDetails(tempDay));
         }
