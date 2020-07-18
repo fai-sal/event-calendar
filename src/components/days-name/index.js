@@ -1,21 +1,34 @@
 import React from 'react';
-import { Container, Row } from 'reactstrap';
-import '../../styles/days-name.scss'
+import classnames from 'classnames';
+import * as moment from 'moment';
+import '../../styles/days-name.scss';
 
-const DaysName = () => {
-    const weeklydaysName = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
+function DaysName(props) {
+    const {
+        isMonthView,
+        startDate,
+        selectedRange,
+    } = props;
+    let days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+    if (!isMonthView) {
+        days = []
+        Array(selectedRange).fill(0).forEach((date, index) => {
+            days.push(moment(startDate).add(index, 'days').format('ddd'))
+        })
+    }
+
+    const classNames = classnames(
+        "days flex align-center",
+        { ['single']: selectedRange === 1 }
+    )
     return (
-        <Container fluid className="dayNameContainer" >
-            <Row className="dayNameRow">
-                {
-                    weeklydaysName.map(name => (
-                        <div key={name} className="singleday">
-                            <h5 className="weekdayName">{name}</h5>
-                        </div>
-                    ))
-                }
-            </Row>
-        </Container>
+        <div className={classNames} >
+            {
+                days.map(name => (
+                    <div key={name} className="day-name"> {name} </div>
+                ))
+            }
+        </div>
     );
 }
 export default DaysName;

@@ -1,39 +1,15 @@
-.container-fluid{
-    padding: 0px;
-    margin: 0px
-}
-    .singleday{
-        flex-grow:1;
-        min-width: 14.20%;
-        max-width: 14.20%;
-        margin: 0px;
-    }
-    .dayNameContainer{
-        border-top: 1px solid #d9d9d9;
-        border-bottom: 1px solid #d9d9d9;
-        padding: 0px;
-        display: flex;
-        align-items: center;
-        display: flex
-    }
-    .dayNameRow{
-        margin-left: 0px !important;
-        padding-left: 0px !important;
-        display: flex;
-        flex-wrap: wrap;
-        width:100%;
-    }
-    .weekdayName{
-        padding: 0px;
-        padding-left: 6%;
-        margin: 0px;
-        color: grey;
-        display: flex;
-        align-items: center;
-        min-height: 45px;
-    }
-    @media only screen and  (max-width: 600px) {
-        .weekdayName{
-         font-size: 90%
+.days {
+    justify-content: space-around;
+    border: 1px solid #d9d9d9;
+    border-bottom: none;
+    &.single {
+        justify-content: flex-start;
+        .day-name {
+            margin-left: 100px;
         }
     }
+    .day-name {
+        padding: 20px 0px;
+        font-weight: 600;
+    }
+}

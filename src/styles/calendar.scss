@@ -1,44 +1,123 @@
-.container-fluid{
-    padding: 0px;
-    margin: 0px
-}
-    .date{
-        flex-grow:1;
-        /* flex-basis: 14.20%; */
-        min-width: 14.20%;
-        max-width: 14.20%;
-        margin: 0px;
-        border: 1px solid #e6e6e6;
-        padding: 0px
-    }
-    .allDates{
+.calender-container {
+    height: 75vh;
+
+    .calendar {
         display: flex;
-        flex-wrap: wrap;
-        width:100%;
-        margin:10px;
-        background-color: white;
-    }
-    .calenderContainer{
-        background-color: #e5d1d2;
-        padding: 0px;
-        display: flex;
-        align-items: center;
-        display: flex;
-        margin-bottom: 10px;
-    }
-    .dateRow{
-        margin:10px;
-        width: 100vw;
-        margin:10px
-    }
-    @media only screen and (max-width: 760px) {
-        .taskInCalender{
-            padding: 2px;
-            border-radius: 5px;
-            margin-bottom:5px;
-            font-size: 90%;
-            word-break: normal;
-            word-wrap: break-word;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        background-color: rgb(247, 247, 248);
+        font-family: "Inter script=latin rev=1";
+        border: #dadce0 1px solid;
+        border-bottom: none;
+        .month-view {
+            height: 100%;
+            flex-direction: column;
+            -webkit-box-flex: 1 1 0%;
+            -webkit-flex: 1 1 0%;
+            flex: 1 1 0%;
+            .row {
+                -webkit-box-flex: 1 1 0%;
+                -webkit-flex: 1 1 0%;
+                flex: 1 1 0%;
+                border-bottom: #dadce0 1px solid;
+                .column {
+                    cursor: pointer;
+                    font-size: 14px;
+                    line-height: 30px;
+                    border-right: #dadce0 1px solid;
+                    color: #202124;
+                    -webkit-box-flex: 1 1 0%;
+                    -webkit-flex: 1 1 0%;
+                    flex: 1 1 0%;
+                    .label {
+                        width: 100%;
+                        text-align: center;
+                        color: #3c4043;
+                        margin-top: 8px;
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+        .hour-labels {
+            width: 60px;
+            display: -webkit-box;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            flex-direction: column;
+            text-align: right;
+            box-sizing: content-box;
+            position: relative;
+            flex-shrink: 0;
+            z-index: 60;
+            border-right: 1px solid #dee3e7;
+            .hour-label {
+                min-height: 150px !important;
+                padding: 5px 10px;
+            }
+        }
+        .day {
+            flex-grow: 1;
+            .hour {
+                height: 150px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: space-evenly;
+                border: 1px solid #9a9ba6;
+                &:not(:last-child) {
+                    border-bottom: thin;
+                }
+                .detailed-appointment {
+                    display: block;
+                    width: 100%;
+                    padding: 8px;
+                    position: absolute;
+                    top: 0px;
+                    background: #a5dff8;
+                    border-color: #a5dff8;
+                    color: #101928;
+                    font-size: 12px;
+                    box-sizing: border-box;
+                    overflow: hidden;
+                    line-height: 17px;
+                    border-radius: 4px;
+
+                    cursor: pointer;
+                    box-shadow: none;
+                    -webkit-transition: box-shadow 200ms ease;
+                    transition: box-shadow 200ms ease;
+                    z-index: 40;
+                    -webkit-transform: translate3d(0, 0, 0);
+                    transform: translate3d(0, 0, 0);
+                }
+                .time-span {
+                    width: 100%;
+                    height: 25%;
+                    display: flex;
+                    align-items: center;
+                    font-weight: 700;
+                    font-size: 15px;
+                    border-bottom: 1px solid #9a9ba647;
+                    &:last-child {
+                        border-bottom: thin;
+                    }
+                    .label {
+                        opacity: 0;
+                        color: #3578e5;
+                        padding: 0px 10px;
+                    }
+                    &:hover {
+                        background-color: #3578e51f;
+                        .label {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
         }
     }
-    
+}

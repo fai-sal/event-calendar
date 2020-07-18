@@ -1,26 +1,34 @@
-import React, { Component, Fragment } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import {
     Header,
-    Calendar,
-    DaysName
+    Calendar
 } from '../../components';
-class Home extends Component {
+import '../../styles/common.scss';
+import { CalendarContext } from '../../utils';
+function Home(props) {
+    const {
+        colors,
+        dates
+    } = props;
+    const [selectedRange, setRange] = useState(30);
+    const [startDate, updateStartDate] = useState(new Date());
 
-    render() {
-        const {
-            colors,
-            dates
-        } = this.props;
-
-        return (
-            <Fragment>
-                <Header colors={colors} />
-                <DaysName />
-                <Calendar dates={dates} />
-            </Fragment>
-        );
+    const initialState = {
+        startDate,
+        selectedRange,
+        updateStartDate: updateStartDate,
+        updateRange: setRange
     }
+
+    return (
+        <div className="event-calendar ec">
+            <CalendarContext.Provider value={initialState}>
+                <Header colors={colors} />
+                <Calendar dates={dates} />
+            </CalendarContext.Provider>
+        </div>
+    );
 }
 
 const mapStateToProps = (state, ownProps) => {

@@ -8,10 +8,10 @@
     "bootstrap": "^4.4.1",
     "material-ui": "^0.20.2",
     "moment": "2.24.0",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-redux": "^5.0.7",
-    "react-scripts": "2.0.5",
+    "react-scripts": "3.4.1",
     "reactstrap": "^6.5.0",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0"
