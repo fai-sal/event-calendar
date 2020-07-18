@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import { Col } from 'reactstrap';
+import React from 'react';
 import '../../styles/colors.scss';
 import ColorPicker from '../color-picker';
 
-class Colors extends Component {
+class Colors extends React.Component {
     render() {
         const {
             colors
@@ -15,12 +14,8 @@ class Colors extends Component {
             alert("this button does nothing!");
         }
         return (
-            <Col
-                sm={12}
-                md={6}
-                lg={6}
-                xl={6}
-                className="colorPickerButtonContainer"
+            <div
+                className="col-6 colorPickerButtonContainer"
             >
                 {
                     colorIds.map(colorId => {
@@ -40,7 +35,7 @@ class Colors extends Component {
                         );
                     })
                 }
-            </Col>
+            </div>
         )
     }
 

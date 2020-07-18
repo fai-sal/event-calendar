@@ -21,14 +21,14 @@ class EventModal extends React.Component {
     render() {
         const { open, closeModal, date, events } = this.props
         return (
-            <   Dialog
-                fullScreen={false}
+            < Dialog
                 open={open}
-                onClose={closeModal}
-                aria-labelledby="responsive-dialog-title"
+                scroll='paper'
                 maxWidth={'sm'}
                 fullWidth={true}
-                scroll='paper'
+                fullScreen={false}
+                onClose={closeModal}
+                aria-labelledby="responsive-dialog-title"
             >
                 <DialogTitle id="responsive-dialog-title" >
                     <div className="modalTitle" >
@@ -55,7 +55,7 @@ class EventModal extends React.Component {
     }
 }
 export default withMobileDialog()(EventModal);
-const rowsInsideModal={
-    padding: '0px', 
+const rowsInsideModal = {
+    padding: '0px',
     marginRight: '0px'
 }
