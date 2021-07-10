@@ -1,7 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
 import * as moment from 'moment';
-import '../../styles/days-name.scss';
 
 function DaysName(props) {
     const {

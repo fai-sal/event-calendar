@@ -1,16 +1,9 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import {
-    Header,
-    Calendar
-} from '../../components';
-import '../../styles/common.scss';
+import { Header, Calendar } from '../../components';
 import { CalendarContext } from '../../utils';
-function Home(props) {
-    const {
-        colors,
-        dates
-    } = props;
+
+
+function Home() {
     const [selectedRange, setRange] = useState(30);
     const [startDate, updateStartDate] = useState(new Date());
 
@@ -22,40 +15,12 @@ function Home(props) {
     }
 
     return (
-        <div className="event-calendar ec">
+        <div className="event-calendar">
             <CalendarContext.Provider value={initialState}>
-                <Header colors={colors} />
-                <Calendar dates={dates} />
+                <Header />
+                <Calendar />
             </CalendarContext.Provider>
         </div>
     );
 }
-
-const mapStateToProps = (state, ownProps) => {
-
-    let {
-        dates,
-        colors
-    } = state;
-    /**
-     * check whether local storage is  holding some events or not 
-     * if not then store current redux store in local storage
-     */
-
-    if (!localStorage.getItem('colors')) {
-        localStorage.setItem('colors', JSON.stringify(colors));
-    }
-
-    if (!localStorage.getItem('dates')) {
-        localStorage.setItem('dates', JSON.stringify(dates));
-    } else {
-        dates = JSON.parse(localStorage.getItem('dates'));
-    }
-
-    return {
-        dates: dates,
-        colors: colors
-    }
-}
-
-export default connect(mapStateToProps, null)(Home);
+export default Home;

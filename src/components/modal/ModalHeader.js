@@ -1,5 +1,4 @@
 import React from 'react'
-import '../../styles/modal.scss'
 const ModalHeader = ({ toggleaddEventFlag, addEventFlag }) => {
     return <React.Fragment>
         <div className="row modalContentHeader" >

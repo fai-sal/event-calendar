@@ -1,14 +1,14 @@
 import React, { useState, Fragment } from 'react';
 import * as moment from 'moment';
+import { useSelector } from 'react-redux';
 import Day from '../day';
 import { CalendarContext } from '../../utils';
 import DaysName from '../days-name';
 
-import '../../styles/calendar.scss';
 
-function Calendar(props) {
+function Calendar() {
     const [openModal, toggleModal] = useState(false);
-    const { dates } = props
+    const dates = useSelector((state) => state['dates']);
     const {
         startDate,
         selectedRange,

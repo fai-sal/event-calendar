@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/events.scss';
 
 const Event = ({ event }) => {
     return (

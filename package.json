@@ -4,17 +4,20 @@
   "private": true,
   "homepage": "https://fai-sal.github.io/event-calendar/",
   "dependencies": {
-    "@material-ui/core": "^3.2.2",
+    "@material-ui/core": "^3.9.4",
     "bootstrap": "^4.4.1",
+    "classnames": "^2.3.1",
+    "date-fns": "^2.22.1",
     "material-ui": "^0.20.2",
     "moment": "2.24.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-redux": "^5.0.7",
-    "react-scripts": "3.4.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-redux": "^7.2.4",
+    "react-scripts": "4.0.3",
     "reactstrap": "^6.5.0",
-    "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0"
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -41,6 +44,7 @@
   },
   "devDependencies": {
     "gh-pages": "^2.1.1",
-    "node-sass": "^4.14.0"
+    "node-sass": "^4.14.0",
+    "react-app-rewired": "^2.1.8"
   }
 }

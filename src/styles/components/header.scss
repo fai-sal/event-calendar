@@ -1,0 +1,43 @@
+.header {
+    padding: 10px 30px 30px;
+    justify-content: space-between;
+    .app-info {
+        .app-name {
+            font-size: 20px;
+            font-weight: 500;
+        }
+    }
+    .selected-date {
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .range-picke {
+        margin-right: 30px;
+    }
+    .calendar-nav-btns {
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0px 24px;
+        color: rgba(var(--gray-800), 1);
+        border: 1px solid rgba(var(--gray-50), 1);
+        border-radius: 4px;
+        > div {
+            padding: 2px 10px;
+        }
+        .today-button {
+            border-left: 1px solid rgba(var(--gray-50), 1);
+            border-right: 1px solid rgba(var(--gray-50), 1);
+        }
+        .nav-icon svg {
+            width: 12px;
+            color: rgba(var(--gray-50), 1);
+        }
+    }
+    .select-range {
+        button {
+            margin: 0px 5px;
+        }
+    }
+}

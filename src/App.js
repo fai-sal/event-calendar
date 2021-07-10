@@ -1,29 +1,14 @@
-import React, { Component } from 'react';
-import './App.css';
+import './styles/_main.scss';
+import React from 'react';
 import { Home } from './pages';
+import { ReduxProvider } from './init';
 
-import {
-  createStore,
-  applyMiddleware
-} from 'redux';
-
-import {
-  Provider
-} from 'react-redux';
-
-import thunk from 'redux-thunk';
-import rootReducer from './reducers';
-
-const store = createStore(rootReducer, applyMiddleware(thunk));
-
-class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <Home />
-      </Provider>
-    );
-  }
+function App() {
+  return (
+    <ReduxProvider>
+      <Home />
+    </ReduxProvider>
+  );
 }
 
 export default App;

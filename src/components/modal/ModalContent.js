@@ -1,7 +1,6 @@
 import React from 'react'
 import Events from './Events'
 import AddEvents from './AddEvents'
-import '../../styles/modal.scss'
 import EditForm from './EditForm'
 import ModalHeader from './ModalHeader'
 import { connect } from 'react-redux'

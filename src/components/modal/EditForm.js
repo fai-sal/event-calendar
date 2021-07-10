@@ -1,8 +1,8 @@
 import React from 'react'
-import '../../styles/modal.scss'
 import cancelIcon from '../../assets/cancel.png'
 import okayIcon from '../../assets/ok.png'
 import { Form, FormGroup, Input } from 'reactstrap';
+
 const EditForm = ({ event, eventIndex, value, editOnKeyPress, editOnChange, saveEditedEvent, cancelEditedEvent }) => {
     return <div style={{ display: 'flex', padding: '0px', paddingTop: '10px', alignItems: 'center', width: '100%' }}>
         <Form className="editForm">
