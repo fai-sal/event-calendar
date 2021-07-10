@@ -120,4 +120,31 @@
             }
         }
     }
+
+    .calendar-header {
+        justify-content: space-around;
+        border: 1px solid #d9d9d9;
+        border-bottom: none;
+        &.single {
+            justify-content: flex-start;
+            > div {
+                margin-left: 100px;
+            }
+        }
+        &.month-view {
+            .day-name {
+                font-weight: 600;
+                padding: 15px 0px;
+            }
+        }
+        .day-wrapper {
+            > div {
+                font-weight: 600;
+                padding: 15px 0px 5px;
+                &.date {
+                    padding: 5px 0px 15px;
+                }
+            }
+        }
+    }
 }
