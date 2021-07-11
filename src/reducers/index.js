@@ -1,45 +1,80 @@
-const date = new Date();
-let monthIndex = date.getMonth();
-let year = date.getFullYear();
-let daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
-let daysofCurrentMonth = [];
-let i = 1;
-while (i <= daysInMonth) {
-    daysofCurrentMonth.push({ index: i, events: [] })
-    i++
-}
-const initialState = {
-    colors: [
-        { text: 7, colorCode: '#EA7E95', textColor: '#ffffff' },
-        { text: 2, colorCode: '#638FC6', textColor: '#ffffff' },
-        { text: 3, colorCode: '#F2F4F8', textColor: '#000000' },
-        { text: 1, colorCode: '#82BF56', textColor: '#ffffff' },
-        { text: 6, colorCode: '#F4A03E', textColor: '#ffffff' }
-    ],
-    calenderBackgroundColor: '#e5d1d2',
-    dates: daysofCurrentMonth
+import * as moment from 'moment';
+import { nextEventId } from '../utils';
+
+
+function getInitialState() {
+    const startDate = new Date();
+    const startOfMonth = moment(startDate).startOf('month').format('YYYY-MM-DD hh:mm');
+    const numofdaysInMonth = moment(startDate).daysInMonth();
+    let daysInMonth = {};
+
+    Array(numofdaysInMonth).fill(0).forEach((_, index) => {
+        const datePrefix = moment(startOfMonth).add(index, 'days').format("MMM_Do_YY");
+        /**
+         * dummy data
+         */
+
+        if (index === 0 || index === 16) {
+            daysInMonth[datePrefix] = {
+                'dummy-one': {
+                    id: 'dummy-one',
+                    name: 'Buy Grocery',
+                    type: 'personal',
+                }
+            };
+        } else if (index === 12 || index === 28) {
+            daysInMonth[datePrefix] = {
+                'dummy-two': {
+                    id: 'dummy-two',
+                    name: 'Dinner',
+                    type: 'default',
+                }
+            };
+        } else if (index === 23 || index===17) {
+            daysInMonth[datePrefix] = {
+                'dummy-three': {
+                    id: 'dummy-three',
+                    name: 'Meeting',
+                    type: 'professional',
+                }
+            };
+        } else {
+            daysInMonth[datePrefix] = {};
+        }
+
+    });
+
+    const findFirstDayOfMonth = () => {
+        const dateObject = startDate;
+        return moment(dateObject).startOf("month").format("d");
+    };
+
+    const firstDayOfMonth = findFirstDayOfMonth();
+    let slotsFromPrevMonth = {};
+    for (let index = 0; index < firstDayOfMonth; index++) {
+        const datePrefix = moment(startOfMonth).subtract(firstDayOfMonth - index, 'days').format("MMM_Do_YY");
+        slotsFromPrevMonth[datePrefix] = {}
+    }
+
+    return { ...slotsFromPrevMonth, ...daysInMonth };
 }
 
-const rootReducer = (state = initialState, action) => {
+const rootReducer = (state = getInitialState(), action) => {
     switch (action.type) {
         case 'ADD_EVENT': {
+            const ID = nextEventId();
+            const {
+                payload: {
+                    event,
+                    selectedDate,
+                }
+            } = action;
             return {
                 ...state,
-                dates: action.payload
-            }
-        }
-
-        case 'DELETE_EVENT': {
-            return {
-                ...state,
-                dates: action.payload
-            }
-        }
-
-        case 'EDIT_EVENT': {
-            return {
-                ...state,
-                dates: action.payload
+                [selectedDate]: {
+                    ...state[selectedDate],
+                    [ID]: { ...event, ID },
+                }
             }
         }
         default:

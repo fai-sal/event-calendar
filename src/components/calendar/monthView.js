@@ -1,9 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import * as moment from 'moment';
+import { shallowEqual, useSelector } from 'react-redux'
+import { Button } from '@material-ui/core';
+import Modal from '../modal';
+import AddEvent from './add-event';
 import { CalendarContext } from '../../utils';
 
 function MonthView() {
     const { startDate } = useContext(CalendarContext);
+    const store = useSelector((state) => state, shallowEqual);
+    const [addingEvent, enableAddingEvent] = useState(false);
+    const [selectedDate, setSelectedDate] = useState();
 
     const findFirstDayOfMonth = () => {
         const dateObject = startDate;
@@ -21,7 +28,7 @@ function MonthView() {
             day: date.format('D'),
             month: date.format('M'),
             year: date.format('YYYY'),
-            fullDate: date.format("MMM Do YY")
+            fullDate: date.format("MMM_Do_YY"),
         });
     }
 
@@ -56,17 +63,43 @@ function MonthView() {
     }
     rows[rows.length - 1] = [...cells];
 
+
+    const onAddingEvent = (date) => {
+        setSelectedDate(date);
+        enableAddingEvent(true);
+    }
+
     return (
         <div className="month-view flex">
+            <Modal
+                open={addingEvent}
+                handleClose={() => enableAddingEvent(false)}
+            >
+                <AddEvent
+                    selectedDate={selectedDate}
+                    closeModal={() => enableAddingEvent(false)}
+                />
+            </Modal>
             {
                 rows.map((columns, row) => {
                     return (
                         <div className="row flex" key={row}>
                             {
-                                columns.map(date => (
+                                columns.map((date) => (
                                     <div key={date.fullDate} className="column day" >
-                                        {/* <div key={date.fullDate} className="column day" onClick={() => toggleModal(!openModal)}> */}
-                                        <div className="label ec-font medium">{date.day}</div>
+                                        <div className="label ec-font medium" onClick={() => onAddingEvent(date.fullDate)}>{date.day}</div>
+                                        {
+                                            typeof store[date.fullDate] !== 'undefined' && Object.keys(store[date.fullDate]).length > 0 && (
+                                                <div className="events">
+                                                    {
+                                                        Object.values(store[date.fullDate]).map(({ ID, name, type }) => (
+                                                            <div className={`event ${type ? type : 'default'}`} key={ID}>{name}</div>
+                                                        ))
+                                                    }
+                                                </div>
+                                            )
+                                        }
+                                        <Button color="primary" className="add-new-btn" onClick={() => onAddingEvent(date.fullDate)}>Add event</Button>
                                     </div>
                                 ))
                             }

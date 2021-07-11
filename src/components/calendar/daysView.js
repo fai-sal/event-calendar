@@ -14,7 +14,7 @@ function DaysView() {
             day: day.format('D'),
             month: day.format('M'),
             year: day.format('YYYY'),
-            fullDate: day.format("MMM Do YY")
+            fullDate: day.format("MMM_Do_YY")
         });
 
     });

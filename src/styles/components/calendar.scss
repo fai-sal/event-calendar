@@ -23,20 +23,58 @@
                 flex: 1 1 0%;
                 border-bottom: #dadce0 1px solid;
                 .column {
-                    cursor: pointer;
                     font-size: 14px;
                     line-height: 30px;
                     border-right: #dadce0 1px solid;
                     color: #202124;
                     -webkit-box-flex: 1 1 0%;
                     -webkit-flex: 1 1 0%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
                     flex: 1 1 0%;
+                    justify-content: space-between;
                     .label {
+                        cursor: pointer;
                         width: 100%;
                         text-align: center;
                         color: #3c4043;
                         margin-top: 8px;
                         font-size: 16px;
+                    }
+                    button {
+                        visibility: hidden;
+                        margin: 0px 7px;
+                    }
+                    &:hover {
+                        button {
+                            visibility: visible;
+                        }
+                    }
+                    .events {
+                        width: 90%;
+                        max-height: 90px;
+                        overflow-x: visible;
+                        overflow-y: scroll;
+                        .event {
+                            border-radius: 4px;
+                            padding: 2px 5px;
+                            &:not(:last-child) {
+                                margin-bottom: 7px;
+                            }
+                            &.default {
+                                border-left: 2px solid rgba(185, 141, 255, 1);
+                                background-color: rgba(185, 141, 255, 0.05);
+                            }
+                            &.personal {
+                                border-left: 2px solid rgba(141, 193, 255, 1);
+                                background-color: rgba(141, 193, 255, 0.05);
+                            }
+                            &.professional {
+                                border-left: 2px solid rgba(255, 162, 141, 1);
+                                background-color: rgba(255, 162, 141, 0.05);
+                            }
+                        }
                     }
                 }
             }

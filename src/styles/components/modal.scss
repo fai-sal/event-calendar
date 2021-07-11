@@ -1,0 +1,31 @@
+.event-modal-container {
+    .MuiDialog-paperWidthSm-38 {
+        max-width: 550px;
+    }
+    .event-modal-content {
+        .modal-header {
+            justify-content: flex-end !important;
+            .close-btn {
+                cursor: pointer;
+                svg {
+                    width: 20px;
+                }
+            }
+        }
+        .modal-body {
+            &.add-event-wrapper {
+                .event-input {
+                    margin: 20px 0px;
+                }
+                .event-type {
+                    width: 50%;
+                }
+            }
+        }
+        .modal-footer {
+            button {
+                margin: 0px 5px;
+            }
+        }
+    }
+}
