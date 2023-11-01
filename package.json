@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "gh-pages": "^2.1.1",
-    "node-sass": "^4.14.0",
+    "node-sass": "^9.0.0",
     "react-app-rewired": "^2.1.8"
   }
 }
