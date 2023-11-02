@@ -1,12 +1,12 @@
 // Common CSS
-@import "common.scss";
-@import "variables.scss";
+@import "common";
+@import "variables";
 
 // Component CSS
-@import "components/calendar.scss";
-@import "components/header.scss";
-@import "components/modal.scss";
+@import "components/calendar";
+@import "components/header";
+@import "components/modal";
 
 
 //Pages CSS
-@import "pages/home.scss";
+@import "pages/home";

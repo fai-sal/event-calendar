@@ -1,10 +1,5 @@
 import React, { Fragment, useReducer } from 'react';
 import { useDispatch } from 'react-redux';
-import { Button, TextField } from '@material-ui/core/';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
 
 const DEFAULTSTATE = {
     name: '',
@@ -62,7 +57,7 @@ function AddEvent({ selectedDate, closeModal }) {
     return (
         <Fragment>
             <div className="modal-body add-event-wrapper">
-                <TextField
+                <textarea
                     className="event-input name"
                     id="name"
                     name="name"
@@ -71,19 +66,19 @@ function AddEvent({ selectedDate, closeModal }) {
                     value={newEvent.name}
                     onChange={handleChange}
                 />
-               <FormControl className="event-type">
-                    <InputLabel id="type">Event Type</InputLabel>
-                    <Select
+               <form className="event-type">
+                    <label id="type">Event Type</label>
+                    <select
                         id="type"
                         name="type"
                         className="event-input type"
                         value={newEvent.type}
                         onChange={handleChange}
                     >
-                        <MenuItem value='personal'>Personal</MenuItem>
-                        <MenuItem value='professional'>Professional</MenuItem>
-                    </Select>
-                </FormControl>
+                        <option value='personal'>Personal</option>
+                        <option value='professional'>Professional</option>
+                    </select>
+                </form>
 
                 {
                     /**
@@ -93,8 +88,8 @@ function AddEvent({ selectedDate, closeModal }) {
                 }
             </div>
             <div className="modal-footer">
-                <Button variant="outlined" className="cancel-btn" onClick={onClose}>Cancel</Button>
-                <Button variant="contained" color="primary" className="save-btn" onClick={onSave}>Save</Button>
+                <button variant="outlined" className="cancel-btn" onClick={onClose}>Cancel</button>
+                <button variant="contained" color="primary" className="save-btn" onClick={onSave}>Save</button>
             </div>
         </Fragment>
 

@@ -40,4 +40,17 @@
             margin: 0px 5px;
         }
     }
+
+	.range-selector {
+		cursor: pointer;
+		padding: 5px 16px;
+		border-radius: 4px;
+		border: 1px solid rgba(0, 0, 0, 0.23);
+		color: rgba(0, 0, 0, 0.87);
+
+		&.active {
+			color: #3f51b5;
+    		border: 1px solid rgba(63, 81, 181, 0.5);
+		}
+	}
 }

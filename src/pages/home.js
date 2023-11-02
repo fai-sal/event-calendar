@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Header, Calendar } from '../../components';
-import { CalendarContext } from '../../utils';
+import { Header, Calendar } from '../components';
+import { CalendarContext } from '../utils';
 
 
 function Home() {
