@@ -92,7 +92,7 @@ function MonthView() {
                                                 <div className="events">
                                                     {
                                                         Object.values(store[date.fullDate]).map(({ ID, name, type }) => (
-                                                            <div className={`event ${type ? type : 'default'}`} key={ID}>{name}</div>
+                                                            <div className={`event ${type ? type : 'default'}`} key={ID+name}>{name}</div>
                                                         ))
                                                     }
                                                 </div>

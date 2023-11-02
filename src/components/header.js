@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
+import classNames from 'classnames';
 import { format } from 'date-fns';
-import { CalendarContext } from '../../utils';
+import { CalendarContext } from '../utils';
 
-const ranges = [
+const RANGES = [
     {
         value: 1,
         title: "Day",
@@ -29,7 +30,7 @@ const Header = () => {
     return (
         <div className="header flex align-center">
             <div className="app-info">
-                <div className="app-name">Event Calendar</div>
+                <h1 className="app-name">Event Calendar</h1>
             </div>
             <div className="selected-date">{format(startDate, 'dd-MMMM-yy')}</div>
             <div className="range-picker flex">
@@ -44,12 +45,11 @@ const Header = () => {
                 </div>
                 <div className="select-range">
                     {
-                        ranges.map(({ title, value }) => (
+                        RANGES.map(({ title, value }) => (
                             <button
                                 key={value}
-                                variant="outlined"
-                                {...(selectedRange === value) && { color: "primary" }}
                                 onClick={() => updateRange(value)}
+								className={classNames('range-selector', {'active': selectedRange === value})}
                             >
                                 {title}
                             </button>

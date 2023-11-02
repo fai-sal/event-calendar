@@ -1,31 +1,52 @@
 .event-modal-container {
-    .MuiDialog-paperWidthSm-38 {
-        max-width: 550px;
-    }
-    .event-modal-content {
-        .modal-header {
-            justify-content: flex-end !important;
-            .close-btn {
-                cursor: pointer;
-                svg {
-                    width: 20px;
-                }
-            }
-        }
-        .modal-body {
-            &.add-event-wrapper {
-                .event-input {
-                    margin: 20px 0px;
-                }
-                .event-type {
-                    width: 50%;
-                }
-            }
-        }
-        .modal-footer {
-            button {
-                margin: 0px 5px;
-            }
-        }
-    }
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+	background-color: white;
+	border: 2px solid rgb(240, 240, 240);
+	border-radius: 12px;
+	position: absolute;
+	width: 500px;
+	height: 300px;
+	top: 0;
+	left: 0; 
+	right: 0; 
+	bottom: 0;
+	margin: auto; 
+
+	.event-modal-content {
+		.modal-header {
+			justify-content: flex-end;
+
+			.close-btn {
+				cursor: pointer;
+				position: absolute;
+				right: 10px;
+				top: 10px;
+
+				svg {
+					width: 20px;
+				}
+			}
+		}
+
+		.modal-body {
+			&.add-event-wrapper {
+				.event-input {
+					margin: 20px 0px;
+				}
+
+				.event-type {
+					width: 50%;
+				}
+			}
+		}
+
+		.modal-footer {
+			button {
+				margin: 0px 5px;
+			}
+		}
+	}
 }

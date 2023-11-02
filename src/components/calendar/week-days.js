@@ -4,7 +4,7 @@ import { format } from 'date-fns';
 import { CalendarContext } from '../../utils';
 
 
-function Header({ isMonthView }) {
+function WeekDays({ isMonthView }) {
     const {
         startDate,
         selectedRange,
@@ -43,4 +43,4 @@ function Header({ isMonthView }) {
         </div>
     );
 }
-export default Header;
+export default WeekDays;
