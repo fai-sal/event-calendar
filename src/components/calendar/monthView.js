@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import * as moment from 'moment';
 import { shallowEqual, useSelector } from 'react-redux'
-import { Button } from '@material-ui/core';
 import Modal from '../modal';
 import AddEvent from './add-event';
 import { CalendarContext } from '../../utils';
@@ -99,7 +98,7 @@ function MonthView() {
                                                 </div>
                                             )
                                         }
-                                        <Button color="primary" className="add-new-btn" onClick={() => onAddingEvent(date.fullDate)}>Add event</Button>
+                                        <button color="primary" className="add-new-btn" onClick={() => onAddingEvent(date.fullDate)}>Add event</button>
                                     </div>
                                 ))
                             }

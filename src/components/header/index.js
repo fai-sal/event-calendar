@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { format } from 'date-fns';
 import { CalendarContext } from '../../utils';
-import { Button } from '@material-ui/core';
 
 const ranges = [
     {
@@ -46,14 +45,14 @@ const Header = () => {
                 <div className="select-range">
                     {
                         ranges.map(({ title, value }) => (
-                            <Button
+                            <button
                                 key={value}
                                 variant="outlined"
                                 {...(selectedRange === value) && { color: "primary" }}
                                 onClick={() => updateRange(value)}
                             >
                                 {title}
-                            </Button>
+                            </button>
                         ))
                     }
                 </div>
